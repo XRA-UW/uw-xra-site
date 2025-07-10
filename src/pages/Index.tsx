@@ -26,21 +26,30 @@ const Index = () => {
           </div>
           
           <h1 className="text-4xl md:text-5xl font-bold font-orbitron mb-6 bg-gradient-cyber bg-clip-text text-transparent text-glow-pink">
-            Extended Reality Association
+            Extended Reality Association @ University of Washington
           </h1>
           <p className="text-lg md:text-xl text-foreground/80 mb-8 max-w-2xl mx-auto font-rajdhani font-medium">
-            Exploring the frontiers of <span className="text-cyber-pink font-semibold">Virtual Reality</span>, 
-            <span className="text-cyber-cyan font-semibold"> Augmented Reality</span>, and 
-            <span className="text-cyber-purple font-semibold"> Mixed Reality</span> technologies
+            A community of builders and designers exploring the frontiers of <span className="text-cyber-pink font-semibold">Virtual Reality</span>, 
+            <span className="text-cyber-cyan font-semibold"> Augmented Reality</span> & <span className="text-neon-orange font-semibold">Spatial Intelligence</span>
           </p>
           
           {/* Mascot */}
           
           
-          <Button size="lg" className="shadow-cyber-glow border-glow-pink font-rajdhani font-bold text-lg px-8">
-            Join Our Community
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" className="shadow-cyber-glow border-glow-pink font-rajdhani font-bold text-lg px-8" asChild>
+              <a href="https://discord.gg/B7nPBSBJ3N" target="_blank" rel="noopener noreferrer">
+                Join Our Discord
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </a>
+            </Button>
+            <Button size="lg" className="shadow-cyber-glow border-glow-cyan font-rajdhani font-bold text-lg px-8" asChild>
+              <a href="https://instagram.com/uw_xra" target="_blank" rel="noopener noreferrer">
+                Follow Us on Instagram
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </a>
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -64,12 +73,14 @@ const Index = () => {
             <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-cyber-purple"></div>
             <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-neon-orange"></div>
             
-            <iframe src="https://lu.ma/embed/calendar/cal-rx7JDbb4ZqgZ8lR/events" width="600" height="450" style={{
+            <iframe src="https://lu.ma/embed/calendar/cal-rx7JDbb4ZqgZ8lR/events" style={{
             border: "1px solid hsl(var(--cyber-cyan) / 0.3)",
             borderRadius: "8px",
-            maxWidth: "100%",
-            background: "hsl(var(--background) / 0.5)"
-          }} allowFullScreen aria-hidden="false" tabIndex={0} className="w-full max-w-[600px]" />
+            background: "hsl(var(--background) / 0.5)",
+            width: "100%",
+            height: "500px",
+            minHeight: "400px"
+          }} allowFullScreen aria-hidden="false" tabIndex={0} className="w-full max-w-4xl h-auto" />
           </div>
         </div>
       </section>
