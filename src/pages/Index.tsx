@@ -1,10 +1,8 @@
 import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-
 const Index = () => {
-  return (
-    <div className="min-h-screen bg-gradient-bg">
+  return <div className="min-h-screen bg-gradient-bg">
       <Header />
       
       {/* Hero Section */}
@@ -34,49 +32,17 @@ const Index = () => {
         
         <div className="flex justify-center">
           <div className="bg-card rounded-lg p-4 shadow-lg border max-w-full overflow-hidden">
-            <iframe
-              src="https://lu.ma/embed/calendar/cal-rx7JDbb4ZqgZ8lR/events"
-              width="600"
-              height="450"
-              style={{ 
-                border: "1px solid #bfcbda88", 
-                borderRadius: "4px",
-                maxWidth: "100%"
-              }}
-              allowFullScreen
-              aria-hidden="false"
-              tabIndex={0}
-              className="w-full max-w-[600px]"
-            />
+            <iframe src="https://lu.ma/embed/calendar/cal-rx7JDbb4ZqgZ8lR/events" width="600" height="450" style={{
+            border: "1px solid #bfcbda88",
+            borderRadius: "4px",
+            maxWidth: "100%"
+          }} allowFullScreen aria-hidden="false" tabIndex={0} className="w-full max-w-[600px]" />
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-card p-6 rounded-lg shadow-sm border">
-            <h3 className="text-xl font-semibold mb-3 text-primary">Virtual Reality</h3>
-            <p className="text-muted-foreground">
-              Immerse yourself in completely digital worlds and explore the limitless possibilities of VR technology.
-            </p>
-          </div>
-          <div className="bg-card p-6 rounded-lg shadow-sm border">
-            <h3 className="text-xl font-semibold mb-3 text-accent">Augmented Reality</h3>
-            <p className="text-muted-foreground">
-              Overlay digital information onto the real world and discover how AR enhances our daily experiences.
-            </p>
-          </div>
-          <div className="bg-card p-6 rounded-lg shadow-sm border">
-            <h3 className="text-xl font-semibold mb-3 text-primary">Mixed Reality</h3>
-            <p className="text-muted-foreground">
-              Bridge the gap between physical and digital realms with cutting-edge MR technologies and applications.
-            </p>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
+      
+    </div>;
 };
-
 export default Index;
