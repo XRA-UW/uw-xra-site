@@ -14,6 +14,23 @@ const People = () => {
     { name: "John Akers", position: "advisor" },
   ];
 
+  // Exotic cyberpunk gradient combinations
+  const cyberpunkGradients = [
+    "bg-gradient-to-br from-cyber-pink via-cyber-purple to-cyber-cyan",
+    "bg-gradient-to-br from-cyber-cyan via-cyber-green to-neon-orange",
+    "bg-gradient-to-br from-neon-orange via-cyber-pink to-cyber-purple",
+    "bg-gradient-to-br from-cyber-purple via-cyber-cyan to-cyber-green",
+    "bg-gradient-to-br from-cyber-green via-neon-orange to-cyber-pink",
+    "bg-gradient-to-br from-cyber-cyan via-cyber-purple to-neon-orange",
+    "bg-gradient-to-br from-cyber-pink via-cyber-green to-cyber-cyan",
+  ];
+
+  // Function to consistently assign a gradient based on name
+  const getPersonGradient = (name: string) => {
+    const hash = name.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+    return cyberpunkGradients[hash % cyberpunkGradients.length];
+  };
+
   return (
     <div className="min-h-screen bg-gradient-bg cyber-grid relative overflow-hidden">
       {/* Animated background elements */}
@@ -30,8 +47,7 @@ const People = () => {
             Our Team
           </h1>
           <p className="text-xl text-foreground/80 font-rajdhani font-medium">
-            Meet the <span className="text-cyber-cyan">visionaries</span> behind 
-            <span className="text-cyber-pink"> Extended Reality Association</span>
+            Thank you all for making XRA an amazing community!
           </p>
         </div>
         
@@ -49,7 +65,7 @@ const People = () => {
                 <div className="absolute bottom-2 left-2 w-3 h-3 border-l-2 border-b-2 border-cyber-purple opacity-60"></div>
                 <div className="absolute bottom-2 right-2 w-3 h-3 border-r-2 border-b-2 border-neon-orange opacity-60"></div>
                 
-                <div className="w-24 h-24 bg-gradient-cyber rounded-full mx-auto mb-4 animate-pulse-glow"></div>
+                <div className={`w-24 h-24 ${getPersonGradient(person.name)} rounded-full mx-auto mb-4 animate-pulse-glow`}></div>
                 <h3 className="text-lg font-semibold font-orbitron mb-2 text-cyber-cyan">{person.name}</h3>
                 <p className="text-cyber-pink font-rajdhani font-medium mb-1">{person.position}</p>
               </div>
@@ -71,7 +87,7 @@ const People = () => {
                 <div className="absolute bottom-2 left-2 w-3 h-3 border-l-2 border-b-2 border-cyber-pink opacity-60"></div>
                 <div className="absolute bottom-2 right-2 w-3 h-3 border-r-2 border-b-2 border-neon-orange opacity-60"></div>
                 
-                <div className="w-24 h-24 bg-gradient-cyber rounded-full mx-auto mb-4 animate-pulse-glow"></div>
+                <div className={`w-24 h-24 ${getPersonGradient(person.name)} rounded-full mx-auto mb-4 animate-pulse-glow`}></div>
                 <h3 className="text-lg font-semibold font-orbitron mb-2 text-cyber-cyan">{person.name}</h3>
                 <p className="text-cyber-purple font-rajdhani font-medium mb-1">{person.position}</p>
               </div>
