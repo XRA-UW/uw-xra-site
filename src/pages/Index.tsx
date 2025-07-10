@@ -20,10 +20,6 @@ const Index = () => {
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-16 text-center relative">
         <div className="max-w-4xl mx-auto">
-          {/* Main XRA Logo */}
-          <div className="mb-8 flex justify-center">
-            <img src="/lovable-uploads/f97362a6-edb5-490f-82e1-fa4ff5d6a22d.png" alt="Extended Reality Association" className="h-48 md:h-64 w-auto animate-pulse-glow" />
-          </div>
           
           <h1 className="text-4xl md:text-5xl font-bold font-orbitron mb-6 bg-gradient-cyber bg-clip-text text-transparent text-glow-pink">
             Extended Reality Association @ University of Washington
