@@ -52,6 +52,11 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				'cyber-pink': 'hsl(var(--cyber-pink))',
+				'cyber-cyan': 'hsl(var(--cyber-cyan))',
+				'cyber-purple': 'hsl(var(--cyber-purple))',
+				'cyber-green': 'hsl(var(--cyber-green))',
+				'neon-orange': 'hsl(var(--neon-orange))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -65,10 +70,19 @@ export default {
 			},
 			backgroundImage: {
 				'gradient-primary': 'var(--gradient-primary)',
-				'gradient-bg': 'var(--gradient-bg)'
+				'gradient-cyber': 'var(--gradient-cyber)',
+				'gradient-bg': 'var(--gradient-bg)',
+				'gradient-card': 'var(--gradient-card)',
+				'cyber-grid': 'var(--grid-pattern)'
 			},
 			boxShadow: {
-				'glow': 'var(--shadow-glow)'
+				'glow': 'var(--shadow-glow)',
+				'cyan-glow': 'var(--shadow-cyan-glow)',
+				'cyber-glow': '0 0 30px hsl(var(--cyber-pink) / 0.5), 0 0 60px hsl(var(--cyber-cyan) / 0.3)'
+			},
+			fontFamily: {
+				'orbitron': ['Orbitron', 'monospace'],
+				'rajdhani': ['Rajdhani', 'sans-serif']
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

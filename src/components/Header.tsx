@@ -10,11 +10,19 @@ const Header = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-glow-pink bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      {/* Animated scan line */}
+      <div className="absolute top-0 h-[1px] w-8 bg-gradient-to-r from-transparent via-cyber-cyan to-transparent animate-scan-line"></div>
+      
       <div className="container flex h-16 items-center justify-between">
-        <div className="flex items-center space-x-2">
-          <h1 className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-            Extended Reality Association
+        <div className="flex items-center space-x-3">
+          <img 
+            src="/lovable-uploads/34f53046-b253-43b1-8ec3-8fc8db5ab5ca.png" 
+            alt="XRA Logo" 
+            className="h-8 w-auto animate-pulse-glow"
+          />
+          <h1 className="text-xl font-bold font-orbitron bg-gradient-cyber bg-clip-text text-transparent text-glow-pink">
+            XRA
           </h1>
         </div>
         
@@ -24,6 +32,7 @@ const Header = () => {
               key={item.name}
               asChild
               variant={location.pathname === item.path ? "default" : "ghost"}
+              className="font-rajdhani font-semibold"
             >
               <Link to={item.path}>{item.name}</Link>
             </Button>
