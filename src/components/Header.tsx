@@ -17,7 +17,7 @@ const Header = () => {
         <div className="flex items-center space-x-3">
           
           <h1 className="text-xl font-bold font-orbitron bg-gradient-cyber bg-clip-text text-transparent text-glow-pink">
-            XRA
+            XRA @ UW
           </h1>
         </div>
         
