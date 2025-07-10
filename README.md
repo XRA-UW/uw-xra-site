@@ -1,54 +1,44 @@
-# Welcome to your Lovable project
-
-## Project info
-
-**URL**: https://lovable.dev/projects/808df2de-4fb2-4cce-927b-96810844d831
+# UW XRA Site
 
 ## How can I edit this code?
 
-There are several ways of editing your application.
+To modify this site, follow these steps:
 
-**Use Lovable**
+**Local Development**
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/808df2de-4fb2-4cce-927b-96810844d831) and start prompting.
+1. Clone the repository and navigate to the project directory
+2. Install dependencies: `npm install`
+3. Start the development server: `npm run dev`
+4. Make your changes to the code
+5. Commit your changes and push to the main branch
 
-Changes made via Lovable will be committed automatically to this repo.
+**Deployment**
 
-**Use your preferred IDE**
+Once you've pushed your changes to the main branch:
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+1. Run the deployment command: `npm run deploy`
+2. This will automatically build the site and push it to the `gh-pages` branch
+3. GitHub Pages is configured to serve the site from the `gh-pages` branch and will auto-update
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+**Requirements**
 
-Follow these steps:
+- Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+
+**Development Commands**
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Install dependencies
+npm install
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
+
+# Build for production
+npm run build
+
+# Deploy to GitHub Pages
+npm run deploy
 ```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
 
 ## What technologies are used for this project?
 
@@ -60,14 +50,13 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
+## Deployment
 
-Simply open [Lovable](https://lovable.dev/projects/808df2de-4fb2-4cce-927b-96810844d831) and click on Share -> Publish.
+This site is deployed using GitHub Pages. The deployment process works as follows:
 
-## Can I connect a custom domain to my Lovable project?
+1. Make changes and commit them to the `main` branch
+2. Run `npm run deploy` from the main branch
+3. The site is automatically built and pushed to the `gh-pages` branch
+4. GitHub Pages serves the site from the `gh-pages` branch and updates automatically
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+The live site is available at the GitHub Pages URL configured for this repository.
