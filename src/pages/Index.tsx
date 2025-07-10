@@ -22,11 +22,7 @@ const Index = () => {
         <div className="max-w-4xl mx-auto">
           {/* Main XRA Logo */}
           <div className="mb-8 flex justify-center">
-            <img 
-              src="/lovable-uploads/f97362a6-edb5-490f-82e1-fa4ff5d6a22d.png" 
-              alt="Extended Reality Association" 
-              className="h-48 md:h-64 w-auto animate-pulse-glow"
-            />
+            <img src="/lovable-uploads/f97362a6-edb5-490f-82e1-fa4ff5d6a22d.png" alt="Extended Reality Association" className="h-48 md:h-64 w-auto animate-pulse-glow" />
           </div>
           
           <h1 className="text-4xl md:text-5xl font-bold font-orbitron mb-6 bg-gradient-cyber bg-clip-text text-transparent text-glow-pink">
@@ -39,13 +35,7 @@ const Index = () => {
           </p>
           
           {/* Mascot */}
-          <div className="mb-8 flex justify-center">
-            <img 
-              src="/lovable-uploads/7ee1a00a-1ae3-4525-89a9-44c19eee2a3b.png" 
-              alt="XRA Mascot" 
-              className="h-32 w-auto animate-float"
-            />
-          </div>
+          
           
           <Button size="lg" className="shadow-cyber-glow border-glow-pink font-rajdhani font-bold text-lg px-8">
             Join Our Community
@@ -74,21 +64,12 @@ const Index = () => {
             <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-cyber-purple"></div>
             <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-neon-orange"></div>
             
-            <iframe 
-              src="https://lu.ma/embed/calendar/cal-rx7JDbb4ZqgZ8lR/events" 
-              width="600" 
-              height="450" 
-              style={{
-                border: "1px solid hsl(var(--cyber-cyan) / 0.3)",
-                borderRadius: "8px",
-                maxWidth: "100%",
-                background: "hsl(var(--background) / 0.5)"
-              }} 
-              allowFullScreen 
-              aria-hidden="false" 
-              tabIndex={0} 
-              className="w-full max-w-[600px]" 
-            />
+            <iframe src="https://lu.ma/embed/calendar/cal-rx7JDbb4ZqgZ8lR/events" width="600" height="450" style={{
+            border: "1px solid hsl(var(--cyber-cyan) / 0.3)",
+            borderRadius: "8px",
+            maxWidth: "100%",
+            background: "hsl(var(--background) / 0.5)"
+          }} allowFullScreen aria-hidden="false" tabIndex={0} className="w-full max-w-[600px]" />
           </div>
         </div>
       </section>
