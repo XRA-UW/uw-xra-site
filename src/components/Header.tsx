@@ -1,32 +1,42 @@
 import { Link, useLocation } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import { XMark } from "@/components/Logo";
+
 const Header = () => {
   const location = useLocation();
-  const navItems = [{
-    name: "Home",
-    path: "/"
-  }, {
-    name: "People",
-    path: "/people"
-  }];
-  return <header className="sticky top-0 z-50 w-full border-b border-glow-pink bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      {/* Animated scan line */}
-      <div className="absolute top-0 h-[1px] w-8 bg-gradient-to-r from-transparent via-cyber-cyan to-transparent animate-scan-line"></div>
-      
+  const navItems = [
+    { name: "Home", path: "/" },
+    { name: "People", path: "/people" },
+  ];
+
+  return (
+    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
-        <div className="flex items-center space-x-3">
-          
-          <h1 className="text-xl font-bold font-orbitron bg-gradient-cyber bg-clip-text text-transparent text-glow-pink">
-            XRA @ UW
-          </h1>
-        </div>
-        
-        <nav className="flex items-center space-x-1">
-          {navItems.map(item => <Button key={item.name} asChild variant={location.pathname === item.path ? "default" : "ghost"} className="font-rajdhani font-semibold">
-              <Link to={item.path}>{item.name}</Link>
-            </Button>)}
+        <Link to="/" className="group flex items-center gap-3">
+          <XMark className="h-6 w-6 text-foreground transition-colors group-hover:text-brand-green" />
+          <span className="text-xl font-medium tracking-tight">xra</span>
+          <span className="hidden font-light text-sm text-muted-foreground md:inline">
+            Extended Reality Association
+          </span>
+        </Link>
+
+        <nav className="flex items-center gap-1">
+          {navItems.map((item) => (
+            <Link
+              key={item.name}
+              to={item.path}
+              className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                location.pathname === item.path
+                  ? "bg-primary text-primary-foreground"
+                  : "text-foreground/70 hover:bg-white/5 hover:text-foreground"
+              }`}
+            >
+              {item.name}
+            </Link>
+          ))}
         </nav>
       </div>
-    </header>;
+    </header>
+  );
 };
+
 export default Header;

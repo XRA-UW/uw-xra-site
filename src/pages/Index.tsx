@@ -1,88 +1,195 @@
 import Header from "@/components/Header";
-import { Button } from "@/components/ui/button";
+import Footer from "@/components/Footer";
+import { XMark } from "@/components/Logo";
 import { ArrowRight } from "lucide-react";
+
+const keywords = [
+  { word: "Future", tilt: "-rotate-6" },
+  { word: "Community", tilt: "rotate-3" },
+  { word: "Reality", tilt: "-rotate-2" },
+  { word: "Explore", tilt: "rotate-6" },
+  { word: "Create", tilt: "-rotate-3" },
+  { word: "Build", tilt: "rotate-2" },
+  { word: "Experience", tilt: "-rotate-1" },
+];
+
+const pillars = [
+  {
+    title: "Explore",
+    accent: "bg-primary text-primary-foreground",
+    text: "Get hands-on with the latest headsets and demos at our meetups — from Vision Pro to Quest — and see what spatial computing can really do.",
+  },
+  {
+    title: "Build",
+    accent: "bg-accent text-accent-foreground",
+    text: "Ship XR projects with other students using Unity, Unreal, WebXR, and everything in between — no prior experience required.",
+  },
+  {
+    title: "Community",
+    accent: "bg-secondary text-secondary-foreground",
+    text: "Meet designers, developers, and researchers from across campus, and hear from guest speakers working in the XR industry.",
+  },
+];
+
 const Index = () => {
-  return <div className="min-h-screen bg-gradient-bg cyber-grid relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Floating geometric shapes */}
-        <div className="absolute top-20 left-10 w-4 h-4 border border-cyber-cyan animate-rotate-slow"></div>
-        <div className="absolute top-40 right-20 w-6 h-6 border border-cyber-pink animate-float"></div>
-        <div className="absolute bottom-40 left-20 w-5 h-5 border border-cyber-purple rotate-45 animate-pulse"></div>
-        
-        {/* Glowing orbs */}
-        <div className="absolute top-60 right-10 w-3 h-3 bg-cyber-cyan rounded-full shadow-cyan-glow animate-pulse"></div>
-        <div className="absolute bottom-20 right-40 w-2 h-2 bg-cyber-pink rounded-full shadow-glow animate-pulse"></div>
-      </div>
+  return (
+    <div className="relative min-h-screen overflow-hidden bg-background">
+      {/* Background: brand gradient wash + faint tiled X pattern */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-hero" />
+      <div className="pointer-events-none absolute inset-0 x-pattern" />
 
-      <Header />
-      
-      {/* Hero Section */}
-      <section className="container mx-auto px-4 py-16 text-center relative">
-        <div className="max-w-4xl mx-auto">
-          
-          <h1 className="text-4xl md:text-5xl font-bold font-orbitron mb-6 bg-gradient-cyber bg-clip-text text-transparent text-glow-pink">
-            Extended Reality Association @ University of Washington
-          </h1>
-          <p className="text-lg md:text-xl text-foreground/80 mb-8 max-w-2xl mx-auto font-rajdhani font-medium">
-            A community of builders and designers exploring the frontiers of <span className="text-cyber-pink font-semibold">Virtual Reality</span>, 
-            <span className="text-cyber-cyan font-semibold"> Augmented Reality</span> & <span className="text-neon-orange font-semibold">Spatial Intelligence</span>
-          </p>
-          
-          {/* Mascot */}
-          
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="shadow-cyber-glow border-glow-pink font-rajdhani font-bold text-lg px-8" asChild>
-              <a href="https://discord.gg/B7nPBSBJ3N" target="_blank" rel="noopener noreferrer">
+      <div className="relative">
+        <Header />
+
+        {/* Hero */}
+        <section className="container px-4 pb-16 pt-20 text-center md:pt-28">
+          <div className="mx-auto max-w-4xl">
+            <p className="animate-fade-up mb-4 text-sm font-medium uppercase tracking-[0.25em] text-brand-green">
+              University of Washington
+            </p>
+            <h1 className="animate-fade-up mb-6 text-5xl font-medium tracking-tight md:text-7xl">
+              Extended Reality Association
+            </h1>
+            <p className="animate-fade-up mx-auto mb-10 max-w-2xl text-lg font-light text-muted-foreground md:text-xl">
+              A community of builders and designers exploring the frontiers of
+              virtual reality, augmented reality &amp; spatial intelligence.
+            </p>
+
+            <div className="animate-fade-up flex flex-col justify-center gap-4 sm:flex-row">
+              <a
+                href="https://discord.gg/AA6wF9f63p"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-3 text-lg font-medium text-primary-foreground transition-all hover:shadow-glow-blue"
+              >
                 Join Our Discord
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="h-5 w-5" />
               </a>
-            </Button>
-            <Button size="lg" className="shadow-cyber-glow border-glow-cyan font-rajdhani font-bold text-lg px-8" asChild>
-              <a href="https://instagram.com/uw_xra" target="_blank" rel="noopener noreferrer">
-                Follow Us on Instagram
-                <ArrowRight className="ml-2 h-5 w-5" />
+              <a
+                href="https://instagram.com/uw_xra"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-foreground/25 px-8 py-3 text-lg font-medium text-foreground transition-all hover:border-brand-green hover:text-brand-green"
+              >
+                Follow on Instagram
+                <ArrowRight className="h-5 w-5" />
               </a>
-            </Button>
+            </div>
           </div>
-        </div>
-      </section>
 
-      {/* Events Section with Luma Integration */}
-      <section className="container mx-auto px-4 py-16 relative">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold font-orbitron mb-4 bg-gradient-cyber bg-clip-text text-transparent text-glow-cyan">
-            Upcoming Events
-          </h2>
-          <p className="text-lg text-foreground/80 font-rajdhani font-medium">
-            Join us for exciting <span className="text-cyber-pink">XR experiences</span> and 
-            <span className="text-cyber-cyan"> networking opportunities</span>
+          {/* Keyword pills, straight from the brand sheet */}
+          <div className="mt-16 flex flex-wrap items-center justify-center gap-3">
+            {keywords.map(({ word, tilt }) => (
+              <span
+                key={word}
+                className={`${tilt} rounded-full bg-primary px-5 py-2 font-medium text-primary-foreground transition-transform hover:rotate-0 hover:scale-105`}
+              >
+                {word}
+              </span>
+            ))}
+          </div>
+        </section>
+
+        {/* Events */}
+        <section className="container px-4 py-16">
+          <div className="mb-10 text-center">
+            <h2 className="mb-3 text-3xl font-medium tracking-tight md:text-4xl">
+              Upcoming Events
+            </h2>
+            <p className="text-lg font-light text-muted-foreground">
+              Join us for XR demos, workshops, and networking.
+            </p>
+          </div>
+
+          <div className="mx-auto max-w-4xl rounded-2xl border border-white/10 bg-card p-4 md:p-6">
+            <iframe
+              src="https://lu.ma/embed/calendar/cal-rx7JDbb4ZqgZ8lR/events"
+              style={{
+                border: "none",
+                borderRadius: "12px",
+                width: "100%",
+                height: "500px",
+                minHeight: "400px",
+              }}
+              allowFullScreen
+              aria-hidden="false"
+              tabIndex={0}
+              title="XRA events calendar"
+            />
+          </div>
+
+          <p className="mt-6 text-center">
+            <a
+              href="https://luma.com/xra_uw"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-muted-foreground transition-colors hover:text-brand-green"
+            >
+              Browse all events on Luma →
+            </a>
           </p>
-        </div>
-        
-        <div className="flex justify-center">
-          <div className="bg-gradient-card rounded-lg p-6 border border-glow-cyan max-w-full overflow-hidden relative">
-            {/* Decorative corner elements */}
-            <div className="absolute top-2 left-2 w-4 h-4 border-l-2 border-t-2 border-cyber-pink"></div>
-            <div className="absolute top-2 right-2 w-4 h-4 border-r-2 border-t-2 border-cyber-cyan"></div>
-            <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-cyber-purple"></div>
-            <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-neon-orange"></div>
-            
-            <iframe src="https://lu.ma/embed/calendar/cal-rx7JDbb4ZqgZ8lR/events" style={{
-            border: "1px solid hsl(var(--cyber-cyan) / 0.3)",
-            borderRadius: "8px",
-            background: "hsl(var(--background) / 0.5)",
-            width: "100%",
-            height: "500px",
-            minHeight: "400px"
-          }} allowFullScreen aria-hidden="false" tabIndex={0} className="w-full max-w-4xl h-auto" />
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* About Section */}
-      
-    </div>;
+        {/* About */}
+        <section className="container px-4 py-16">
+          <div className="mb-10 text-center">
+            <h2 className="mb-3 text-3xl font-medium tracking-tight md:text-4xl">
+              What We Do
+            </h2>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {pillars.map((pillar) => (
+              <div
+                key={pillar.title}
+                className="rounded-2xl border border-white/10 bg-card p-8 transition-colors hover:border-white/25"
+              >
+                <div
+                  className={`mb-5 flex h-12 w-12 items-center justify-center rounded-full ${pillar.accent}`}
+                >
+                  <XMark className="h-5 w-5" />
+                </div>
+                <h3 className="mb-3 text-xl font-medium">{pillar.title}</h3>
+                <p className="font-light leading-relaxed text-muted-foreground">
+                  {pillar.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ICXR */}
+        <section className="container px-4 py-16">
+          <div className="mx-auto flex max-w-5xl flex-col items-start justify-between gap-8 rounded-2xl border border-white/10 bg-card p-10 md:flex-row md:items-center">
+            <div>
+              <p className="mb-3 text-sm font-medium uppercase tracking-[0.25em] text-brand-green">
+                Beyond UW
+              </p>
+              <h2 className="mb-3 text-2xl font-medium tracking-tight md:text-3xl">
+                Part of a global student XR community
+              </h2>
+              <p className="max-w-xl font-light leading-relaxed text-muted-foreground">
+                Through ICXR — the Intercollegiate Extended Reality community —
+                student XR builders across 45+ university chapters worldwide
+                share hackathons, events, and industry connections.
+              </p>
+            </div>
+            <a
+              href="https://icxr.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-primary px-8 py-3 font-medium text-primary-foreground transition-all hover:shadow-glow-blue"
+            >
+              Visit ICXR
+              <ArrowRight className="h-5 w-5" />
+            </a>
+          </div>
+        </section>
+
+        <Footer />
+      </div>
+    </div>
+  );
 };
+
 export default Index;

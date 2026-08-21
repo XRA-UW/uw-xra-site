@@ -1,5 +1,6 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { XMark } from "@/components/Logo";
 
 const NotFound = () => {
   const location = useLocation();
@@ -12,13 +13,22 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">404</h1>
-        <p className="text-xl text-gray-600 mb-4">Oops! Page not found</p>
-        <a href="/" className="text-blue-500 hover:text-blue-700 underline">
-          Return to Home
-        </a>
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-background">
+      <div className="pointer-events-none absolute inset-0 bg-gradient-hero" />
+      <div className="pointer-events-none absolute inset-0 x-pattern" />
+
+      <div className="relative text-center">
+        <XMark className="mx-auto mb-6 h-16 w-16 animate-float text-brand-green" />
+        <h1 className="mb-3 text-6xl font-medium tracking-tight">404</h1>
+        <p className="mb-8 text-xl font-light text-muted-foreground">
+          This reality doesn't exist (yet).
+        </p>
+        <Link
+          to="/"
+          className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-3 font-medium text-primary-foreground transition-all hover:shadow-glow-blue"
+        >
+          Return Home
+        </Link>
       </div>
     </div>
   );

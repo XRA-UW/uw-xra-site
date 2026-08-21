@@ -52,11 +52,11 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				'cyber-pink': 'hsl(var(--cyber-pink))',
-				'cyber-cyan': 'hsl(var(--cyber-cyan))',
-				'cyber-purple': 'hsl(var(--cyber-purple))',
-				'cyber-green': 'hsl(var(--cyber-green))',
-				'neon-orange': 'hsl(var(--neon-orange))',
+				'brand-blue': 'hsl(var(--brand-blue))',
+				'brand-deep': 'hsl(var(--brand-deep))',
+				'brand-green': 'hsl(var(--brand-green))',
+				'brand-white': 'hsl(var(--brand-white))',
+				'brand-grey': 'hsl(var(--brand-grey))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -69,20 +69,14 @@ export default {
 				}
 			},
 			backgroundImage: {
-				'gradient-primary': 'var(--gradient-primary)',
-				'gradient-cyber': 'var(--gradient-cyber)',
-				'gradient-bg': 'var(--gradient-bg)',
-				'gradient-card': 'var(--gradient-card)',
-				'cyber-grid': 'var(--grid-pattern)'
+				'gradient-hero': 'var(--gradient-hero)'
 			},
 			boxShadow: {
-				'glow': 'var(--shadow-glow)',
-				'cyan-glow': 'var(--shadow-cyan-glow)',
-				'cyber-glow': '0 0 30px hsl(var(--cyber-pink) / 0.5), 0 0 60px hsl(var(--cyber-cyan) / 0.3)'
+				'glow-blue': '0 0 60px hsl(var(--brand-blue) / 0.35)',
+				'glow-green': '0 0 60px hsl(var(--brand-green) / 0.25)'
 			},
 			fontFamily: {
-				'orbitron': ['Orbitron', 'monospace'],
-				'rajdhani': ['Rajdhani', 'sans-serif']
+				sans: ['"Google Sans Flex"', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif']
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

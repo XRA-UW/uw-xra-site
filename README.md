@@ -1,8 +1,8 @@
 # UW XRA Site
 
-## How can I edit this code?
+The website for the Extended Reality Association at the University of Washington, live at https://xra-uw.github.io/uw-xra-site/
 
-To modify this site, follow these steps:
+## How can I edit this code?
 
 **Local Development**
 
@@ -11,18 +11,6 @@ To modify this site, follow these steps:
 3. Start the development server: `npm run dev`
 4. Make your changes to the code
 5. Commit your changes and push to the main branch
-
-**Deployment**
-
-Once you've pushed your changes to the main branch:
-
-1. Run the deployment command: `npm run deploy`
-2. This will automatically build the site and push it to the `gh-pages` branch
-3. GitHub Pages is configured to serve the site from the `gh-pages` branch and will auto-update
-
-**Requirements**
-
-- Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
 **Development Commands**
 
@@ -36,9 +24,17 @@ npm run dev
 # Build for production
 npm run build
 
-# Deploy to GitHub Pages
-npm run deploy
+# Preview the production build locally
+npm run preview
 ```
+
+**Requirements**
+
+- Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+
+## Deployment
+
+Deployment is fully automatic: every push to the `main` branch triggers the GitHub Actions workflow in `.github/workflows/deploy.yml`, which builds the site and publishes it to GitHub Pages. There is no manual deploy step.
 
 ## What technologies are used for this project?
 
@@ -50,13 +46,17 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## Deployment
+## Brand
 
-This site is deployed using GitHub Pages. The deployment process works as follows:
+The site follows the 2026 XRA rebrand:
 
-1. Make changes and commit them to the `main` branch
-2. Run `npm run deploy` from the main branch
-3. The site is automatically built and pushed to the `gh-pages` branch
-4. GitHub Pages serves the site from the `gh-pages` branch and updates automatically
+| Token          | Hex       |
+| -------------- | --------- |
+| Primary Blue   | `#3A22FF` |
+| Secondary Blue | `#201383` |
+| Primary Green  | `#4CF190` |
+| Off-White      | `#EFFFF7` |
+| Grey           | `#848484` |
+| Black          | `#121212` |
 
-The live site is available at the GitHub Pages URL configured for this repository.
+Typography is **Google Sans Flex** (via Google Fonts). Color tokens live in `src/index.css` (HSL custom properties) and are mapped to Tailwind utilities in `tailwind.config.ts`. The X logo mark is drawn as an SVG path in `src/components/Logo.tsx`, `public/favicon.svg`, and the raster assets in `public/`.

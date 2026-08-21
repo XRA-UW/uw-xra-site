@@ -16,6 +16,9 @@ dist-ssr
 .vscode/*
 !.vscode/extensions.json
 .idea
+
+# Local dev-server config (machine-specific paths)
+.claude/
 .DS_Store
 *.suo
 *.ntvs*
