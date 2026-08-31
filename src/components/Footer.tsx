@@ -12,7 +12,7 @@ const Footer = () => (
 
       <div className="flex items-center gap-5 text-sm">
         <a
-          href="https://discord.gg/AA6wF9f63p"
+          href="https://discord.gg/4hvsCDhb5p"
           target="_blank"
           rel="noopener noreferrer"
           className="text-foreground/70 transition-colors hover:text-brand-green"
