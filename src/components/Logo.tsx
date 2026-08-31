@@ -26,7 +26,9 @@ export const XMark = ({ className }: { className?: string }) => (
 );
 
 /* The "XRA" wordmark. Glyph offsets are the Figma group's own coordinates
-   (group 18:203, origin 671.783, 410.854), so the spacing is exact. */
+   (group 18:203, origin 671.783, 410.854), so the spacing is exact. The R and
+   the a sit 10.4 lower than the X and overhang it: the box has to be 187.667
+   tall, not the X's 182.997, or their bowls get sliced flat at the baseline. */
 export const XraWordmark = ({
   className,
   title = "XRA",
@@ -35,7 +37,7 @@ export const XraWordmark = ({
   title?: string;
 }) => (
   <svg
-    viewBox="0 0 576.434 182.997"
+    viewBox="0 0 576.434 187.667"
     className={className}
     fill="currentColor"
     role="img"
