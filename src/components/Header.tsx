@@ -1,10 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
-import { XMark } from "@/components/Logo";
+import { XraWordmark } from "@/components/Logo";
 
 const Header = () => {
   const location = useLocation();
   const navItems = [
     { name: "Home", path: "/" },
+    { name: "Projects", path: "/projects" },
     { name: "People", path: "/people" },
   ];
 
@@ -12,8 +13,7 @@ const Header = () => {
     <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <Link to="/" className="group flex items-center gap-3">
-          <XMark className="h-6 w-6 text-foreground transition-colors group-hover:text-brand-green" />
-          <span className="text-xl font-medium tracking-tight">xra</span>
+          <XraWordmark className="h-5 w-auto text-foreground transition-colors group-hover:text-brand-green" />
           <span className="hidden font-light text-sm text-muted-foreground md:inline">
             Extended Reality Association
           </span>

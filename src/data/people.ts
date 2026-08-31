@@ -14,7 +14,7 @@ export const officers: Person[] = [
 
 export const formerExecutiveBoard: Person[] = [
   { name: "Boe Zhou", position: "Former President" },
-  { name: "Dawson Harris", position: "Former Officer" },
+  { name: "Dawson Harris", position: "Former President" },
   { name: "Evan Zhao", position: "Former Officer" },
   { name: "Jun Wang", position: "Former Officer" },
   { name: "Shaan Chattrath", position: "Former Officer" },

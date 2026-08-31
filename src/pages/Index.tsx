@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { XMark } from "@/components/Logo";
+import { XMark, XraWordmark } from "@/components/Logo";
 import { ArrowRight } from "lucide-react";
 
 const keywords = [
@@ -47,8 +47,14 @@ const Index = () => {
             <p className="animate-fade-up mb-4 text-sm font-medium uppercase tracking-[0.25em] text-brand-green">
               University of Washington
             </p>
-            <h1 className="animate-fade-up mb-6 text-5xl font-medium tracking-tight md:text-7xl">
-              Extended Reality Association
+            <h1 className="animate-fade-up mb-6 flex flex-col items-center">
+              <XraWordmark
+                className="w-56 text-foreground md:w-80"
+                title="XRA — Extended Reality Association"
+              />
+              <span className="mt-6 text-3xl font-light tracking-tight md:text-5xl">
+                Extended Reality Association
+              </span>
             </h1>
             <p className="animate-fade-up mx-auto mb-10 max-w-2xl text-lg font-light text-muted-foreground md:text-xl">
               A community of builders and designers exploring the frontiers of
@@ -60,19 +66,19 @@ const Index = () => {
                 href="https://discord.gg/AA6wF9f63p"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-3 text-lg font-medium text-primary-foreground transition-all hover:shadow-glow-blue"
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-3 text-lg font-medium text-primary-foreground shadow-[0_8px_24px_hsl(var(--brand-blue)/0.25)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-[0_12px_44px_hsl(var(--brand-blue)/0.5)] active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
                 Join Our Discord
-                <ArrowRight className="h-5 w-5" />
+                <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
               </a>
               <a
                 href="https://instagram.com/uw_xra"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-foreground/25 px-8 py-3 text-lg font-medium text-foreground transition-all hover:border-brand-green hover:text-brand-green"
+                className="group inline-flex items-center justify-center gap-2 rounded-full border border-foreground/25 px-8 py-3 text-lg font-medium text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-green hover:bg-brand-green/10 hover:text-brand-green hover:shadow-[0_12px_44px_hsl(var(--brand-green)/0.25)] active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
                 Follow on Instagram
-                <ArrowRight className="h-5 w-5" />
+                <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
               </a>
             </div>
           </div>
@@ -89,6 +95,7 @@ const Index = () => {
             ))}
           </div>
         </section>
+
 
         {/* Events */}
         <section className="container px-4 py-16">
@@ -178,10 +185,10 @@ const Index = () => {
               href="https://icxr.org"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-primary px-8 py-3 font-medium text-primary-foreground transition-all hover:shadow-glow-blue"
+              className="group inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-primary px-8 py-3 font-medium text-primary-foreground shadow-[0_8px_24px_hsl(var(--brand-blue)/0.25)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-[0_12px_44px_hsl(var(--brand-blue)/0.5)] active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none motion-reduce:hover:translate-y-0"
             >
               Visit ICXR
-              <ArrowRight className="h-5 w-5" />
+              <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
             </a>
           </div>
         </section>

@@ -59,4 +59,6 @@ The site follows the 2026 XRA rebrand:
 | Grey           | `#848484` |
 | Black          | `#121212` |
 
-Typography is **Google Sans Flex** (via Google Fonts). Color tokens live in `src/index.css` (HSL custom properties) and are mapped to Tailwind utilities in `tailwind.config.ts`. The X logo mark is drawn as an SVG path in `src/components/Logo.tsx`, `public/favicon.svg`, and the raster assets in `public/`.
+Typography is **Google Sans Flex** (via Google Fonts). Color tokens live in `src/index.css` (HSL custom properties) and are mapped to Tailwind utilities in `tailwind.config.ts`.
+
+Logo geometry is exported from the [XRA brand file](https://www.figma.com/design/Lw03Q631UpcQlLA3AKnKve/XRA) — nodes `18:48` (X), `18:59` (R), `18:56` (A) — and lives in `src/components/Logo.tsx`, `public/favicon.svg`, and the tiled `.x-pattern` texture in `src/index.css`. `public/og-image.png` and the app icons are built from that same path data. Re-export from Figma rather than redrawing any of these by hand.
