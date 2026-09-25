@@ -44,9 +44,6 @@ const Index = () => {
         {/* Hero */}
         <section className="container px-4 pb-16 pt-20 text-center md:pt-28">
           <div className="mx-auto max-w-4xl">
-            <p className="animate-fade-up mb-4 text-sm font-medium uppercase tracking-[0.25em] text-brand-green">
-              University of Washington
-            </p>
             <h1 className="animate-fade-up mb-6 flex flex-col items-center">
               <XraWordmark
                 className="w-56 text-foreground md:w-80"
@@ -54,6 +51,9 @@ const Index = () => {
               />
               <span className="mt-6 text-3xl font-light tracking-tight md:text-5xl">
                 Extended Reality Association
+              </span>
+              <span className="mt-4 text-xs font-medium uppercase tracking-[0.2em] text-brand-green sm:text-sm sm:tracking-[0.25em]">
+                at the University of Washington
               </span>
             </h1>
             <p className="animate-fade-up mx-auto mb-10 max-w-2xl text-lg font-light text-muted-foreground md:text-xl">
