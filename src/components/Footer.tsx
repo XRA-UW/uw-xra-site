@@ -10,7 +10,7 @@ const Footer = () => (
         </span>
       </div>
 
-      <div className="flex items-center gap-5 text-sm">
+      <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 whitespace-nowrap text-sm">
         <a
           href="https://discord.gg/4hvsCDhb5p"
           target="_blank"
@@ -18,6 +18,14 @@ const Footer = () => (
           className="text-foreground/70 transition-colors hover:text-brand-green"
         >
           Discord
+        </a>
+        <a
+          href="https://students.washington.edu/xra/hacktheam/home.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-foreground/70 transition-colors hover:text-brand-green"
+        >
+          Hack the AM
         </a>
         <a
           href="https://instagram.com/uw_xra"

@@ -5,13 +5,14 @@ const Header = () => {
   const location = useLocation();
   const navItems = [
     { name: "Home", path: "/" },
+    { name: "Hackathon", path: "/hackathon" },
     { name: "Projects", path: "/projects" },
     { name: "People", path: "/people" },
   ];
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
+      <div className="container flex h-16 items-center justify-between px-4 sm:px-8">
         <Link to="/" className="group flex items-center gap-3">
           <XraWordmark className="h-5 w-auto text-foreground transition-colors group-hover:text-brand-green" />
           <span className="hidden font-light text-sm text-muted-foreground md:inline">
@@ -24,7 +25,7 @@ const Header = () => {
             <Link
               key={item.name}
               to={item.path}
-              className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+              className={`rounded-full px-3 py-1.5 text-xs font-medium transition-colors sm:px-4 sm:py-2 sm:text-sm ${
                 location.pathname === item.path
                   ? "bg-primary text-primary-foreground"
                   : "text-foreground/70 hover:bg-white/5 hover:text-foreground"
