@@ -1,17 +1,19 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProjectCard from "@/components/ProjectCard";
-import { currentProjects, pastProjects } from "@/data/projects";
+import { currentProjects, pastProjects, pastProjectsNote } from "@/data/projects";
 import type { Project } from "@/data/projects";
 
 const ProjectGroup = ({
   title,
   projects,
   emptyMessage,
+  note,
 }: {
   title: string;
   projects: Project[];
   emptyMessage: string;
+  note?: string;
 }) => (
   <section className="mb-14">
     <h2 className="mb-5 text-sm font-medium uppercase tracking-[0.25em] text-brand-green">
@@ -28,6 +30,10 @@ const ProjectGroup = ({
       <div className="rounded-2xl border border-dashed border-white/15 bg-card/40 p-8 text-center">
         <p className="font-light text-muted-foreground">{emptyMessage}</p>
       </div>
+    )}
+
+    {note && projects.length > 0 && (
+      <p className="mt-6 text-center font-light text-muted-foreground">{note}</p>
     )}
   </section>
 );
@@ -61,6 +67,7 @@ const Projects = () => {
               title="Past projects"
               projects={pastProjects}
               emptyMessage="Write-ups of past projects are on the way."
+              note={pastProjectsNote}
             />
           </div>
         </div>
