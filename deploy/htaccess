@@ -17,8 +17,14 @@ ErrorDocument 404 /xra/404.html
 # would rewrite every asset under that directory into a nonexistent path
 # beneath the archive page. These match the four pages and the directory
 # index exactly, and nothing else.
-RedirectMatch 301 ^/xra/hacktheam/(home|tracks|attend|faq)\.html$ /xra/hackathon/2026/
+RedirectMatch 301 ^/xra/hacktheam/(home|tracks|attend|faq|index)\.html$ /xra/hackathon/2026/
 RedirectMatch 301 ^/xra/hacktheam/?$ /xra/hackathon/2026/
+
+# Old meta-refresh stubs left on the server from before this consolidation.
+# Without these they still resolve, but as a refresh-then-301 chain, which
+# wastes a round trip and dilutes the redirect signal. /xra/hack/ is a legacy
+# path that predates /xra/hacktheam/.
+RedirectMatch 301 ^/xra/hack/(index\.html)?$ /xra/hackathon/2026/
 
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
