@@ -33,8 +33,14 @@ if (!fs.existsSync(ssrEntry)) {
   );
 }
 
-const { render, ROUTE_META, NOT_FOUND_META, canonicalUrl, SITE_URL } =
-  await import(pathToFileURL(ssrEntry).href);
+const {
+  render,
+  ROUTE_META,
+  NOT_FOUND_META,
+  canonicalUrl,
+  SITE_URL,
+  IS_CANONICAL_HOST,
+} = await import(pathToFileURL(ssrEntry).href);
 
 const template = fs.readFileSync(path.join(dist, "index.html"), "utf8");
 
@@ -148,6 +154,19 @@ fs.writeFileSync(
   "utf8",
 );
 written.push("404.html");
+
+/* A sitemap is only meaningful on the host that owns the URLs it lists. On a
+   build that canonicalises to another host, listing that host's URLs here
+   would be a cross-site sitemap, which search engines reject unless the other
+   host is verified against this one. So the non-canonical build ships none. */
+if (!IS_CANONICAL_HOST) {
+  console.log(
+    `prerendered ${written.length} files (sitemap skipped: canonical host is elsewhere):`,
+  );
+  for (const f of written) console.log(`  dist/${f}`);
+  fs.rmSync(path.join(root, "dist-ssr"), { recursive: true, force: true });
+  process.exit(0);
+}
 
 const lastmod = new Date().toISOString().slice(0, 10);
 const sitemap = [

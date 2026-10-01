@@ -15,6 +15,28 @@ export const SITE_ORIGIN =
 export const BASE_PATH = import.meta.env.BASE_URL.replace(/\/$/, "");
 export const SITE_URL = `${SITE_ORIGIN}${BASE_PATH}/`;
 
+/* Where the canonical copy of this content lives, which is not always where
+   this build is served from.
+   
+   students.washington.edu/xra is the canonical home. The GitHub Pages build
+   serves the same pages, so it points its canonical and og:url here rather
+   than competing with the UW site in search; Google then consolidates the two
+   instead of treating them as duplicates. GitHub Pages cannot issue real 301s
+   for a project site, so a cross-origin canonical is the tool available.
+
+   This is a property of the project, not of the CI config, so it lives here
+   rather than in an environment variable the workflow has to remember to set.
+   Change it if the site's permanent home ever moves. */
+const CANONICAL_HOME = "https://students.washington.edu/xra";
+
+/** Where this build is actually served from. */
+const SELF = `${SITE_ORIGIN}${BASE_PATH}`;
+
+export const CANONICAL_ROOT = import.meta.env.VITE_CANONICAL_ROOT || CANONICAL_HOME;
+
+/** False on a build that defers to the canonical copy on another host. */
+export const IS_CANONICAL_HOST = CANONICAL_ROOT === SELF;
+
 export interface RouteMeta {
   /** Route path as react-router sees it, with no basename. */
   path: string;
@@ -76,5 +98,5 @@ export function metaForPath(pathname: string): Omit<RouteMeta, "path"> {
  *  slashless form is a redirect, not a page. A canonical or a sitemap entry
  *  pointing at a redirect is a self-inflicted SEO defect. */
 export function canonicalUrl(path: string): string {
-  return path === "/" ? SITE_URL : `${SITE_ORIGIN}${BASE_PATH}${path}/`;
+  return path === "/" ? `${CANONICAL_ROOT}/` : `${CANONICAL_ROOT}${path}/`;
 }

@@ -24,5 +24,6 @@ export {
   ROUTE_META,
   NOT_FOUND_META,
   SITE_URL,
+  IS_CANONICAL_HOST,
   canonicalUrl,
 } from "./seo";
