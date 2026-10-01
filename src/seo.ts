@@ -6,8 +6,13 @@
    association uw". The bare query "XRA" is not a realistic target: the acronym
    belongs to too many unrelated organisations. */
 
-export const SITE_ORIGIN = "https://xra-uw.github.io";
-export const BASE_PATH = "/uw-xra-site";
+/* Both are set by the build, so canonical URLs, the sitemap and og:url follow
+   the deploy target automatically instead of being hardcoded in two places.
+   BASE_PATH comes from Vite's `base`; SITE_ORIGIN from VITE_SITE_ORIGIN.
+   Defaults are the GitHub Pages deploy. See scripts/deploy-uw.sh. */
+export const SITE_ORIGIN =
+  import.meta.env.VITE_SITE_ORIGIN || "https://xra-uw.github.io";
+export const BASE_PATH = import.meta.env.BASE_URL.replace(/\/$/, "");
 export const SITE_URL = `${SITE_ORIGIN}${BASE_PATH}/`;
 
 export interface RouteMeta {

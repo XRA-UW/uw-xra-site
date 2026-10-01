@@ -1,0 +1,31 @@
+# Apache config for the UW student web deploy at students.washington.edu/xra/.
+# Shipped to the server as .htaccess by scripts/deploy-uw.sh. Inert anywhere
+# else, and ignored entirely by GitHub Pages, which has no server config.
+
+# Unmatched paths. Every real route is prerendered to its own directory, so
+# Apache's DirectoryIndex already serves /xra/hackathon/ from
+# hackathon/index.html without help. This only catches genuine typos.
+ErrorDocument 404 /xra/404.html
+
+# Hack the AM 2026 lives in the main site once /xra/hackathon/2026/ exists.
+# These pages are already indexed and ranking, so they get real 301s rather
+# than being deleted. Uncomment only after that page is published, or you will
+# redirect live traffic to a 404.
+#
+# Redirect 301 /xra/hacktheam/home.html   /xra/hackathon/2026/
+# Redirect 301 /xra/hacktheam/tracks.html /xra/hackathon/2026/
+# Redirect 301 /xra/hacktheam/attend.html /xra/hackathon/2026/
+# Redirect 301 /xra/hacktheam/faq.html    /xra/hackathon/2026/
+# Redirect 301 /xra/hacktheam/            /xra/hackathon/2026/
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
+</IfModule>
+
+# Hashed asset filenames change on every build, so they are safe to cache hard.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  <FilesMatch "\.(js|css|woff2|png|jpg|svg|ico)$">
+    ExpiresDefault "access plus 1 year"
+  </FilesMatch>
+</IfModule>
