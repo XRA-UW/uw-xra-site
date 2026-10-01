@@ -4,13 +4,13 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 /* The record of Hack the AM, the April 2026 run. Everything here is sourced
-   from the event's own site at students.washington.edu/xra/hacktheam/, which
-   these pages are consolidating. Year-scoped on purpose: the format and the
-   name for the next run are still open, so nothing here should be read as a
-   promise about it. Do not add detail to this page that was not true on the
+   from the event's own site, which used to live at /xra/hacktheam/ and now
+   301s here. That makes this page the only copy, so do not link back to the
+   old URLs: they redirect to this one. Year-scoped on purpose: the format and
+   the name for the next run are still open, so nothing here should be read as
+   a promise about it. Do not add detail to this page that was not true on the
    day. */
 
-const SITE = "https://students.washington.edu/xra/hacktheam/home.html";
 const DISCORD = "https://discord.gg/4hvsCDhb5p";
 const EMAIL = "xra@uw.edu";
 
@@ -251,7 +251,7 @@ const Hackathon2026 = () => {
                   reworked off the back of this one, so dates, tracks, and the
                   name are still open.
                 </p>
-                <div className="flex flex-col gap-4 sm:flex-row">
+                <div>
                   <Link
                     to="/hackathon"
                     className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 font-medium text-primary-foreground shadow-[0_8px_24px_hsl(var(--brand-blue)/0.25)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-[0_12px_44px_hsl(var(--brand-blue)/0.5)] active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none motion-reduce:hover:translate-y-0"
@@ -259,14 +259,6 @@ const Hackathon2026 = () => {
                     This year&apos;s hackathon
                     <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
                   </Link>
-                  <a
-                    href={SITE}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 rounded-full border border-foreground/25 px-6 py-3 font-medium text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-green hover:bg-brand-green/10 hover:text-brand-green active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none motion-reduce:hover:translate-y-0"
-                  >
-                    Original event site
-                  </a>
                 </div>
               </section>
             </div>

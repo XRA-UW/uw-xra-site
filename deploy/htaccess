@@ -7,16 +7,18 @@
 # hackathon/index.html without help. This only catches genuine typos.
 ErrorDocument 404 /xra/404.html
 
-# Hack the AM 2026 lives in the main site once /xra/hackathon/2026/ exists.
-# These pages are already indexed and ranking, so they get real 301s rather
-# than being deleted. Uncomment only after that page is published, or you will
-# redirect live traffic to a 404.
+# Hack the AM is now part of the main site at /xra/hackathon/2026/. These four
+# pages are indexed and ranking, so they get real 301s rather than being
+# deleted: a 301 passes their accumulated ranking to the new URL, which is the
+# whole reason for consolidating onto this host rather than GitHub Pages.
 #
-# Redirect 301 /xra/hacktheam/home.html   /xra/hackathon/2026/
-# Redirect 301 /xra/hacktheam/tracks.html /xra/hackathon/2026/
-# Redirect 301 /xra/hacktheam/attend.html /xra/hackathon/2026/
-# Redirect 301 /xra/hacktheam/faq.html    /xra/hackathon/2026/
-# Redirect 301 /xra/hacktheam/            /xra/hackathon/2026/
+# RedirectMatch with anchored patterns, NOT plain Redirect. `Redirect` does
+# prefix matching and appends the remainder, so `Redirect /xra/hacktheam/`
+# would rewrite every asset under that directory into a nonexistent path
+# beneath the archive page. These match the four pages and the directory
+# index exactly, and nothing else.
+RedirectMatch 301 ^/xra/hacktheam/(home|tracks|attend|faq)\.html$ /xra/hackathon/2026/
+RedirectMatch 301 ^/xra/hacktheam/?$ /xra/hackathon/2026/
 
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml

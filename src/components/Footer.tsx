@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { XMark } from "@/components/Logo";
 
 const Footer = () => (
@@ -19,14 +20,12 @@ const Footer = () => (
         >
           Discord
         </a>
-        <a
-          href="https://students.washington.edu/xra/hacktheam/home.html"
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          to="/hackathon/2026"
           className="text-foreground/70 transition-colors hover:text-brand-green"
         >
           Hack the AM
-        </a>
+        </Link>
         <a
           href="https://instagram.com/uw_xra"
           target="_blank"
