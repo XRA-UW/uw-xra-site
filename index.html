@@ -10,20 +10,63 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@300..700&display=swap" rel="stylesheet">
-    <title>Extended Reality Association</title>
-    <meta name="description" content="XRA is the University of Washington's student community for virtual reality, augmented reality, and spatial computing — workshops, demo nights, and student-built XR projects." />
-    <meta name="author" content="University of Washington Extended Reality Association" />
 
-    <meta property="og:title" content="XRA — Extended Reality Association at UW" />
-    <meta property="og:description" content="The University of Washington's student community for virtual reality, augmented reality, and spatial computing." />
+    <!-- The title, description, canonical and og/twitter tags below are the
+         home page's values and the fallback for a dev server. At build time
+         scripts/prerender.mjs rewrites all of them per route from the table in
+         src/seo.ts, so edit them there, not here. Renaming these tags will
+         fail the build rather than silently ship the wrong metadata. -->
+    <title>XRA | Extended Reality Association at the University of Washington</title>
+    <meta name="description" content="XRA is the University of Washington's student community for virtual reality, augmented reality, and spatial computing: workshops, demo nights, and student-built XR projects." />
+    <meta name="author" content="Extended Reality Association at the University of Washington" />
+    <link rel="canonical" href="https://xra-uw.github.io/uw-xra-site/" />
+
+    <meta property="og:site_name" content="XRA at the University of Washington" />
+    <meta property="og:title" content="XRA | Extended Reality Association at the University of Washington" />
+    <meta property="og:description" content="XRA is the University of Washington's student community for virtual reality, augmented reality, and spatial computing: workshops, demo nights, and student-built XR projects." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://xra-uw.github.io/uw-xra-site/" />
     <meta property="og:image" content="https://xra-uw.github.io/uw-xra-site/og-image.png" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="XRA — Extended Reality Association at UW" />
-    <meta name="twitter:description" content="The University of Washington's student community for virtual reality, augmented reality, and spatial computing." />
+    <meta name="twitter:title" content="XRA | Extended Reality Association at the University of Washington" />
+    <meta name="twitter:description" content="XRA is the University of Washington's student community for virtual reality, augmented reality, and spatial computing: workshops, demo nights, and student-built XR projects." />
     <meta name="twitter:image" content="https://xra-uw.github.io/uw-xra-site/og-image.png" />
+
+    <!-- Entity data. "XRA" alone is an acronym many unrelated organisations
+         claim, so alternateName and parentOrganization are what tie this site
+         to the University of Washington, and sameAs links it to the profiles
+         that already rank for "XRA UW".
+         Only profiles verified from this repo or the official Linktree are
+         listed. The LinkedIn and Facebook pages exist and outrank this site
+         today; add their URLs here once confirmed. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://xra-uw.github.io/uw-xra-site/#organization",
+      "name": "Extended Reality Association at the University of Washington",
+      "alternateName": ["XRA", "UW XRA", "XRA at UW"],
+      "url": "https://xra-uw.github.io/uw-xra-site/",
+      "logo": "https://xra-uw.github.io/uw-xra-site/apple-touch-icon.png",
+      "image": "https://xra-uw.github.io/uw-xra-site/og-image.png",
+      "description": "A student community at the University of Washington for virtual reality, augmented reality, and spatial computing.",
+      "parentOrganization": {
+        "@type": "CollegeOrUniversity",
+        "name": "University of Washington",
+        "url": "https://www.washington.edu/"
+      },
+      "location": {
+        "@type": "Place",
+        "name": "University of Washington, Seattle"
+      },
+      "sameAs": [
+        "https://instagram.com/uw_xra",
+        "https://linktr.ee/uwxra",
+        "https://luma.com/xra_uw"
+      ]
+    }
+    </script>
   </head>
 
   <body>
