@@ -14,4 +14,32 @@ export interface Project {
 export const currentProjects: Project[] = [];
 
 /** Shipped/retired projects. Newest first. */
-export const pastProjects: Project[] = [];
+export const pastProjects: Project[] = [
+  {
+    title: "Campus 360",
+    period: "HUB scan complete",
+    blurb:
+      "A 3D scan of the HUB to improve the building's accessibility. The HUB is done; the rest of campus hasn't been scanned yet.",
+    tags: ["3D scanning", "Accessibility"],
+  },
+  {
+    title: "CARE: Clinician Augmented Reality Environment",
+    period: "2024–25",
+    blurb:
+      "An Apple Vision Pro framework that streams surgical video into the surgeon's field of view. Led by an XRA member under UW RHLab; XRA helped recruit the team from our members.",
+    tags: ["Apple Vision Pro", "Medical AR", "UW RHLab"],
+    href: "https://digital.lib.washington.edu/researchworks/items/293ed921-5464-40c3-99cc-2d3f702b215c/full",
+  },
+  {
+    title: "Metaverse Academia",
+    period: "Now independent",
+    blurb:
+      "Immersive classes in social VR. XRA helped its founder, a former UW student, build the framework; it now runs independently of XRA.",
+    tags: ["Social VR", "Education"],
+    href: "https://metaverseacademia.org/",
+  },
+];
+
+/** Shown under the past projects grid. */
+export const pastProjectsNote =
+  "Plus other member-built projects over the past few years, not written up here yet.";
