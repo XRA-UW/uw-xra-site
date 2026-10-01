@@ -36,6 +36,12 @@ export const ROUTE_META: RouteMeta[] = [
       "XRA is running an XR hackathon at the University of Washington again this year. Here is what our first run, Hack the AM, looked like: two headset tracks, a one-day build, and the winning projects.",
   },
   {
+    path: "/hackathon/2026",
+    title: "Hack the AM 2026 | XRA at the University of Washington",
+    description:
+      "Hack the AM, the first XR hackathon run by XRA at the University of Washington: Saturday 18 April 2026, Apple Vision Pro and Meta Quest tracks, headsets provided, free to attend. Schedule, winners, and FAQ.",
+  },
+  {
     path: "/projects",
     title: "Projects | XRA at the University of Washington",
     description:

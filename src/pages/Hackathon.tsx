@@ -1,60 +1,14 @@
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { ArrowRight } from "lucide-react";
 
-const SITE = "https://students.washington.edu/xra/hacktheam/home.html";
+/* This page is about the hackathon we are running now. The record of the April
+   2026 run lives at /hackathon/2026 so that a change of format or name does not
+   force a rewrite of history, and so the archive keeps its own URL. Do not put
+   details about the next run here until they are actually decided. */
+
 const DISCORD = "https://discord.gg/4hvsCDhb5p";
-
-/* How the April 2026 run worked. Kept as a record of that day, not a promise
-   about the next one: the format is being reworked. */
-const facts = [
-  "April 2026",
-  "One day, Saturday",
-  "UW Seattle campus",
-  "Headsets provided",
-  "No coding experience required",
-  "Open to students",
-  "Lunch and dinner provided",
-];
-
-const tracks = [
-  {
-    name: "Apple Vision Pro",
-    blurb:
-      "Utility-first ideas that feel natural in spatial interfaces: widgets, productivity surfaces, and focused workflow helpers.",
-  },
-  {
-    name: "Meta Quest",
-    blurb:
-      "Practical Quest experiences with clear real-world value and strong UX: task-focused utilities, collaboration workflows, and learning tools.",
-  },
-];
-
-const schedule: [string, string][] = [
-  ["9:00 AM", "Arrive and demo headsets"],
-  ["9:30 AM", "Opening ceremony"],
-  ["10:00 AM", "Apple Vision Pro and Quest workshop"],
-  ["12:00 PM", "Lunch"],
-  ["12:30 PM", "Project pitches and team formation"],
-  ["1:00 PM", "Hacking"],
-  ["5:00 PM", "Dinner"],
-  ["5:30 PM", "Hacking"],
-  ["7:00 PM", "Judging"],
-  ["8:00 PM", "Closing ceremony"],
-];
-
-/* Winners of the April 2026 run, as announced on the Hack the AM site. */
-const winners = [
-  {
-    track: "Apple Vision Pro",
-    project: "Enact",
-    team: "Spencer Morga & Sydney Lai",
-  },
-  { track: "Meta Quest", project: "OnBeat", team: "William Hong" },
-];
-
-const sectionLabel =
-  "mb-5 text-sm font-medium uppercase tracking-[0.25em] text-brand-green";
 
 const Hackathon = () => {
   return (
@@ -90,115 +44,37 @@ const Hackathon = () => {
                 Get the announcement
                 <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
               </a>
-              <a
-                href={SITE}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                to="/hackathon/2026"
                 className="group inline-flex items-center justify-center gap-2 rounded-full border border-foreground/25 px-8 py-3 text-lg font-medium text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-green hover:bg-brand-green/10 hover:text-brand-green hover:shadow-[0_12px_44px_hsl(var(--brand-green)/0.25)] active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
-                See last year&apos;s site
+                See how 2026 went
                 <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
-              </a>
+              </Link>
             </div>
           </div>
 
           <div className="mx-auto max-w-5xl">
-            <div className="mb-10 border-t border-white/10 pt-10">
-              <p className={sectionLabel}>Our first run</p>
+            <div className="rounded-2xl border border-white/10 bg-card p-8 md:p-10">
+              <p className="mb-4 text-sm font-medium uppercase tracking-[0.25em] text-brand-green">
+                Our first run
+              </p>
               <h2 className="mb-4 text-2xl font-medium tracking-tight md:text-3xl">
                 Hack the AM, April 2026
               </h2>
-              <p className="max-w-3xl font-light leading-relaxed text-muted-foreground">
-                One day on the UW Seattle campus, building XR that is genuinely
-                useful for people using Apple Vision Pro or Meta Quest in
-                everyday workflows. It was a trial run to see what we could pull
-                off, and what follows is what that day looked like.
+              <p className="mb-8 max-w-3xl font-light leading-relaxed text-muted-foreground">
+                One day on the UW Seattle campus, two headset tracks, teams
+                building XR that is genuinely useful in everyday workflows.
+                The full record is still up: what teams built, how the day ran,
+                the schedule, the winners, and the questions people asked.
               </p>
-
-              <ul className="mt-6 flex flex-wrap gap-2">
-                {facts.map((fact) => (
-                  <li
-                    key={fact}
-                    className="rounded-full border border-white/15 px-3 py-1 text-xs font-light text-muted-foreground"
-                  >
-                    {fact}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="space-y-12">
-              <section className="rounded-2xl border border-white/10 bg-card p-8 md:p-10">
-                <h3 className="mb-4 text-xl font-medium tracking-tight">
-                  What teams built
-                </h3>
-                <p className="max-w-3xl font-light leading-relaxed text-muted-foreground">
-                  Teams prototyped a focused feature, a small app, or a proof of
-                  concept that solved one clear problem well. The day opened
-                  with a tutorial workshop covering Unity and Xcode, including
-                  how to build to Apple Vision Pro and Meta Quest 3, so nobody
-                  had to arrive an expert. Strong UX ideas and clear product
-                  thinking counted as much as code, and headsets were provided.
-                </p>
-              </section>
-
-              <section>
-                <h3 className={sectionLabel}>The two tracks</h3>
-                <div className="grid gap-6 md:grid-cols-2">
-                  {tracks.map((track) => (
-                    <div
-                      key={track.name}
-                      className="rounded-2xl border border-white/10 bg-card p-8"
-                    >
-                      <h4 className="mb-3 text-xl font-medium">{track.name}</h4>
-                      <p className="font-light leading-relaxed text-muted-foreground">
-                        {track.blurb}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </section>
-
-              <section>
-                <h3 className={sectionLabel}>How the day ran</h3>
-                <ul className="overflow-hidden rounded-2xl border border-white/10 bg-card">
-                  {schedule.map(([time, item]) => (
-                    <li
-                      key={time + item}
-                      className="flex flex-col gap-1 border-b border-white/10 px-6 py-4 last:border-b-0 sm:flex-row sm:items-center sm:gap-6"
-                    >
-                      <span className="w-24 shrink-0 text-sm font-medium tabular-nums text-brand-green">
-                        {time}
-                      </span>
-                      <span className="font-light text-muted-foreground">
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-
-              <section>
-                <h3 className={sectionLabel}>Winners</h3>
-                <div className="grid gap-6 md:grid-cols-2">
-                  {winners.map((winner) => (
-                    <div
-                      key={winner.project}
-                      className="rounded-2xl border border-white/10 bg-card p-8"
-                    >
-                      <p className="mb-2 text-sm font-light text-muted-foreground">
-                        {winner.track} track, best design
-                      </p>
-                      <h4 className="mb-1 text-xl font-medium">
-                        {winner.project}
-                      </h4>
-                      <p className="font-light text-muted-foreground">
-                        {winner.team}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </section>
+              <Link
+                to="/hackathon/2026"
+                className="group inline-flex items-center gap-2 font-medium text-brand-green transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              >
+                Read the 2026 archive
+                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+              </Link>
             </div>
           </div>
         </div>
