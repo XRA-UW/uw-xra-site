@@ -21,7 +21,7 @@ const Footer = () => (
           Discord
         </a>
         <Link
-          to="/hackathon/2026"
+          to="/hackathon/2026/"
           className="text-foreground/70 transition-colors hover:text-brand-green"
         >
           Hack the AM

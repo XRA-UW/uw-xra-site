@@ -45,7 +45,7 @@ const Hackathon = () => {
                 <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
               </a>
               <Link
-                to="/hackathon/2026"
+                to="/hackathon/2026/"
                 className="group inline-flex items-center justify-center gap-2 rounded-full border border-foreground/25 px-8 py-3 text-lg font-medium text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-green hover:bg-brand-green/10 hover:text-brand-green hover:shadow-[0_12px_44px_hsl(var(--brand-green)/0.25)] active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
                 See how 2026 went
@@ -69,7 +69,7 @@ const Hackathon = () => {
                 the schedule, the winners, and the questions people asked.
               </p>
               <Link
-                to="/hackathon/2026"
+                to="/hackathon/2026/"
                 className="group inline-flex items-center gap-2 font-medium text-brand-green transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
                 Read the 2026 archive
