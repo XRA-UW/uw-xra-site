@@ -58,7 +58,12 @@ export function metaForPath(pathname: string): Omit<RouteMeta, "path"> {
   return ROUTE_META.find((r) => r.path === normalised) ?? NOT_FOUND_META;
 }
 
-/** Absolute, canonical URL for a route path. */
+/** Absolute, canonical URL for a route path.
+ *
+ *  Always trailing-slashed. GitHub Pages serves each route from
+ *  dist/<route>/index.html and 301s "/hackathon" to "/hackathon/", so the
+ *  slashless form is a redirect, not a page. A canonical or a sitemap entry
+ *  pointing at a redirect is a self-inflicted SEO defect. */
 export function canonicalUrl(path: string): string {
-  return path === "/" ? SITE_URL : `${SITE_ORIGIN}${BASE_PATH}${path}`;
+  return path === "/" ? SITE_URL : `${SITE_ORIGIN}${BASE_PATH}${path}/`;
 }
