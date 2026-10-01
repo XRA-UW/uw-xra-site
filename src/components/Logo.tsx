@@ -1,25 +1,36 @@
 /* Brand marks exported from the XRA 2026 Figma brand file
    (figma.com/design/Lw03Q631UpcQlLA3AKnKve/XRA), taken from the logo
    construction sheet — frame 18:79 — which is the sheet that carries the
-   guides and therefore the definitive proportions. The cover slide (13:2)
-   holds a slightly different draw: its X is 3% wider relative to the R and
-   the a, which makes the X read heavier than the letters beside it.
-   Re-export from the construction sheet, never redraw by hand.
+   guides and therefore the definitive proportions.
+   Re-export from the construction sheet, never redraw by hand. */
 
-   Each path keeps its exported coordinates; the translate() puts the glyph's
-   own bounding box at the origin (Figma pads exports by ~1.4 units). */
-
-/* Node 18:109 / 18:110 — the X. Bounding box 250.262 square. */
+/* Node 18:110 — the standalone X mark. Bounding box 250.262 square.
+   Also the source for the favicon, the og image and the .x-pattern tile. */
 const X_PATH =
   "M251.676 15.811L183.369 84.1183C159.938 107.55 159.938 145.54 183.369 168.971L251.676 237.278L237.279 251.676L168.971 183.368C145.54 159.937 107.55 159.937 84.1183 183.369L15.8121 251.676L1.41424 237.278L69.7215 168.971C93.1529 145.54 93.1529 107.55 69.7215 84.1183L1.41424 15.811L15.8121 1.41421L84.1187 69.7208C107.55 93.1522 145.54 93.1523 168.971 69.7212L237.279 1.41421L251.676 15.811Z";
 
-/* Node 18:101 — the R. Bounding box 232.878 x 250.999. */
-const R_PATH =
-  "M109.731 1.37676C127.907 1.37624 156.768 -0.32543 173.451 3.31721C225.748 14.735 243.227 81.8003 205.756 118.613C184.668 139.327 162.413 138.91 135.922 138.324C167.652 171.084 201.541 204.113 233.878 236.471C231.287 239.12 220.398 250.633 217.733 251.978L216.689 251.377L147.402 182.021C136.565 171.174 125.48 159.64 114.131 149.352C106.207 142.171 93.5284 138.42 82.8391 138.314C67.0899 138.092 51.9152 144.229 40.7509 155.341C23.2664 172.799 23.7881 189.572 23.8145 211.947L23.8146 251.377L1.23275 251.402C2.00833 170.694 0.0772695 81.9173 1.6126 1.3838L109.731 1.37676ZM141.535 24.4152C137.435 24.4495 133.331 24.4566 129.226 24.4574V24.4281H23.0759V116.21H129.226V116.077L150.019 116.086C165.014 116.028 178.458 113.718 189.554 102.707C198.74 92.7548 203.509 82.3328 202.981 68.5154C202.57 56.2799 197.22 44.7329 188.151 36.5081C175.456 24.9797 157.738 24.2791 141.535 24.4152Z";
+/* The "XRA" wordmark, node 121:93 — the 2026 redraw. The R is now an open
+   bowl (R_BAR) with a sweeping leg (R_LEG), so it takes two paths rather
+   than one. All four paths share the group's own 768.694 x 250.262 space,
+   so the letterspacing and the relative glyph sizes are exact as exported
+   and no per-glyph transform is needed.
 
-/* Node 18:100 — the a. Bounding box 251.556 x 250.262. */
-const A_PATH =
-  "M252.556 251.262H232.146V242.622C232.146 228.166 209.759 220.322 197.926 228.626C177.603 242.89 152.844 251.262 126.13 251.262L124.513 251.251C56.1512 250.385 1.00031 194.698 1 126.131C1.00016 57.0239 57.0228 1.00157 126.13 1.00117C152.844 1.00117 177.603 9.37278 197.927 23.6356C209.759 31.9395 232.146 24.095 232.146 9.63944V1H252.556V251.262ZM126.13 21.4116C68.2951 21.412 21.4106 68.2962 21.4104 126.131C21.4107 183.965 68.2952 230.851 126.13 230.851C183.965 230.851 230.85 183.966 230.85 126.131C230.85 68.296 183.965 21.4116 126.13 21.4116Z";
+   The wordmark's X (W_X) is a marginally different draw from the standalone
+   X_PATH above: blunter arm tips, about 2% more ink, IoU 0.94. That split
+   exists in the Figma file itself — 18:110 was left untouched by the redraw.
+   The two are indistinguishable at any size the site renders them, so each
+   mark keeps its own source. Do not "reconcile" them by hand. */
+const W_X =
+  "M14.7918 0.113643C20.6831 5.35006 28.6142 13.7711 34.36 19.5308L69.6055 54.8451C75.6747 60.9497 87.0262 73.1349 93.7223 77.3173C102.204 82.5726 111.981 85.3605 121.958 85.369C131.476 85.4343 140.826 82.8587 148.969 77.9293C157.719 72.5972 173.058 56.1005 181.095 48.0552L229.09 0C234.082 4.89104 239.009 9.84737 243.868 14.867C227.469 32.81 208.456 49.6859 191.584 67.3976C174.951 84.8577 159.617 94.4344 158.852 121.099C158.032 149.671 176.818 161.258 194.495 179.792C210.823 196.543 227.695 212.556 243.873 229.266C239.153 234.115 233.938 239.313 229.09 244.033C226.591 241.705 213.074 228.479 210.127 225.523L171.147 186.456C164.827 180.131 157.307 171.908 149.954 167.268C142.36 162.509 133.676 159.768 124.726 159.309C97.5494 157.864 85.1637 173.917 67.8587 191.27L34.3924 224.821C28.3012 230.926 21.2183 238.371 14.9149 244.033C9.84943 239.194 4.89758 234.235 0.0638483 229.166C15.4865 214.081 30.965 198.616 46.0454 183.181C63.7476 165.061 83.7319 151.933 84.9425 124.598C85.409 114.291 82.8772 104.074 77.6538 95.1785C72.8998 87.1567 60.108 75.2705 53.1288 68.2857L19.7307 34.9037C13.2897 28.4696 6.03886 21.5373 6.10352e-05 14.8805L14.7918 0.113643Z";
+
+const R_BAR =
+  "M436.755 3.19965C470.428 3.19965 497.595 22.6553 506.773 48.1035C512.543 64.1008 510.511 80.1644 505.06 93.5831C499.649 106.902 490.609 118.321 481.072 125.627L468.098 108.688C474.578 103.725 481.293 95.3971 485.292 85.5519C489.252 75.8055 490.288 65.2852 486.701 55.3416C480.884 39.2114 462.383 24.5362 436.755 24.5362H276.577V3.19965H436.755Z";
+
+const R_LEG =
+  "M276.576 100.77C393.324 98.6265 466.752 161.712 497.428 250.262H476.158C467.017 226.111 454.417 204.409 438.495 186.06C403.16 145.338 349.95 119.333 276.576 120.773V100.77Z";
+
+const W_A =
+  "M768.694 247.45H749.415V230.288C749.415 220.049 734.162 214.939 726.406 221.624C705.705 239.47 678.75 250.261 649.274 250.261L647.746 250.251C583.173 249.433 531.078 196.832 531.078 132.064C531.078 66.7869 583.996 13.8691 649.274 13.8688C678.749 13.8688 705.705 24.6584 726.406 42.5034C734.162 49.1888 749.415 44.0785 749.415 33.8392V13.8676H768.694V247.45ZM649.274 33.1481C594.644 33.1485 550.358 77.4346 550.357 132.064C550.358 186.694 594.644 230.981 649.274 230.982C703.904 230.982 748.191 186.694 748.191 132.064C748.191 77.4344 703.904 33.1481 649.274 33.1481Z";
 
 export const XMark = ({ className }: { className?: string }) => (
   <svg
@@ -32,8 +43,6 @@ export const XMark = ({ className }: { className?: string }) => (
   </svg>
 );
 
-/* The "XRA" wordmark. Glyph offsets come from the construction sheet's own
-   coordinates, so the letterspacing and the relative glyph sizes are exact. */
 export const XraWordmark = ({
   className,
   title = "XRA",
@@ -42,25 +51,20 @@ export const XraWordmark = ({
   title?: string;
 }) => (
   <svg
-    viewBox="0 0 784.696 251"
+    viewBox="0 0 768.694 250.262"
     className={className}
     fill="currentColor"
     role="img"
     aria-label={title}
   >
-    <path d={X_PATH} transform="translate(-1.4142 -0.6774)" />
-    <path d={R_PATH} transform="translate(279.2618 -0.9793)" />
-    <path
-      d={A_PATH}
-      transform="translate(532.1401 -0.262)"
-      fillRule="evenodd"
-      clipRule="evenodd"
-    />
+    <path d={W_X} />
+    <path d={R_BAR} />
+    <path d={R_LEG} />
+    <path d={W_A} fillRule="evenodd" clipRule="evenodd" />
   </svg>
 );
 
-/* Full lockup: wordmark over the "Extended Reality Association" line,
-   matching the proportions on the Figma cover slide (13:2). */
+/* Full lockup: wordmark over the "Extended Reality Association" line. */
 export const XraLockup = ({ className }: { className?: string }) => (
   <div className={`flex flex-col items-center ${className ?? ""}`}>
     <XraWordmark className="w-full" title="XRA — Extended Reality Association" />
