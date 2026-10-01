@@ -16,7 +16,30 @@
 # does not ship it). It extracts over the top and never deletes, so the
 # existing hacktheam/ directory is left untouched. Old hashed assets from
 # previous builds accumulate harmlessly; clear them by hand if you care.
+#
+# Run this in BASH, not PowerShell. On Windows that means Git Bash:
+#   bash ./scripts/deploy-uw.sh
+# PowerShell cannot execute a .sh file; it hands it to the shell association
+# and you get no output and no deploy, which looks like success.
 set -euo pipefail
+
+# Node is frequently absent from PATH inside Git Bash even when `npm` works
+# fine in PowerShell, because MSYS does not always inherit the Windows user
+# PATH the Node installer edits. Fall back to the usual install locations
+# rather than failing with a bare "npm: command not found".
+if ! command -v npm >/dev/null 2>&1; then
+  for d in "$HOME/AppData/Local/Programs/nodejs" "/c/Program Files/nodejs" "/c/Program Files (x86)/nodejs"; do
+    if [ -x "$d/npm" ] || [ -x "$d/npm.cmd" ]; then
+      PATH="$d:$PATH"
+      echo "==> Using Node from $d"
+      break
+    fi
+  done
+fi
+if ! command -v npm >/dev/null 2>&1; then
+  echo "ERROR: npm not found. Add Node to PATH, or run from a shell where 'npm -v' works." >&2
+  exit 1
+fi
 
 REMOTE="${XRA_REMOTE:-xra@vergil.u.washington.edu}"
 REMOTE_DIR="${XRA_REMOTE_DIR:-public_html}"
