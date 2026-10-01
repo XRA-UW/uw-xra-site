@@ -2,6 +2,22 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { XMark, XraWordmark } from "@/components/Logo";
 import { ArrowRight } from "lucide-react";
+import buildspaceQr from "@/assets/buildspace-qr.svg";
+
+const BUILDSPACE_FORM =
+  "https://docs.google.com/forms/d/e/1FAIpQLSeZVQMGzzQYMKECKOn7Fn5YsbfXQKyMsGFtUpfkwha1w5wHzw/viewform";
+const CSEED = "https://cseed.co/";
+// Final deadline per the application form: Oct 10, 2026, 11:59 AM Pacific.
+// The section hides itself once applications close.
+const BUILDSPACE_CLOSES = new Date("2026-10-10T11:59:00-07:00");
+
+const buildspaceFacts = [
+  "Priority deadline Oct 7",
+  "6 weeks, Oct 15 to Nov 17",
+  "Weekly in-person build nights",
+  "Demo Day Nov 17",
+  "Solo or with a team",
+];
 
 const keywords = [
   { word: "Future", tilt: "-rotate-6" },
@@ -32,6 +48,8 @@ const pillars = [
 ];
 
 const Index = () => {
+  const buildspaceOpen = new Date() < BUILDSPACE_CLOSES;
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-background">
       {/* Background: brand gradient wash + faint tiled X pattern */}
@@ -96,6 +114,95 @@ const Index = () => {
           </div>
         </section>
 
+
+        {/* cseed Buildspace collab: XR track run with XRA */}
+        {buildspaceOpen && (
+          <section id="buildspace" className="container px-4 py-16">
+            <div className="mx-auto grid max-w-5xl gap-10 rounded-2xl border border-brand-green/30 bg-card p-8 shadow-[0_0_60px_hsl(var(--brand-green)/0.08)] md:grid-cols-[1fr_auto] md:items-center md:p-10">
+              <div>
+                <p className="mb-3 text-sm font-medium uppercase tracking-[0.25em] text-brand-green">
+                  Collab · Applications open
+                </p>
+                <h2 className="mb-4 text-2xl font-medium tracking-tight md:text-4xl">
+                  Build your XR idea at cseed Buildspace
+                </h2>
+                <p className="mb-4 max-w-xl font-light leading-relaxed text-muted-foreground">
+                  <a
+                    href={CSEED}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-foreground underline decoration-brand-green/60 underline-offset-4 transition-colors hover:text-brand-green"
+                  >
+                    cseed
+                  </a>{" "}
+                  is a builder community at UW and around Seattle. Buildspace is
+                  their six-week program for making real progress on the idea you
+                  keep thinking about, with mentors and a cohort building
+                  alongside you.
+                </p>
+                <p className="mb-6 max-w-xl font-light leading-relaxed text-muted-foreground">
+                  This cohort has an{" "}
+                  <span className="font-medium text-foreground">
+                    Extended Reality track
+                  </span>{" "}
+                  run with XRA: AR/VR apps, immersive games, and mixed reality,
+                  with access to Apple Vision Pro and Quest 3 headsets. Pick the
+                  XR track on the application.
+                </p>
+
+                <ul className="mb-8 flex flex-wrap gap-2">
+                  {buildspaceFacts.map((fact) => (
+                    <li
+                      key={fact}
+                      className="rounded-full border border-white/15 px-3 py-1 text-xs font-light text-muted-foreground"
+                    >
+                      {fact}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="flex flex-col gap-4 sm:flex-row">
+                  <a
+                    href={BUILDSPACE_FORM}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center justify-center gap-2 rounded-full bg-accent px-8 py-3 text-lg font-medium text-accent-foreground shadow-[0_8px_24px_hsl(var(--brand-green)/0.25)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent/90 hover:shadow-[0_12px_44px_hsl(var(--brand-green)/0.45)] active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                  >
+                    Apply to Buildspace
+                    <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
+                  </a>
+                  <a
+                    href={CSEED}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center justify-center gap-2 rounded-full border border-foreground/25 px-8 py-3 text-lg font-medium text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-green hover:bg-brand-green/10 hover:text-brand-green active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                  >
+                    About cseed
+                    <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
+                  </a>
+                </div>
+              </div>
+
+              <a
+                href={BUILDSPACE_FORM}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mx-auto flex flex-col items-center gap-3 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              >
+                <img
+                  src={buildspaceQr}
+                  alt="QR code linking to the cseed Buildspace application form"
+                  width={192}
+                  height={192}
+                  className="h-44 w-44 rounded-xl bg-white p-2 md:h-48 md:w-48"
+                />
+                <span className="text-xs font-light text-muted-foreground">
+                  Scan to apply
+                </span>
+              </a>
+            </div>
+          </section>
+        )}
 
         {/* Events */}
         <section className="container px-4 py-16">
