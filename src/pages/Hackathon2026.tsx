@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import winnersEnact from "@/assets/winners-enact.jpg";
+import winnersOnbeat from "@/assets/winners-onbeat.jpg";
 
 /* The record of Hack the AM, the April 2026 run. Everything here is sourced
    from the event's own site, which used to live at /xra/hacktheam/ and now
@@ -56,8 +58,32 @@ const winners = [
     track: "Apple Vision Pro",
     project: "Enact",
     team: "Spencer Morga & Sydney Lai",
+    photo: winnersEnact,
+    alt: "The Enact team with their awards at the Hack the AM closing ceremony, in front of a screen reading Apple Vision Pro Track",
   },
-  { track: "Meta Quest", project: "OnBeat", team: "William Hong" },
+  {
+    track: "Meta Quest",
+    project: "OnBeat",
+    team: "William Hong",
+    photo: winnersOnbeat,
+    alt: "The OnBeat team with their award at the Hack the AM closing ceremony, in front of a screen reading Meta Quest Track Winner",
+  },
+];
+
+/* How projects were judged, from the event's tracks page. */
+const priorities = [
+  [
+    "Utility and innovation",
+    "Practical solutions with a clear use case and thoughtful novelty.",
+  ],
+  [
+    "User experience",
+    "Strong UX decisions, understandable flows, and focused scope.",
+  ],
+  [
+    "Platform synergy",
+    "Projects that use the hardware capabilities of their chosen platform to solve a specific problem.",
+  ],
 ];
 
 /* Verbatim from the event FAQ, which is why the answers are in the present
@@ -166,6 +192,29 @@ const Hackathon2026 = () => {
               </section>
 
               <section>
+                <h2 className={sectionLabel}>How projects were judged</h2>
+                <div className="grid gap-6 md:grid-cols-3">
+                  {priorities.map(([name, blurb]) => (
+                    <div
+                      key={name}
+                      className="rounded-2xl border border-white/10 bg-card p-8"
+                    >
+                      <h3 className="mb-3 text-lg font-medium">{name}</h3>
+                      <p className="font-light leading-relaxed text-muted-foreground">
+                        {blurb}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+                <p className="mt-6 max-w-3xl font-light leading-relaxed text-muted-foreground">
+                  Voting was democratic rather than panel-led. Every participant
+                  picked their top three projects, points were assigned by rank,
+                  and nobody could vote for their own project. The highest point
+                  totals won.
+                </p>
+              </section>
+
+              <section>
                 <h2 className={sectionLabel}>How the day ran</h2>
                 <ul className="overflow-hidden rounded-2xl border border-white/10 bg-card">
                   {schedule.map(([time, item]) => (
@@ -186,21 +235,40 @@ const Hackathon2026 = () => {
 
               <section>
                 <h2 className={sectionLabel}>Winners</h2>
+                <p className="mb-8 max-w-3xl font-light leading-relaxed text-muted-foreground">
+                  Thank you to everyone who took part. After a full day of
+                  building, judging, and showcasing XR demos on campus, these
+                  were the winning projects.
+                </p>
                 <div className="grid gap-6 md:grid-cols-2">
                   {winners.map((winner) => (
                     <div
                       key={winner.project}
-                      className="rounded-2xl border border-white/10 bg-card p-8"
+                      className="overflow-hidden rounded-2xl border border-white/10 bg-card"
                     >
-                      <p className="mb-2 text-sm font-light text-muted-foreground">
-                        {winner.track} track, best design
-                      </p>
-                      <h3 className="mb-1 text-xl font-medium">
-                        {winner.project}
-                      </h3>
-                      <p className="font-light text-muted-foreground">
-                        {winner.team}
-                      </p>
+                      {/* Natural aspect ratio, no object-cover: these are group
+                          photos and a fixed-ratio crop cuts people out of them.
+                          width/height are the real pixel dimensions so the
+                          browser reserves the space and the page does not jump. */}
+                      <img
+                        src={winner.photo}
+                        alt={winner.alt}
+                        width={1200}
+                        height={1600}
+                        loading="lazy"
+                        className="w-full"
+                      />
+                      <div className="p-8">
+                        <p className="mb-2 text-sm font-light text-muted-foreground">
+                          {winner.track} track, best design, first place
+                        </p>
+                        <h3 className="mb-1 text-xl font-medium">
+                          {winner.project}
+                        </h3>
+                        <p className="font-light text-muted-foreground">
+                          {winner.team}
+                        </p>
+                      </div>
                     </div>
                   ))}
                 </div>
