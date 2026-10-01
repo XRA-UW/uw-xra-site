@@ -40,6 +40,7 @@ const {
   canonicalUrl,
   SITE_URL,
   IS_CANONICAL_HOST,
+  CANONICAL_ROOT,
 } = await import(pathToFileURL(ssrEntry).href);
 
 const template = fs.readFileSync(path.join(dist, "index.html"), "utf8");
@@ -127,6 +128,90 @@ function writePage(routePath, html) {
   return path.relative(dist, out).replace(/\\/g, "/");
 }
 
+/* A build that is not the canonical host does not publish the site at all: it
+   publishes redirect stubs. A full content page carrying a meta refresh is
+   what Google calls a sneaky redirect, and leaving the content in place with
+   only a canonical leaves two copies competing. A dedicated stub is the honest
+   version of "this moved", and combined with the canonical it is the strongest
+   consolidation signal available without server-side 301s, which GitHub Pages
+   cannot do for a project site. */
+function redirectStub({ target, legacyHash = false }) {
+  const t = esc(target);
+  /* Old HashRouter links (#/hackathon) still exist in the wild. Without this
+     the fragment is dropped and every one of them lands on the new home page
+     instead of the page it named. Only the root stub sees them, because the
+     fragment never reaches the server. */
+  const hashFix = legacyHash
+    ? `
+      var h = window.location.hash;
+      if (h.indexOf("#/") === 0) {
+        var p = h.slice(1);
+        while (p.length > 1 && p.charAt(p.length - 1) === "/") { p = p.slice(0, -1); }
+        target = ${JSON.stringify(CANONICAL_ROOT)} + (p === "/" ? "/" : p + "/");
+      }`
+    : "";
+  return `<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XRA has moved</title>
+    <link rel="canonical" href="${t}" />
+    <meta http-equiv="refresh" content="0; url=${t}" />
+    <meta name="description" content="The Extended Reality Association at the University of Washington has moved to students.washington.edu/xra." />
+    <style>
+      :root { color-scheme: light dark; }
+      body {
+        margin: 0; min-height: 100vh; display: grid; place-items: center;
+        font: 400 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif;
+        background: #121212; color: #efeff7; padding: 24px;
+      }
+      main { max-width: 32rem; text-align: center; }
+      h1 { font-size: 1.5rem; font-weight: 500; margin: 0 0 0.75rem; }
+      p { margin: 0 0 1.25rem; color: #a9a9b3; }
+      a { color: #4cf190; overflow-wrap: anywhere; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>XRA has moved</h1>
+      <p>This site now lives at <a href="${t}">${t}</a>.</p>
+    </main>
+    <script>
+      var target = ${JSON.stringify(target)};${hashFix}
+      window.location.replace(target);
+    </script>
+  </body>
+</html>
+`;
+}
+
+if (!IS_CANONICAL_HOST) {
+  const made = [];
+  for (const route of ROUTE_META) {
+    made.push(
+      writePage(
+        route.path,
+        redirectStub({
+          target: canonicalUrl(route.path),
+          legacyHash: route.path === "/",
+        }),
+      ),
+    );
+  }
+  fs.writeFileSync(
+    path.join(dist, "404.html"),
+    redirectStub({ target: canonicalUrl("/") }),
+    "utf8",
+  );
+  made.push("404.html");
+
+  fs.rmSync(path.join(root, "dist-ssr"), { recursive: true, force: true });
+  console.log(`wrote ${made.length} redirect stubs to ${CANONICAL_ROOT}:`);
+  for (const f of made) console.log(`  dist/${f}`);
+  process.exit(0);
+}
+
 const written = [];
 
 for (const route of ROUTE_META) {
@@ -154,19 +239,6 @@ fs.writeFileSync(
   "utf8",
 );
 written.push("404.html");
-
-/* A sitemap is only meaningful on the host that owns the URLs it lists. On a
-   build that canonicalises to another host, listing that host's URLs here
-   would be a cross-site sitemap, which search engines reject unless the other
-   host is verified against this one. So the non-canonical build ships none. */
-if (!IS_CANONICAL_HOST) {
-  console.log(
-    `prerendered ${written.length} files (sitemap skipped: canonical host is elsewhere):`,
-  );
-  for (const f of written) console.log(`  dist/${f}`);
-  fs.rmSync(path.join(root, "dist-ssr"), { recursive: true, force: true });
-  process.exit(0);
-}
 
 const lastmod = new Date().toISOString().slice(0, 10);
 const sitemap = [

@@ -25,5 +25,6 @@ export {
   NOT_FOUND_META,
   SITE_URL,
   IS_CANONICAL_HOST,
+  CANONICAL_ROOT,
   canonicalUrl,
 } from "./seo";
