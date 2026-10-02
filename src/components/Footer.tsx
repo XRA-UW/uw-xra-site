@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { XMark } from "@/components/Logo";
 
 const Footer = () => (
@@ -20,12 +19,6 @@ const Footer = () => (
         >
           Discord
         </a>
-        <Link
-          to="/hackathon/2026/"
-          className="text-foreground/70 transition-colors hover:text-brand-green"
-        >
-          Hack the AM
-        </Link>
         <a
           href="https://instagram.com/uw_xra"
           target="_blank"
@@ -33,14 +26,6 @@ const Footer = () => (
           className="text-foreground/70 transition-colors hover:text-brand-green"
         >
           Instagram
-        </a>
-        <a
-          href="https://linktr.ee/uwxra"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-foreground/70 transition-colors hover:text-brand-green"
-        >
-          Linktree
         </a>
         <a
           href="https://luma.com/xra_uw"
