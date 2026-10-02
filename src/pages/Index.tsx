@@ -4,6 +4,7 @@ import { XMark, XraWordmark } from "@/components/Logo";
 import { ArrowRight } from "lucide-react";
 import buildspaceQr from "@/assets/buildspace-qr.svg";
 import cseedLogo from "@/assets/cseed-logo-white.png";
+import allenSchoolMark from "@/assets/allen-school-mark-white.svg";
 
 const BUILDSPACE_FORM =
   "https://docs.google.com/forms/d/e/1FAIpQLSeZVQMGzzQYMKECKOn7Fn5YsbfXQKyMsGFtUpfkwha1w5wHzw/viewform";
@@ -281,17 +282,28 @@ const Index = () => {
               What We Do
             </h2>
             <p className="mx-auto max-w-2xl font-light leading-relaxed text-muted-foreground">
-              XRA is a Registered Student Organization affiliated with the{" "}
-              <a
-                href={ALLEN_SCHOOL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-foreground underline decoration-brand-green/60 underline-offset-4 transition-colors hover:text-brand-green"
-              >
-                Paul G. Allen School of Computer Science &amp; Engineering
-              </a>
-              .
+              XRA is a Registered Student Organization affiliated with the Allen
+              School.
             </p>
+            {/* The school's own white mark, unmodified, from cs.washington.edu.
+                It carries the full name, so the sentence above does not repeat
+                it, and it is the only link of the pair: two adjacent links to
+                the same URL is noise for a screen reader. */}
+            <a
+              href={ALLEN_SCHOOL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-7 inline-block rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+            >
+              <img
+                src={allenSchoolMark}
+                alt="Paul G. Allen School of Computer Science & Engineering"
+                width={700}
+                height={74}
+                loading="lazy"
+                className="h-7 w-auto sm:h-8"
+              />
+            </a>
           </div>
 
           <div className="grid gap-6 md:grid-cols-3">
