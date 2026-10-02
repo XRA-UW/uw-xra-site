@@ -20,6 +20,9 @@ interface PeopleMarqueeProps {
 const PeopleMarquee = ({ title, subtitle, people }: PeopleMarqueeProps) => {
   if (people.length === 0) return null;
 
+  /* The list is rendered twice so the scroll loops seamlessly. The second
+     copy is decorative: without aria-hidden a screen reader announces every
+     person on this page twice. */
   const loop = [...people, ...people];
 
   return (
@@ -37,11 +40,15 @@ const PeopleMarquee = ({ title, subtitle, people }: PeopleMarqueeProps) => {
           {loop.map((person, i) => (
             <div
               key={`${person.name}-${i}`}
+              aria-hidden={i >= people.length || undefined}
               className="flex shrink-0 items-center gap-3 whitespace-nowrap rounded-full border border-white/10 bg-card px-4 py-2"
             >
               <div
                 className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-medium ${
-                  avatarStyles[i % avatarStyles.length]
+                  /* Indexed within one copy, not the doubled list, so the clone
+                     matches the original. Otherwise the colours shift at the
+                     loop seam whenever the count is not a multiple of three. */
+                  avatarStyles[(i % people.length) % avatarStyles.length]
                 }`}
               >
                 {initials(person.name)}
