@@ -9,7 +9,7 @@ export const officers: Person[] = [
   { name: "Evelynne Jung", position: "Graphics and Marketing Lead" },
   { name: "Hari Neelamegam", position: "Associate Officer" },
   { name: "Henry Nguyen", position: "Associate Officer" },
-  { name: "Minh Nguyen Nguyen", position: "Event Lead" },
+  { name: "Minh Nguyen", position: "Event Lead" },
 ];
 
 export const formerExecutiveBoard: Person[] = [
@@ -20,6 +20,7 @@ export const formerExecutiveBoard: Person[] = [
   { name: "Shaan Chattrath", position: "Former Officer" },
   { name: "Aaron Roberts", position: "Former Officer" },
   { name: "Kevin Baron", position: "Former Officer" },
+  { name: "Sparsh Dadhich", position: "Former Officer" },
 ];
 
 export const advisors: Person[] = [
