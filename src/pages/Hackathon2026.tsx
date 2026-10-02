@@ -18,7 +18,7 @@ const EMAIL = "xra@uw.edu";
 
 const facts = [
   "Saturday, April 18, 2026",
-  "9 AM to 9 PM",
+  "9 a.m. to 9 p.m.",
   "UW Seattle campus",
   "Headsets provided",
   "No coding experience required",
@@ -40,17 +40,21 @@ const tracks = [
   },
 ];
 
+/* Times follow the UW Brand editorial guide: lowercase with periods and a
+   space before a.m./p.m. The guide's own example is "10 a.m.", so the :00 is
+   dropped, and noon is spelled out per AP, which the guide follows elsewhere.
+   DubBot scans this page against that guide, so keep the format. */
 const schedule: [string, string][] = [
-  ["9:00 AM", "Arrive and demo headsets"],
-  ["9:30 AM", "Opening ceremony"],
-  ["10:00 AM", "Apple Vision Pro and Quest workshop"],
-  ["12:00 PM", "Lunch"],
-  ["12:30 PM", "Project pitches and team formation"],
-  ["1:00 PM", "Hacking"],
-  ["5:00 PM", "Dinner"],
-  ["5:30 PM", "Hacking"],
-  ["7:00 PM", "Judging"],
-  ["8:00 PM", "Closing ceremony"],
+  ["9 a.m.", "Arrive and demo headsets"],
+  ["9:30 a.m.", "Opening ceremony"],
+  ["10 a.m.", "Apple Vision Pro and Quest workshop"],
+  ["noon", "Lunch"],
+  ["12:30 p.m.", "Project pitches and team formation"],
+  ["1 p.m.", "Hacking"],
+  ["5 p.m.", "Dinner"],
+  ["5:30 p.m.", "Hacking"],
+  ["7 p.m.", "Judging"],
+  ["8 p.m.", "Closing ceremony"],
 ];
 
 const winners = [
