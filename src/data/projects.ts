@@ -16,11 +16,20 @@ export const currentProjects: Project[] = [];
 /** Shipped/retired projects. Newest first. */
 export const pastProjects: Project[] = [
   {
+    title: "AR Virtual RC Car",
+    period: "Engineering Discovery Days 2026",
+    blurb:
+      "An augmented reality RC car built for Engineering Discovery Days, the UW College of Engineering's K-12 outreach event. We ran it to show younger visitors the kind of work the UW Reality Lab, one of our partners, does.",
+    tags: ["Augmented reality", "K-12 outreach", "UW Reality Lab"],
+    href: "https://www.engr.washington.edu/about/k12/discovery-days",
+  },
+  {
     title: "Campus 360",
     period: "HUB scan complete",
     blurb:
-      "A 3D scan of the HUB to improve the building's accessibility. The HUB is done; the rest of campus hasn't been scanned yet.",
+      "A 3D scan of the HUB to improve the building's accessibility. The HUB is done; the rest of campus hasn't been scanned yet. The finished scan is walkable online.",
     tags: ["3D scanning", "Accessibility"],
+    href: "https://my.matterport.com/show/?m=r5dNEJxndJx",
   },
   {
     title: "CARE: Clinician Augmented Reality Environment",

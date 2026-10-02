@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import { XMark, XraWordmark } from "@/components/Logo";
 import { ArrowRight } from "lucide-react";
 import buildspaceQr from "@/assets/buildspace-qr.svg";
+import cseedLogo from "@/assets/cseed-logo-white.png";
 
 const BUILDSPACE_FORM =
   "https://docs.google.com/forms/d/e/1FAIpQLSeZVQMGzzQYMKECKOn7Fn5YsbfXQKyMsGFtUpfkwha1w5wHzw/viewform";
@@ -120,6 +121,29 @@ const Index = () => {
           <section id="buildspace" className="container px-4 py-16">
             <div className="mx-auto grid max-w-5xl gap-10 rounded-2xl border border-brand-green/30 bg-card p-8 shadow-[0_0_60px_hsl(var(--brand-green)/0.08)] md:grid-cols-[1fr_auto] md:items-center md:p-10">
               <div>
+                {/* XRA x cseed lockup. cseed's mark is their own wordmark font
+                    plus the sprout, so it is their artwork here rather than
+                    their name set in our type. The white variant is the one
+                    they publish for dark backgrounds. */}
+                <div className="mb-5 flex items-center gap-4">
+                  <XraWordmark
+                    className="h-6 w-auto text-foreground"
+                    title="XRA"
+                  />
+                  <span
+                    aria-hidden="true"
+                    className="text-xl font-light text-muted-foreground"
+                  >
+                    ×
+                  </span>
+                  <img
+                    src={cseedLogo}
+                    alt="cseed"
+                    width={640}
+                    height={147}
+                    className="h-6 w-auto"
+                  />
+                </div>
                 <p className="mb-3 text-sm font-medium uppercase tracking-[0.25em] text-brand-green">
                   Collab · Applications open
                 </p>
