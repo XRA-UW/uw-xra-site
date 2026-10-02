@@ -8,6 +8,12 @@ import cseedLogo from "@/assets/cseed-logo-white.png";
 const BUILDSPACE_FORM =
   "https://docs.google.com/forms/d/e/1FAIpQLSeZVQMGzzQYMKECKOn7Fn5YsbfXQKyMsGFtUpfkwha1w5wHzw/viewform";
 const CSEED = "https://cseed.co/";
+/* The Allen School's public student-organizations page, deep-linked to our own
+   entry. Deliberately not the 26-27 Google Sites page: that one is the
+   affiliated-org policy document for officers, not something to send visitors
+   to. */
+const ALLEN_SCHOOL =
+  "https://www.cs.washington.edu/academics/undergraduate/student-life/student-organizations/#h-extended-reality-association-xra";
 // Final deadline per the application form: Oct 10, 2026, 11:59 AM Pacific.
 // The section hides itself once applications close.
 const BUILDSPACE_CLOSES = new Date("2026-10-10T11:59:00-07:00");
@@ -274,6 +280,18 @@ const Index = () => {
             <h2 className="mb-3 text-3xl font-medium tracking-tight md:text-4xl">
               What We Do
             </h2>
+            <p className="mx-auto max-w-2xl font-light leading-relaxed text-muted-foreground">
+              XRA is a Registered Student Organization affiliated with the{" "}
+              <a
+                href={ALLEN_SCHOOL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foreground underline decoration-brand-green/60 underline-offset-4 transition-colors hover:text-brand-green"
+              >
+                Paul G. Allen School of Computer Science &amp; Engineering
+              </a>
+              .
+            </p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-3">
