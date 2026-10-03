@@ -6,6 +6,12 @@ import buildspaceQr from "@/assets/buildspace-qr.svg";
 import cseedLogo from "@/assets/cseed-logo-white.png";
 import allenSchoolMark from "@/assets/allen-school-mark-white.svg";
 
+/* The Apply button goes to cseed's own Buildspace page, which now carries the
+   application. The QR keeps pointing at the form directly, because the QR
+   image encodes that URL: changing only the link would make scanning and
+   tapping the same graphic go to different places, and any QR already printed
+   on a flyer still resolves to the form regardless. The form is open. */
+const BUILDSPACE_APPLY = "https://cseed.co/buildspace/";
 const BUILDSPACE_FORM =
   "https://docs.google.com/forms/d/e/1FAIpQLSeZVQMGzzQYMKECKOn7Fn5YsbfXQKyMsGFtUpfkwha1w5wHzw/viewform";
 const CSEED = "https://cseed.co/";
@@ -194,7 +200,7 @@ const Index = () => {
 
                 <div className="flex flex-col gap-4 sm:flex-row">
                   <a
-                    href={BUILDSPACE_FORM}
+                    href={BUILDSPACE_APPLY}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group inline-flex items-center justify-center gap-2 rounded-full bg-accent px-8 py-3 text-lg font-medium text-accent-foreground shadow-[0_8px_24px_hsl(var(--brand-green)/0.25)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent/90 hover:shadow-[0_12px_44px_hsl(var(--brand-green)/0.45)] active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none motion-reduce:hover:translate-y-0"
