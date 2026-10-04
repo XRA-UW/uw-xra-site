@@ -10,6 +10,7 @@ import People from "./pages/People";
 import Projects from "./pages/Projects";
 import Hackathon from "./pages/Hackathon";
 import Hackathon2026 from "./pages/Hackathon2026";
+import Hackathon2027 from "./pages/Hackathon2027";
 import HackathonSponsors from "./pages/HackathonSponsors";
 import HackathonMentors from "./pages/HackathonMentors";
 import HackathonSchedule from "./pages/HackathonSchedule";
@@ -61,10 +62,11 @@ export const AppRoutes = () => (
       <Route path="/people" element={<People />} />
       <Route path="/projects" element={<Projects />} />
       <Route path="/hackathon" element={<Hackathon />} />
-      <Route path="/hackathon/sponsors" element={<HackathonSponsors />} />
-      <Route path="/hackathon/mentors" element={<HackathonMentors />} />
-      <Route path="/hackathon/schedule" element={<HackathonSchedule />} />
       <Route path="/hackathon/2026" element={<Hackathon2026 />} />
+      <Route path="/hackathon/2027" element={<Hackathon2027 />} />
+      <Route path="/hackathon/2027/sponsors" element={<HackathonSponsors />} />
+      <Route path="/hackathon/2027/mentors" element={<HackathonMentors />} />
+      <Route path="/hackathon/2027/schedule" element={<HackathonSchedule />} />
       {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE.
           New routes must also be added to ROUTE_META in src/seo.ts, or they
           ship with the 404 title and stay out of the sitemap. */}

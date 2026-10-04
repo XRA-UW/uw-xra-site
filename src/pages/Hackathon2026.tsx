@@ -137,7 +137,7 @@ const Hackathon2026 = () => {
               className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-brand-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               <ArrowLeft className="h-4 w-4" />
-              This year&apos;s hackathon
+              All hackathons
             </Link>
 
             <p className="mb-3 text-sm font-medium uppercase tracking-[0.25em] text-brand-green">
@@ -326,7 +326,7 @@ const Hackathon2026 = () => {
                 </p>
                 <div>
                   <Link
-                    to="/hackathon/"
+                    to={`${EVENT.path}/`}
                     className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 font-medium text-primary-foreground shadow-[0_8px_24px_hsl(var(--brand-blue)/0.25)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-[0_12px_44px_hsl(var(--brand-blue)/0.5)] active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none motion-reduce:hover:translate-y-0"
                   >
                     This year&apos;s hackathon

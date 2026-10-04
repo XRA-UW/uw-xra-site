@@ -1,18 +1,21 @@
 import type { ReactNode } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { EVENT } from "@/data/hackathon";
 
-/* Shared shell for this year's hackathon pages: the same backdrop as every
-   other page, plus a tab bar so a sponsor or someone from the school can move
-   between the pages during a meeting. The 2026 archive is deliberately not a
-   tab; it is history, not part of this year's event. */
+/* Shared shell for the hackathon pages: the same backdrop as every other
+   page. Pages of the current edition also get a link back to the program
+   page and a tab bar, so a sponsor or someone from the school can move
+   between them during a meeting. Past editions are not tabs; they are
+   linked from the program page. */
 
 const tabs = [
-  { name: "Overview", path: "/hackathon" },
-  { name: "Sponsors", path: "/hackathon/sponsors" },
-  { name: "Mentors", path: "/hackathon/mentors" },
-  { name: "Schedule", path: "/hackathon/schedule" },
+  { name: "Overview", path: EVENT.path },
+  { name: "Sponsors", path: `${EVENT.path}/sponsors` },
+  { name: "Mentors", path: `${EVENT.path}/mentors` },
+  { name: "Schedule", path: `${EVENT.path}/schedule` },
 ];
 
 export const sectionLabel =
@@ -34,10 +37,12 @@ interface Props {
   lead: ReactNode;
   /** Buttons or chips under the lead. */
   actions?: ReactNode;
+  /** False for the program page at /hackathon, which sits above the editions. */
+  edition?: boolean;
   children: ReactNode;
 }
 
-const HackathonLayout = ({ eyebrow, title, lead, actions, children }: Props) => {
+const HackathonLayout = ({ eyebrow, title, lead, actions, edition = true, children }: Props) => {
   const { pathname } = useLocation();
   /* Same normalisation as Header: prerender sees no trailing slash, the
      browser does. */
@@ -53,7 +58,16 @@ const HackathonLayout = ({ eyebrow, title, lead, actions, children }: Props) => 
 
         <div className="container px-4 py-12">
           <div className="mx-auto max-w-5xl">
-            <nav aria-label="Hackathon pages" className="mb-12 overflow-x-auto">
+            {edition && (
+            <>
+            <Link
+              to="/hackathon/"
+              className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-brand-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              All hackathons
+            </Link>
+            <nav aria-label={`Hackathon ${EVENT.year} pages`} className="mb-12 overflow-x-auto">
               <ul className="flex w-max gap-1 rounded-full border border-white/10 bg-card/60 p-1">
                 {tabs.map((tab) => {
                   const active = current === tab.path;
@@ -75,6 +89,8 @@ const HackathonLayout = ({ eyebrow, title, lead, actions, children }: Props) => 
                 })}
               </ul>
             </nav>
+            </>
+            )}
 
             <p className="mb-3 text-sm font-medium uppercase tracking-[0.25em] text-brand-green">
               {eyebrow}

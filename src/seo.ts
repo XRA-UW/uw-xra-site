@@ -53,33 +53,39 @@ export const ROUTE_META: RouteMeta[] = [
   },
   {
     path: "/hackathon",
-    title: "Hackathon 2027 | XRA at the University of Washington",
+    title: "Hackathons | XRA at the University of Washington",
     description:
-      "XRA's one-day XR hackathon at the University of Washington, Saturday, January 23, 2027 on the UW Seattle campus. Teams of one to four, Apple Vision Pro and Meta Quest workshops, headsets to check out. Sponsors, mentors, and key dates.",
-  },
-  {
-    path: "/hackathon/sponsors",
-    title: "Sponsor the Hackathon | XRA at the University of Washington",
-    description:
-      "Sponsorship tiers for XRA's January 2027 XR hackathon at the University of Washington: main tracks, special awards, tables, and product credits for student builders. Commit by November 20.",
-  },
-  {
-    path: "/hackathon/mentors",
-    title: "Mentor at the Hackathon | XRA at the University of Washington",
-    description:
-      "Mentor at XRA's January 2027 XR hackathon at the University of Washington: help student teams debug and refine XR projects in a four-hour shift. XR development experience required.",
-  },
-  {
-    path: "/hackathon/schedule",
-    title: "Hackathon Schedule | XRA at the University of Washington",
-    description:
-      "The draft schedule for XRA's one-day XR hackathon at the University of Washington on January 23, 2027: workshops, headset checkout, meals, judging, and the closing ceremony.",
+      "Why the Extended Reality Association runs XR hackathons at the University of Washington: headsets provided, useful XR built in a day, workshops and mentors. This year's hackathon and past runs.",
   },
   {
     path: "/hackathon/2026",
     title: "Hack the AM 2026 | XRA at the University of Washington",
     description:
       "Hack the AM, the first XR hackathon run by XRA at the University of Washington: Saturday 18 April 2026, Apple Vision Pro and Meta Quest tracks, headsets provided, free to attend. Schedule, winners, and FAQ.",
+  },
+  {
+    path: "/hackathon/2027",
+    title: "Hackathon 2027 | XRA at the University of Washington",
+    description:
+      "XRA's one-day XR hackathon at the University of Washington, Saturday, January 23, 2027 on the UW Seattle campus. Teams of one to four, Apple Vision Pro and Meta Quest workshops, headsets to check out. Sponsors, mentors, and key dates.",
+  },
+  {
+    path: "/hackathon/2027/sponsors",
+    title: "Sponsor Hackathon 2027 | XRA at the University of Washington",
+    description:
+      "Sponsorship tiers for XRA's January 2027 XR hackathon at the University of Washington: main tracks, special awards, tables, and product credits for student builders. Commit by November 20.",
+  },
+  {
+    path: "/hackathon/2027/mentors",
+    title: "Mentor at Hackathon 2027 | XRA at the University of Washington",
+    description:
+      "Mentor at XRA's January 2027 XR hackathon at the University of Washington: help student teams debug and refine XR projects in a four-hour shift. XR development experience required.",
+  },
+  {
+    path: "/hackathon/2027/schedule",
+    title: "Hackathon 2027 Schedule | XRA at the University of Washington",
+    description:
+      "The draft schedule for XRA's one-day XR hackathon at the University of Washington on January 23, 2027: workshops, headset checkout, meals, judging, and the closing ceremony.",
   },
   {
     path: "/projects",

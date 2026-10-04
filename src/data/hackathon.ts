@@ -5,6 +5,9 @@
    still undecided; keep it off the pages until it is settled. */
 
 export const EVENT = {
+  year: 2027,
+  /** Route of this edition. Every edition lives under /hackathon/<year>. */
+  path: "/hackathon/2027",
   /* OPEN: no official name yet. "Hack the AM" in the planning notes is only a
      placeholder too, so do not put it on these pages. */
   name: "XRA Hackathon 2027",

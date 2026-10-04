@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import { sponsors, sponsorTiers } from "@/data/hackathon";
+import { EVENT, sponsors, sponsorTiers } from "@/data/hackathon";
 
 /* Sponsors appear in order of contribution, and a bigger contribution gets a
    bigger logo. That is a commitment made to sponsors, so the order and sizes
@@ -16,7 +16,7 @@ const SponsorWall = () => {
           Logos appear here in order of contribution, sized by tier.
         </p>
         <Link
-          to="/hackathon/sponsors/"
+          to={`${EVENT.path}/sponsors/`}
           className="group inline-flex items-center gap-2 font-medium text-brand-green transition-colors hover:text-foreground"
         >
           Put your logo here
