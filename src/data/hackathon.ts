@@ -35,11 +35,12 @@ export const mentorContactHref =
   `mailto:${EMAIL}?subject=${encodeURIComponent(`Mentoring at ${EVENT.name}`)}`;
 
 /* Public dates only. The internal timeline (merch, catering, card access,
-   signage) belongs in the planning doc, not on the website. */
+   signage) belongs in the planning doc, not on the website. So does the
+   sponsor funds due date, December 1: it is a payment term for confirmed
+   sponsors and goes in their confirmation email or agreement. */
 export const keyDates: [string, string][] = [
   ["November 20", "Sponsor commitment deadline"],
   ["November 22", "Participant applications open, with tracks and sponsors announced"],
-  ["December 1", "Sponsor funds due"],
   ["January 23", "Hackathon day"],
 ];
 

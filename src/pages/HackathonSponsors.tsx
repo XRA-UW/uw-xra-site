@@ -81,22 +81,15 @@ const HackathonSponsors = () => (
     </section>
 
     <section>
-      <h2 className={sectionLabel}>Deadlines</h2>
-      <div className="grid gap-6 md:grid-cols-2">
-        <div className={card}>
-          <p className="mb-1 text-sm font-light text-muted-foreground">Commit by</p>
-          <h3 className="text-2xl font-medium tracking-tight">November 20</h3>
-          <p className="mt-3 font-light text-muted-foreground">
-            So your track or award is in the announcement on November 22.
-          </p>
-        </div>
-        <div className={card}>
-          <p className="mb-1 text-sm font-light text-muted-foreground">Funds by</p>
-          <h3 className="text-2xl font-medium tracking-tight">December 1</h3>
-          <p className="mt-3 font-light text-muted-foreground">
-            Ahead of ordering food, merch, and signage for {EVENT.date}.
-          </p>
-        </div>
+      {/* Commitment date only. The funds due date is a payment term for
+          confirmed sponsors and goes in their confirmation, not on the site. */}
+      <h2 className={sectionLabel}>Deadline</h2>
+      <div className={card}>
+        <p className="mb-1 text-sm font-light text-muted-foreground">Commit by</p>
+        <h3 className="text-2xl font-medium tracking-tight">November 20</h3>
+        <p className="mt-3 font-light text-muted-foreground">
+          So your track or award is in the announcement on November 22.
+        </p>
       </div>
     </section>
 
