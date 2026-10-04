@@ -53,9 +53,27 @@ export const ROUTE_META: RouteMeta[] = [
   },
   {
     path: "/hackathon",
-    title: "Hackathon | XRA at the University of Washington",
+    title: "Hackathon 2027 | XRA at the University of Washington",
     description:
-      "XRA is running an XR hackathon at the University of Washington again this year. Here is what our first run, Hack the AM, looked like: two headset tracks, a one-day build, and the winning projects.",
+      "XRA's one-day XR hackathon at the University of Washington, Saturday, January 23, 2027 on the UW Seattle campus. Teams of one to four, Apple Vision Pro and Meta Quest workshops, headsets to check out. Sponsors, mentors, and key dates.",
+  },
+  {
+    path: "/hackathon/sponsors",
+    title: "Sponsor the Hackathon | XRA at the University of Washington",
+    description:
+      "Sponsorship tiers for XRA's January 2027 XR hackathon at the University of Washington: main tracks, special awards, tables, and product credits for student builders. Commit by November 20.",
+  },
+  {
+    path: "/hackathon/mentors",
+    title: "Mentor at the Hackathon | XRA at the University of Washington",
+    description:
+      "Mentor at XRA's January 2027 XR hackathon at the University of Washington: help student teams debug and refine XR projects in a four-hour shift. XR development experience required.",
+  },
+  {
+    path: "/hackathon/schedule",
+    title: "Hackathon Schedule | XRA at the University of Washington",
+    description:
+      "The draft schedule for XRA's one-day XR hackathon at the University of Washington on January 23, 2027: workshops, headset checkout, meals, judging, and the closing ceremony.",
   },
   {
     path: "/hackathon/2026",

@@ -40,7 +40,8 @@ const Header = () => {
               key={item.name}
               to={item.path === "/" ? "/" : `${item.path}/`}
               className={`rounded-full px-3 py-1.5 text-xs font-medium transition-colors sm:px-4 sm:py-2 sm:text-sm ${
-                current === item.path
+                current === item.path ||
+                (item.path !== "/" && current.startsWith(`${item.path}/`))
                   ? "bg-primary text-primary-foreground"
                   : "text-foreground/70 hover:bg-white/5 hover:text-foreground"
               }`}

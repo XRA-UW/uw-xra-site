@@ -10,6 +10,9 @@ import People from "./pages/People";
 import Projects from "./pages/Projects";
 import Hackathon from "./pages/Hackathon";
 import Hackathon2026 from "./pages/Hackathon2026";
+import HackathonSponsors from "./pages/HackathonSponsors";
+import HackathonMentors from "./pages/HackathonMentors";
+import HackathonSchedule from "./pages/HackathonSchedule";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -58,6 +61,9 @@ export const AppRoutes = () => (
       <Route path="/people" element={<People />} />
       <Route path="/projects" element={<Projects />} />
       <Route path="/hackathon" element={<Hackathon />} />
+      <Route path="/hackathon/sponsors" element={<HackathonSponsors />} />
+      <Route path="/hackathon/mentors" element={<HackathonMentors />} />
+      <Route path="/hackathon/schedule" element={<HackathonSchedule />} />
       <Route path="/hackathon/2026" element={<Hackathon2026 />} />
       {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE.
           New routes must also be added to ROUTE_META in src/seo.ts, or they

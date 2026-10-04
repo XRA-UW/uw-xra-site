@@ -1,88 +1,145 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import HackathonLayout, {
+  card,
+  primaryButton,
+  secondaryButton,
+  sectionLabel,
+} from "@/components/hackathon/HackathonLayout";
+import SponsorWall from "@/components/hackathon/SponsorWall";
+import { DISCORD, EVENT, keyDates } from "@/data/hackathon";
 
-/* This page is about the hackathon we are running now. The record of the April
-   2026 run lives at /hackathon/2026 so that a change of format or name does not
-   force a rewrite of history, and so the archive keeps its own URL. Do not put
-   details about the next run here until they are actually decided. */
+/* Overview of this year's hackathon. Written first for sponsors and the
+   school, who see it before participants do: participant details land on
+   November 22. Event facts come from src/data/hackathon.ts; keep anything
+   still undecided out of the copy. The April 2026 run keeps its own page at
+   /hackathon/2026. */
 
-const DISCORD = "https://discord.gg/4hvsCDhb5p";
+/* Date and place are already in the eyebrow above the title. */
+const facts = [
+  EVENT.hours,
+  EVENT.teamSize,
+  "Headsets available to check out",
+  "Apple Vision Pro and Meta Quest workshops",
+];
 
-const Hackathon = () => {
-  return (
-    <div className="relative min-h-screen overflow-hidden bg-background">
-      <div className="pointer-events-none absolute inset-0 bg-gradient-hero" />
-      <div className="pointer-events-none absolute inset-0 x-pattern" />
+const audiences = [
+  {
+    title: "Sponsors",
+    body: "Put your platform in front of UW students for a full day of building. Tiers start with a mention on the site and go up to a main track built around your product.",
+    to: "/hackathon/sponsors/",
+    cta: "Sponsorship tiers",
+  },
+  {
+    title: "Mentors",
+    body: "Spend a four-hour shift helping teams shape ideas, debug builds, and get a demo working. Mentors need XR development experience.",
+    to: "/hackathon/mentors/",
+    cta: "What mentors do",
+  },
+  {
+    title: "Participants",
+    body: "Applications open November 22, with tracks and sponsors announced the same day. Join the Discord to hear first and to find a team.",
+    to: "/hackathon/schedule/",
+    cta: "See the day",
+  },
+];
 
-      <div className="relative">
-        <Header />
-
-        <div className="container px-4 py-16">
-          <div className="mb-14 text-center">
-            <p className="mb-3 text-sm font-medium uppercase tracking-[0.25em] text-brand-green">
-              Coming this year
-            </p>
-            <h1 className="mb-4 text-4xl font-medium tracking-tight md:text-6xl">
-              Hackathon
-            </h1>
-            <p className="mx-auto max-w-2xl text-lg font-light text-muted-foreground md:text-xl">
-              We are running an XR hackathon again this year. The format is
-              being reworked off the back of our first run, so dates, tracks,
-              and the name are still open. Announcements go out in the Discord
-              first.
-            </p>
-
-            <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-              <a
-                href={DISCORD}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-3 text-lg font-medium text-primary-foreground shadow-[0_8px_24px_hsl(var(--brand-blue)/0.25)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-[0_12px_44px_hsl(var(--brand-blue)/0.5)] active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none motion-reduce:hover:translate-y-0"
-              >
-                Get the announcement
-                <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
-              </a>
-              <Link
-                to="/hackathon/2026/"
-                className="group inline-flex items-center justify-center gap-2 rounded-full border border-foreground/25 px-8 py-3 text-lg font-medium text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-green hover:bg-brand-green/10 hover:text-brand-green hover:shadow-[0_12px_44px_hsl(var(--brand-green)/0.25)] active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none motion-reduce:hover:translate-y-0"
-              >
-                See how 2026 went
-                <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
-              </Link>
-            </div>
-          </div>
-
-          <div className="mx-auto max-w-5xl">
-            <div className="rounded-2xl border border-white/10 bg-card p-8 md:p-10">
-              <p className="mb-4 text-sm font-medium uppercase tracking-[0.25em] text-brand-green">
-                Our first run
-              </p>
-              <h2 className="mb-4 text-2xl font-medium tracking-tight md:text-3xl">
-                Hack the AM, April 2026
-              </h2>
-              <p className="mb-8 max-w-3xl font-light leading-relaxed text-muted-foreground">
-                One day on the UW Seattle campus, two headset tracks, teams
-                building XR that is genuinely useful in everyday workflows.
-                The full record is still up: what teams built, how the day ran,
-                the schedule, the winners, and the questions people asked.
-              </p>
-              <Link
-                to="/hackathon/2026/"
-                className="group inline-flex items-center gap-2 font-medium text-brand-green transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-              >
-                Read the 2026 archive
-                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-              </Link>
-            </div>
-          </div>
+const Hackathon = () => (
+  <HackathonLayout
+    eyebrow={`${EVENT.date} · ${EVENT.location}`}
+    title={EVENT.name}
+    lead={
+      <p>
+        A one-day XR hackathon run by the Extended Reality Association at the
+        University of Washington. Teams of one to four build useful apps for
+        headsets in a single day, with workshops in the morning and mentors on
+        the floor throughout.
+      </p>
+    }
+    actions={
+      <>
+        <ul className="mb-8 flex flex-wrap gap-2">
+          {facts.map((fact) => (
+            <li
+              key={fact}
+              className="rounded-full border border-white/15 px-3 py-1 text-xs font-light text-muted-foreground"
+            >
+              {fact}
+            </li>
+          ))}
+        </ul>
+        <div className="flex flex-col gap-4 sm:flex-row">
+          <Link to="/hackathon/sponsors/" className={primaryButton}>
+            Sponsor the hackathon
+            <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
+          </Link>
+          <a href={DISCORD} target="_blank" rel="noopener noreferrer" className={secondaryButton}>
+            Get announcements
+            <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
+          </a>
         </div>
-
-        <Footer />
+      </>
+    }
+  >
+    <section>
+      <h2 className={sectionLabel}>Get involved</h2>
+      <div className="grid gap-6 md:grid-cols-3">
+        {audiences.map((a) => (
+          <div key={a.title} className={`${card} flex flex-col`}>
+            <h3 className="mb-3 text-xl font-medium">{a.title}</h3>
+            <p className="mb-6 flex-1 font-light leading-relaxed text-muted-foreground">{a.body}</p>
+            <Link
+              to={a.to}
+              className="group inline-flex items-center gap-2 font-medium text-brand-green transition-colors hover:text-foreground"
+            >
+              {a.cta}
+              <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+            </Link>
+          </div>
+        ))}
       </div>
-    </div>
-  );
-};
+    </section>
+
+    <section>
+      <h2 className={sectionLabel}>Key dates</h2>
+      <ol className="overflow-hidden rounded-2xl border border-white/10 bg-card">
+        {keyDates.map(([date, what]) => (
+          <li
+            key={date}
+            className="flex flex-col gap-1 border-b border-white/10 px-6 py-4 last:border-b-0 sm:flex-row sm:items-center sm:gap-6"
+          >
+            <span className="w-32 shrink-0 text-sm font-medium tabular-nums text-brand-green">{date}</span>
+            <span className="font-light text-muted-foreground">{what}</span>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section>
+      <h2 className={sectionLabel}>Sponsors</h2>
+      <SponsorWall />
+    </section>
+
+    <section className={`${card} md:p-10`}>
+      <p className={sectionLabel}>Our first run</p>
+      <h2 className="mb-4 text-2xl font-medium tracking-tight md:text-3xl">
+        Hack the AM, April 2026
+      </h2>
+      <p className="mb-8 max-w-3xl font-light leading-relaxed text-muted-foreground">
+        One day on the UW Seattle campus, two headset tracks, teams building XR
+        that is genuinely useful in everyday workflows. This year builds on
+        it. The full record is still up: what teams built, how the day ran,
+        and the winners.
+      </p>
+      <Link
+        to="/hackathon/2026/"
+        className="group inline-flex items-center gap-2 font-medium text-brand-green transition-colors hover:text-foreground"
+      >
+        Read the 2026 archive
+        <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+      </Link>
+    </section>
+  </HackathonLayout>
+);
 
 export default Hackathon;
