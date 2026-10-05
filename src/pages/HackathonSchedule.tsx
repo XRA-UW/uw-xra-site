@@ -7,7 +7,7 @@ import { DISCORD, EVENT, schedule } from "@/data/hackathon";
 const HackathonSchedule = () => (
   <HackathonLayout
     eyebrow={EVENT.date}
-    title="The day"
+    title={`Hackathon ${EVENT.year} schedule`}
     lead={
       <p>
         {EVENT.hours} on the {EVENT.location}. Workshops in the morning, then
