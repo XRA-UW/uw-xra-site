@@ -26,8 +26,8 @@ const HackathonMentors = () => (
     lead={
       <p>
         Mentors keep teams moving. You help them sharpen an idea, get past a
-        build error, and turn a rough prototype into a demo, without touching
-        the keyboard yourself.
+        build error, and turn a rough prototype into a demo, without building
+        it for them.
       </p>
     }
     actions={

@@ -19,9 +19,8 @@ const HackathonSponsors = () => (
     lead={
       <p>
         One day, {EVENT.location}, students building XR from scratch. Your
-        support pays for the headsets, food, and space that make that day
-        possible, and puts your platform in the hands of the people building
-        on it.
+        support is what makes that day possible, and it puts your platform in
+        the hands of the people building on it.
       </p>
     }
     actions={
@@ -73,8 +72,8 @@ const HackathonSponsors = () => (
         <div className={card}>
           <h3 className="mb-3 text-xl font-medium">Awards</h3>
           <p className="font-light leading-relaxed text-muted-foreground">
-            Track and award sponsors shape their award with us ahead of the
-            event, so the criteria are set before teams start building.
+            Track and award sponsors shape their track or award with us ahead
+            of the event, so the criteria are set before teams start building.
           </p>
         </div>
       </div>
