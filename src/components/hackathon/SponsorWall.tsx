@@ -11,7 +11,10 @@ const SponsorWall = () => {
   if (sponsors.length === 0) {
     return (
       <div className="rounded-2xl border border-dashed border-white/20 p-8 text-center md:p-10">
-        <p className="mb-2 text-lg font-medium">Sponsors announced November 22</p>
+        {/* The page already heads this section "Sponsors", so repeating the word
+            here reads as "Sponsors Sponsors" once text is flattened, which is
+            exactly what DubBot's repeated-word check scans. */}
+        <p className="mb-2 text-lg font-medium">Announced November 22</p>
         <p className="mb-6 font-light text-muted-foreground">
           Logos appear here in order of contribution, sized by tier.
         </p>
