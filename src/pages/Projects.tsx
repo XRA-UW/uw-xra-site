@@ -5,9 +5,22 @@ import Footer from "@/components/Footer";
 import ProjectCard from "@/components/ProjectCard";
 import { currentProjects, pastProjects, pastProjectsNote } from "@/data/projects";
 import type { Project } from "@/data/projects";
-import { BUILDSPACE_APPLY, CSEED, isBuildspaceOpen } from "@/data/buildspace";
+import {
+  BUILDSPACE_APPLY,
+  BUILDSPACE_CLOSES,
+  CSEED,
+  isBuildspaceOpen,
+} from "@/data/buildspace";
 import cseedLogo from "@/assets/cseed-logo-white.png";
-import { XMark } from "@/components/Logo";
+import { XraWordmark } from "@/components/Logo";
+import Countdown from "@/components/Countdown";
+import { useNow } from "@/hooks/use-now";
+
+const EmptyNote = ({ children }: { children: ReactNode }) => (
+  <div className="rounded-2xl border border-dashed border-white/15 bg-card/40 p-8 text-center">
+    <p className="font-light text-muted-foreground">{children}</p>
+  </div>
+);
 
 const ProjectGroup = ({
   title,
@@ -33,9 +46,7 @@ const ProjectGroup = ({
         ))}
       </div>
     ) : typeof emptyMessage === "string" ? (
-      <div className="rounded-2xl border border-dashed border-white/15 bg-card/40 p-8 text-center">
-        <p className="font-light text-muted-foreground">{emptyMessage}</p>
-      </div>
+      <EmptyNote>{emptyMessage}</EmptyNote>
     ) : (
       emptyMessage
     )}
@@ -50,12 +61,13 @@ const ProjectGroup = ({
    applications, so the empty slot reads as an invitation rather than a gap.
    Disappears with the home page section at the deadline in data/buildspace.ts,
    and once a real project is listed it never shows at all. */
-const StartAProject = () => (
+const StartAProject = ({ now }: { now: number | null }) => (
   <div className="rounded-2xl border border-dashed border-brand-green/40 bg-card/60 p-8 md:p-10">
-    <div className="mb-6 flex items-center gap-3" aria-hidden="true">
-      <XMark className="h-6 w-6 text-foreground" />
-      <span className="text-lg font-light text-muted-foreground">×</span>
-      <img src={cseedLogo} alt="" width={640} height={147} className="h-5 w-auto" />
+    {/* Same lockup as the home page Buildspace section. */}
+    <div className="mb-6 flex items-center gap-4" aria-hidden="true">
+      <XraWordmark className="h-6 w-auto text-foreground" />
+      <span className="text-xl font-light text-muted-foreground">×</span>
+      <img src={cseedLogo} alt="" width={640} height={147} className="h-6 w-auto" />
     </div>
     <h3 className="mb-3 text-2xl font-medium tracking-tight md:text-3xl">
       Your project could be the first one here
@@ -73,8 +85,11 @@ const StartAProject = () => (
       Buildspace: six weeks of weekly build nights, October 15 to the November 17
       Demo Day, with an Extended Reality track run with XRA and access to Apple
       Vision Pro and Quest 3 headsets. Come solo or with a team, and pick the XR
-      track on the application. Applications close October 10.
+      track on the application. Applications close October 10 at 11:59 a.m.
     </p>
+    <div className="mb-8">
+      <Countdown to={BUILDSPACE_CLOSES} now={now} label="Applications close in" />
+    </div>
     <a
       href={BUILDSPACE_APPLY}
       target="_blank"
@@ -86,6 +101,18 @@ const StartAProject = () => (
     </a>
   </div>
 );
+
+const EMPTY_IN_PROGRESS =
+  "Nothing running right now. New builds kick off through the quarter — they get announced in the Discord first.";
+
+/* Decides between the invite and the plain empty note on the live clock, so
+   the card swaps out at the deadline without a reload. Before mount (and in
+   the prerender) it falls back to a one-off check. */
+const InProgressEmpty = () => {
+  const now = useNow();
+  const open = now === null ? isBuildspaceOpen() : now < BUILDSPACE_CLOSES.getTime();
+  return open ? <StartAProject now={now} /> : <EmptyNote>{EMPTY_IN_PROGRESS}</EmptyNote>;
+};
 
 const Projects = () => {
   return (
@@ -110,13 +137,7 @@ const Projects = () => {
             <ProjectGroup
               title="In progress"
               projects={currentProjects}
-              emptyMessage={
-                isBuildspaceOpen() ? (
-                  <StartAProject />
-                ) : (
-                  "Nothing running right now. New builds kick off through the quarter — they get announced in the Discord first."
-                )
-              }
+              emptyMessage={<InProgressEmpty />}
             />
             <ProjectGroup
               title="Past projects"
