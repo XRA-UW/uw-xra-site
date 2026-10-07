@@ -48,6 +48,15 @@ The script builds for the `/xra/` path, copies `deploy/htaccess` in as `.htacces
 
 A normal release: merge to `main`, push, then run `bash ./scripts/deploy-uw.sh`.
 
+## Embargoed hackathon content
+
+Tracks and sponsors for the 2027 hackathon are announced on November 22. Until then:
+
+- Put them only in the `embargoedSponsors` and `embargoedTracks` arrays in `src/data/hackathon.ts`. Never in page copy or in `src/seo.ts`.
+- The site enforces the rest: a build made before the reveal time (`src/data/reveal.ts`) leaves those arrays out entirely, so they are not on the page, in "view source", or in the JS. Preview them locally with `REVEAL=1 npm run dev`, and never deploy a `REVEAL=1` build.
+- **The repo is public.** Anything pushed to GitHub is readable there, so keep embargoed edits on a local branch and push them on November 22.
+- On November 22, run `bash ./scripts/deploy-uw.sh` after the reveal time and the content appears.
+
 ## What technologies are used for this project?
 
 This project is built with:

@@ -4,6 +4,8 @@
    Sourced from the fall 2026 planning meeting notes. Anything marked OPEN is
    still undecided; keep it off the pages until it is settled. */
 
+import { REVEAL_AT_MS } from "./reveal";
+
 export const EVENT = {
   year: 2027,
   /** Route of this edition. Every edition lives under /hackathon/<year>. */
@@ -33,6 +35,8 @@ export const sponsorContactHref =
 export const mentorContactHref =
   MENTOR_FORM_URL ??
   `mailto:${EMAIL}?subject=${encodeURIComponent(`Mentoring at ${EVENT.name}`)}`;
+
+export const REVEAL_AT = new Date(REVEAL_AT_MS);
 
 /* Public dates only. The internal timeline (merch, catering, card access,
    signage) belongs in the planning doc, not on the website. So does the
@@ -93,8 +97,36 @@ export interface Sponsor {
   href?: string;
 }
 
-/* Empty until sponsors confirm. Add entries here; the logo wall sorts by tier. */
-export const sponsors: Sponsor[] = [];
+/* ── EMBARGOED until the November 22 reveal ───────────────────────────────
+   Rule: anything announced on November 22 (confirmed sponsors, tracks, track
+   prizes) goes in an `embargoed*` array below and nowhere else. Never put it
+   straight into page copy, a description in src/seo.ts, or an unguarded
+   export.
+
+   The site side is enforced: each public export below is gated on
+   __REVEALED__, which a build made before the reveal compiles to false, so
+   the arrays are dropped from the build entirely, not merely hidden. Preview
+   locally with `REVEAL=1 npm run dev`. On November 22, deploy after the
+   reveal time and the content appears.
+
+   The repo side is not: XRA-UW/uw-xra-site is public, so anything pushed to
+   GitHub is readable there. Keep embargoed edits on a local branch until
+   the reveal. */
+
+/* Confirmed sponsors. The logo wall sorts them by tier. */
+const embargoedSponsors: Sponsor[] = [];
+
+export interface Track {
+  name: string;
+  blurb: string;
+  /** Sponsor running the track, if any. */
+  sponsor?: string;
+}
+
+const embargoedTracks: Track[] = [];
+
+export const sponsors: Sponsor[] = __REVEALED__ ? embargoedSponsors : [];
+export const tracks: Track[] = __REVEALED__ ? embargoedTracks : [];
 
 /* Times follow the UW Brand editorial guide, as on the 2026 page. */
 export const schedule: [string, string][] = [

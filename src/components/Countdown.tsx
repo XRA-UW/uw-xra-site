@@ -1,9 +1,15 @@
-/* Days / hours / minutes / seconds until a deadline. Renders nothing until
-   the client clock is known (see useNow), and nothing once the deadline has
-   passed: the caller decides what replaces it. */
+/* Time left until a deadline. Days and hours while it is a day or more away,
+   where a ticking seconds digit is just noise; hours, minutes and seconds in
+   the final day, when it is worth watching. Renders nothing until the client
+   clock is known (see useNow), and nothing once the deadline has passed: the
+   caller decides what replaces it. */
 
-const UNITS = [
-  { label: "days", ms: 86_400_000 },
+const DAY = 86_400_000;
+const FAR_UNITS = [
+  { label: "days", ms: DAY },
+  { label: "hours", ms: 3_600_000 },
+];
+const NEAR_UNITS = [
   { label: "hours", ms: 3_600_000 },
   { label: "min", ms: 60_000 },
   { label: "sec", ms: 1_000 },
@@ -21,7 +27,8 @@ const Countdown = ({ to, now, label }: Props) => {
   let left = to.getTime() - now;
   if (left <= 0) return null;
 
-  const parts = UNITS.map(({ label: unit, ms }) => {
+  const units = left >= DAY ? FAR_UNITS : NEAR_UNITS;
+  const parts = units.map(({ label: unit, ms }) => {
     const value = Math.floor(left / ms);
     left -= value * ms;
     return { unit, value };
@@ -29,10 +36,7 @@ const Countdown = ({ to, now, label }: Props) => {
 
   /* role="timer" is not announced on every tick, so screen readers are not
      interrupted each second; the label gives the full reading on focus. */
-  const spoken = `${label} ${parts
-    .slice(0, 3)
-    .map((p) => `${p.value} ${p.unit}`)
-    .join(", ")}`;
+  const spoken = `${label} ${parts.map((p) => `${p.value} ${p.unit}`).join(", ")}`;
 
   return (
     <div role="timer" aria-label={spoken} className="flex gap-2 sm:gap-3">

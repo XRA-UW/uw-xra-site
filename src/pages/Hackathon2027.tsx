@@ -7,7 +7,8 @@ import HackathonLayout, {
   sectionLabel,
 } from "@/components/hackathon/HackathonLayout";
 import SponsorWall from "@/components/hackathon/SponsorWall";
-import { DISCORD, EVENT, keyDates } from "@/data/hackathon";
+import RevealCountdown from "@/components/hackathon/RevealCountdown";
+import { DISCORD, EVENT, keyDates, tracks } from "@/data/hackathon";
 
 /* Overview of the 2027 edition. Written first for sponsors and the school,
    who see it before participants do: participant details land on November
@@ -81,6 +82,29 @@ const Hackathon2027 = () => (
       </>
     }
   >
+    <RevealCountdown />
+
+    {/* Empty, and so absent, in any build made before the reveal: tracks are
+        embargoed in src/data/hackathon.ts. */}
+    {tracks.length > 0 && (
+      <section>
+        <h2 className={sectionLabel}>Tracks</h2>
+        <div className="grid gap-6 md:grid-cols-2">
+          {tracks.map((track) => (
+            <div key={track.name} className={card}>
+              {track.sponsor && (
+                <p className="mb-1 text-sm font-light text-muted-foreground">
+                  Presented by {track.sponsor}
+                </p>
+              )}
+              <h3 className="mb-3 text-xl font-medium">{track.name}</h3>
+              <p className="font-light leading-relaxed text-muted-foreground">{track.blurb}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
     <section>
       <h2 className={sectionLabel}>Get involved</h2>
       <div className="grid gap-6 md:grid-cols-3">
