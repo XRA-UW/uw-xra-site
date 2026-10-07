@@ -120,7 +120,14 @@ export function metaForPath(pathname: string): Omit<RouteMeta, "path"> {
  *  Always trailing-slashed. GitHub Pages serves each route from
  *  dist/<route>/index.html and 301s "/hackathon" to "/hackathon/", so the
  *  slashless form is a redirect, not a page. A canonical or a sitemap entry
- *  pointing at a redirect is a self-inflicted SEO defect. */
+ *  pointing at a redirect is a self-inflicted SEO defect.
+ *
+ *  Strips any trailing slashes before adding exactly one. The prerenderer
+ *  passes "/people", but in the browser the path is "/people/", and appending
+ *  to that rewrote the canonical to "/people//" after load. Google renders
+ *  JavaScript, followed that canonical, and each render added another slash:
+ *  Search Console logged /people///, /hackathon//, and so on. */
 export function canonicalUrl(path: string): string {
-  return path === "/" ? `${CANONICAL_ROOT}/` : `${CANONICAL_ROOT}${path}/`;
+  const clean = path.replace(/\/+$/, "");
+  return `${CANONICAL_ROOT}${clean}/`;
 }
