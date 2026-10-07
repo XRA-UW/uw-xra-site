@@ -1,8 +1,13 @@
+import type { ReactNode } from "react";
+import { ArrowRight } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProjectCard from "@/components/ProjectCard";
 import { currentProjects, pastProjects, pastProjectsNote } from "@/data/projects";
 import type { Project } from "@/data/projects";
+import { BUILDSPACE_APPLY, CSEED, isBuildspaceOpen } from "@/data/buildspace";
+import cseedLogo from "@/assets/cseed-logo-white.png";
+import { XMark } from "@/components/Logo";
 
 const ProjectGroup = ({
   title,
@@ -12,7 +17,8 @@ const ProjectGroup = ({
 }: {
   title: string;
   projects: Project[];
-  emptyMessage: string;
+  /** A sentence, or a whole card, shown while there are no projects. */
+  emptyMessage: ReactNode;
   note?: string;
 }) => (
   <section className="mb-14">
@@ -26,16 +32,59 @@ const ProjectGroup = ({
           <ProjectCard key={project.title} {...project} />
         ))}
       </div>
-    ) : (
+    ) : typeof emptyMessage === "string" ? (
       <div className="rounded-2xl border border-dashed border-white/15 bg-card/40 p-8 text-center">
         <p className="font-light text-muted-foreground">{emptyMessage}</p>
       </div>
+    ) : (
+      emptyMessage
     )}
 
     {note && projects.length > 0 && (
       <p className="mt-6 text-center font-light text-muted-foreground">{note}</p>
     )}
   </section>
+);
+
+/* Shown in place of the empty "In progress" state while Buildspace is taking
+   applications, so the empty slot reads as an invitation rather than a gap.
+   Disappears with the home page section at the deadline in data/buildspace.ts,
+   and once a real project is listed it never shows at all. */
+const StartAProject = () => (
+  <div className="rounded-2xl border border-dashed border-brand-green/40 bg-card/60 p-8 md:p-10">
+    <div className="mb-6 flex items-center gap-3" aria-hidden="true">
+      <XMark className="h-6 w-6 text-foreground" />
+      <span className="text-lg font-light text-muted-foreground">×</span>
+      <img src={cseedLogo} alt="" width={640} height={147} className="h-5 w-auto" />
+    </div>
+    <h3 className="mb-3 text-2xl font-medium tracking-tight md:text-3xl">
+      Your project could be the first one here
+    </h3>
+    <p className="mb-6 max-w-2xl font-light leading-relaxed text-muted-foreground">
+      Nothing is in progress yet. The way in this quarter is{" "}
+      <a
+        href={CSEED}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-medium text-foreground underline decoration-brand-green/60 underline-offset-4 transition-colors hover:text-brand-green"
+      >
+        cseed
+      </a>{" "}
+      Buildspace: six weeks of weekly build nights, October 15 to the November 17
+      Demo Day, with an Extended Reality track run with XRA and access to Apple
+      Vision Pro and Quest 3 headsets. Come solo or with a team, and pick the XR
+      track on the application. Applications close October 10.
+    </p>
+    <a
+      href={BUILDSPACE_APPLY}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group inline-flex items-center justify-center gap-2 rounded-full bg-accent px-8 py-3 text-lg font-medium text-accent-foreground shadow-[0_8px_24px_hsl(var(--brand-green)/0.25)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent/90 hover:shadow-[0_12px_44px_hsl(var(--brand-green)/0.45)] active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+    >
+      Start it at Buildspace
+      <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
+    </a>
+  </div>
 );
 
 const Projects = () => {
@@ -61,7 +110,13 @@ const Projects = () => {
             <ProjectGroup
               title="In progress"
               projects={currentProjects}
-              emptyMessage="Nothing running right now. New builds kick off through the quarter — they get announced in the Discord first."
+              emptyMessage={
+                isBuildspaceOpen() ? (
+                  <StartAProject />
+                ) : (
+                  "Nothing running right now. New builds kick off through the quarter — they get announced in the Discord first."
+                )
+              }
             />
             <ProjectGroup
               title="Past projects"

@@ -5,25 +5,19 @@ import { ArrowRight } from "lucide-react";
 import buildspaceQr from "@/assets/buildspace-qr.svg";
 import cseedLogo from "@/assets/cseed-logo-white.png";
 import allenSchoolMark from "@/assets/allen-school-mark-white.svg";
+import {
+  BUILDSPACE_APPLY,
+  BUILDSPACE_FORM,
+  CSEED,
+  isBuildspaceOpen,
+} from "@/data/buildspace";
 
-/* The Apply button goes to cseed's own Buildspace page, which now carries the
-   application. The QR keeps pointing at the form directly, because the QR
-   image encodes that URL: changing only the link would make scanning and
-   tapping the same graphic go to different places, and any QR already printed
-   on a flyer still resolves to the form regardless. The form is open. */
-const BUILDSPACE_APPLY = "https://cseed.co/buildspace/";
-const BUILDSPACE_FORM =
-  "https://docs.google.com/forms/d/e/1FAIpQLSeZVQMGzzQYMKECKOn7Fn5YsbfXQKyMsGFtUpfkwha1w5wHzw/viewform";
-const CSEED = "https://cseed.co/";
 /* The Allen School's public student-organizations page, deep-linked to our own
    entry. Deliberately not the 26-27 Google Sites page: that one is the
    affiliated-org policy document for officers, not something to send visitors
    to. */
 const ALLEN_SCHOOL =
   "https://www.cs.washington.edu/academics/undergraduate/student-life/student-organizations/#h-extended-reality-association-xra";
-// Final deadline per the application form: Oct 10, 2026, 11:59 AM Pacific.
-// The section hides itself once applications close.
-const BUILDSPACE_CLOSES = new Date("2026-10-10T11:59:00-07:00");
 
 const buildspaceFacts = [
   "Priority deadline Oct 7",
@@ -62,7 +56,7 @@ const pillars = [
 ];
 
 const Index = () => {
-  const buildspaceOpen = new Date() < BUILDSPACE_CLOSES;
+  const buildspaceOpen = isBuildspaceOpen();
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-background">
