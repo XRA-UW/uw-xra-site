@@ -11,9 +11,9 @@ export const EVENT = {
   /* OPEN: no official name yet. "Hack the AM" in the planning notes is only a
      placeholder too, so do not put it on these pages. */
   name: "XRA Hackathon 2027",
-  /* OPEN: the notes' timeline says "Jan 23-24, 2027", but the event is one day
-     and the schedule ends at 8:30 p.m. Saturday the 23rd is assumed here. */
-  date: "Saturday, January 23, 2027",
+  /* Moved from January 23 to January 30 in October 2026. Still the target
+     rather than locked in; confirm before anything is printed. */
+  date: "Saturday, January 30, 2027",
   hours: "9 a.m. to 8:30 p.m.",
   location: "UW Seattle campus",
   teamSize: "Teams of 1 to 4",
@@ -41,7 +41,7 @@ export const mentorContactHref =
 export const keyDates: [string, string][] = [
   ["November 20", "Sponsor commitment deadline"],
   ["November 22", "Participant applications open, with tracks and sponsors announced"],
-  ["January 23", "Hackathon day"],
+  ["January 30", "Hackathon day"],
 ];
 
 export interface SponsorTier {

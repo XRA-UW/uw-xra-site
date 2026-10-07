@@ -67,7 +67,7 @@ export const ROUTE_META: RouteMeta[] = [
     path: "/hackathon/2027",
     title: "Hackathon 2027 | XRA at the University of Washington",
     description:
-      "XRA's one-day XR hackathon at the University of Washington, Saturday, January 23, 2027. Teams of 1 to 4, Apple Vision Pro and Meta Quest, headsets to check out.",
+      "XRA's one-day XR hackathon at the University of Washington, Saturday, January 30, 2027. Teams of 1 to 4, Apple Vision Pro and Meta Quest, headsets to check out.",
   },
   {
     path: "/hackathon/2027/sponsors",
@@ -85,7 +85,7 @@ export const ROUTE_META: RouteMeta[] = [
     path: "/hackathon/2027/schedule",
     title: "Hackathon 2027 Schedule | XRA at the University of Washington",
     description:
-      "The draft schedule for XRA's one-day XR hackathon at the University of Washington on January 23, 2027: workshops, headset checkout, meals, judging, and the closing ceremony.",
+      "The draft schedule for XRA's one-day XR hackathon at the University of Washington on January 30, 2027: workshops, headset checkout, meals, judging, and the closing ceremony.",
   },
   {
     path: "/projects",
