@@ -1,6 +1,11 @@
+import henryNguyen from "@/assets/people/henry-nguyen.webp";
+
 export interface Person {
   name: string;
   position: string;
+  /** Square headshot, 384px, cropped head-and-shoulders so the circular
+   *  avatar does not clip it. Without one the card shows initials. */
+  photo?: string;
 }
 
 export const officers: Person[] = [
@@ -8,7 +13,7 @@ export const officers: Person[] = [
   { name: "Takaharu Tanaka", position: "Officer" },
   { name: "Evelynne Jung", position: "Graphics and Marketing Lead" },
   { name: "Hari Neelamegam", position: "Associate Officer" },
-  { name: "Henry Nguyen", position: "Associate Officer" },
+  { name: "Henry Nguyen", position: "Associate Officer", photo: henryNguyen },
   { name: "Minh Nguyen", position: "Event Lead" },
 ];
 
