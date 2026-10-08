@@ -1,4 +1,9 @@
+import hitenderOswal from "@/assets/people/hitender-oswal.webp";
+import takaharuTanaka from "@/assets/people/takaharu-tanaka.webp";
+import evelynneJung from "@/assets/people/evelynne-jung.webp";
+import hariNeelamegam from "@/assets/people/hari-neelamegam.webp";
 import henryNguyen from "@/assets/people/henry-nguyen.webp";
+import minhNguyen from "@/assets/people/minh-nguyen.webp";
 
 export interface Person {
   name: string;
@@ -9,12 +14,12 @@ export interface Person {
 }
 
 export const officers: Person[] = [
-  { name: "Hitender Oswal", position: "President" },
-  { name: "Takaharu Tanaka", position: "Officer" },
-  { name: "Evelynne Jung", position: "Graphics and Marketing Lead" },
-  { name: "Hari Neelamegam", position: "Associate Officer" },
+  { name: "Hitender Oswal", position: "President", photo: hitenderOswal },
+  { name: "Takaharu Tanaka", position: "Officer", photo: takaharuTanaka },
+  { name: "Evelynne Jung", position: "Graphics and Marketing Lead", photo: evelynneJung },
+  { name: "Hari Neelamegam", position: "Associate Officer", photo: hariNeelamegam },
   { name: "Henry Nguyen", position: "Associate Officer", photo: henryNguyen },
-  { name: "Minh Nguyen", position: "Event Lead" },
+  { name: "Minh Nguyen", position: "Event Lead", photo: minhNguyen },
 ];
 
 export const formerExecutiveBoard: Person[] = [
