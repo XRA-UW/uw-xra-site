@@ -321,7 +321,7 @@ const Hackathon2026 = () => {
                 </h2>
                 <p className="mb-6 max-w-3xl font-light leading-relaxed text-muted-foreground">
                   We are running an XR hackathon again, on {EVENT.date}.
-                  Sponsorship, mentoring, and the schedule are up
+                  Partnership levels, mentoring, and the schedule are up
                   now; tracks and participant details follow on November 22.
                 </p>
                 <div>

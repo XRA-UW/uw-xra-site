@@ -13,7 +13,9 @@ import { EVENT } from "@/data/hackathon";
 
 const tabs = [
   { name: "Overview", path: EVENT.path },
-  { name: "Sponsors", path: `${EVENT.path}/sponsors` },
+  /* Labelled "Partners" but the URL stays /sponsors: it may already be in
+     outreach emails, and changing it would break those links. */
+  { name: "Partners", path: `${EVENT.path}/sponsors` },
   { name: "Mentors", path: `${EVENT.path}/mentors` },
   { name: "Schedule", path: `${EVENT.path}/schedule` },
 ];
@@ -67,7 +69,7 @@ const HackathonLayout = ({ eyebrow, title, lead, actions, edition = true, childr
               <ArrowLeft className="h-4 w-4" />
               All hackathons
             </Link>
-            <nav aria-label={`Hackathon ${EVENT.year} pages`} className="mb-12 overflow-x-auto">
+            <nav aria-label={`${EVENT.name} ${EVENT.year} pages`} className="mb-12 overflow-x-auto">
               <ul className="flex w-max gap-1 rounded-full border border-white/10 bg-card/60 p-1">
                 {tabs.map((tab) => {
                   const active = current === tab.path;

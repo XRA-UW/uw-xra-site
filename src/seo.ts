@@ -65,27 +65,27 @@ export const ROUTE_META: RouteMeta[] = [
   },
   {
     path: "/hackathon/2027",
-    title: "Hackathon 2027 | XRA at the University of Washington",
+    title: "Bark to Reality 2027 | XRA at the University of Washington",
     description:
-      "XRA's one-day XR hackathon at the University of Washington, Saturday, January 30, 2027. Teams of 1 to 4, Apple Vision Pro and Meta Quest, headsets to check out.",
+      "Bark to Reality, XRA's one-day XR hackathon at the University of Washington, Saturday, January 30, 2027. Teams of 1 to 4, Apple Vision Pro and Meta Quest, headsets to check out.",
   },
   {
     path: "/hackathon/2027/sponsors",
-    title: "Sponsor Hackathon 2027 | XRA at the University of Washington",
+    title: "Support Bark to Reality 2027 | XRA at the University of Washington",
     description:
-      "Sponsorship tiers for XRA's January 2027 XR hackathon at the University of Washington: main tracks, special awards, tables, and product credits for student builders. Commit by November 20.",
+      "Partnership levels for Bark to Reality, XRA's January 2027 XR hackathon at the University of Washington, planned for about 150 students building for Apple Vision Pro and Meta Quest. Confirm a contribution by November 20.",
   },
   {
     path: "/hackathon/2027/mentors",
-    title: "Mentor at Hackathon 2027 | XRA at the University of Washington",
+    title: "Mentor at Bark to Reality 2027 | XRA at the University of Washington",
     description:
-      "Mentor at XRA's January 2027 XR hackathon at the University of Washington: help student teams debug and refine XR projects in a four-hour shift. XR development experience required.",
+      "Mentor at Bark to Reality, XRA's January 2027 XR hackathon at the University of Washington: help student teams debug and refine XR projects in a four-hour shift. XR development experience required.",
   },
   {
     path: "/hackathon/2027/schedule",
-    title: "Hackathon 2027 Schedule | XRA at the University of Washington",
+    title: "Bark to Reality 2027 Schedule | XRA at the University of Washington",
     description:
-      "The draft schedule for XRA's one-day XR hackathon at the University of Washington on January 30, 2027: workshops, headset checkout, meals, judging, and the closing ceremony.",
+      "The draft schedule for Bark to Reality, XRA's one-day XR hackathon at the University of Washington on January 30, 2027: workshops, headset checkout, meals, judging, and the closing ceremony.",
   },
   {
     path: "/projects",

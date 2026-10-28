@@ -28,7 +28,7 @@ const aims = [
   },
   {
     title: "Students meet industry",
-    body: "Sponsors bring their platforms, tools, and challenges, and students show what they can build with them in a single day.",
+    body: "Partner companies bring platforms, tools, and challenges, and students show what they can build with them in a single day.",
   },
 ];
 
@@ -37,7 +37,7 @@ const editions = [
     year: String(EVENT.year),
     status: "Upcoming",
     name: EVENT.name,
-    detail: `${EVENT.date}. Sponsorship and mentoring are open now; participant applications open November 22.`,
+    detail: `${EVENT.date}. Partnerships and mentoring are open now; participant applications open November 22.`,
     to: `${EVENT.path}/`,
     cta: `See ${EVENT.year}`,
     current: true,
@@ -68,7 +68,7 @@ const Hackathon = () => (
     actions={
       <div className="flex flex-col gap-4 sm:flex-row">
         <Link to={`${EVENT.path}/`} className={primaryButton}>
-          Hackathon {EVENT.year}
+          {EVENT.name} {EVENT.year}
           <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
         </Link>
         <a href={DISCORD} target="_blank" rel="noopener noreferrer" className={secondaryButton}>

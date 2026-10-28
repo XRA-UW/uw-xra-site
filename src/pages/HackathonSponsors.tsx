@@ -1,26 +1,33 @@
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import HackathonLayout, {
   card,
   inlineLink,
   primaryButton,
   sectionLabel,
 } from "@/components/hackathon/HackathonLayout";
-import { EMAIL, EVENT, sponsorContactHref, sponsorTiers } from "@/data/hackathon";
+import {
+  EMAIL,
+  EVENT,
+  otherContributions,
+  sponsorContactHref,
+  sponsorTiers,
+} from "@/data/hackathon";
 
-/* The page a sponsor is pointed at in or after a meeting. Tiers and deadlines
-   come from src/data/hackathon.ts. Still OPEN, so not stated here: whether
-   award prizes are bought from sponsor funds or provided by the sponsor, and
-   which tier in-kind support (credits, trials) counts toward. */
+/* The page a partner is pointed at in or after a meeting. Levels and
+   deadlines come from src/data/hackathon.ts. Contributions are donations:
+   word recognition as something we may do, never as a benefit owed. */
 
 const HackathonSponsors = () => (
   <HackathonLayout
-    eyebrow="Sponsorship"
-    title={`Sponsor ${EVENT.name}`}
+    eyebrow="Partnership Levels"
+    title={`Support ${EVENT.name}`}
     lead={
       <p>
-        One day, {EVENT.location}, students building XR from scratch. Your
-        support is what makes that day possible, and it puts your platform in
-        the hands of the people building on it.
+        {EVENT.date}. The hackathon brings students together to build projects
+        in extended reality (XR). We are planning for approximately 150
+        participants, with a focus on Apple Vision Pro and Meta Quest
+        development. Your contribution helps students gain hands-on experience,
+        learn from peers and mentors, and turn ideas into working projects.
       </p>
     }
     actions={
@@ -31,7 +38,7 @@ const HackathonSponsors = () => (
     }
   >
     <section>
-      <h2 className={sectionLabel}>Tiers</h2>
+      <h2 className={sectionLabel}>Partnership opportunities</h2>
       <div className="grid gap-6 md:grid-cols-2">
         {sponsorTiers.map((tier, index) => (
           <div
@@ -39,64 +46,54 @@ const HackathonSponsors = () => (
             className={`${card} ${index === 0 ? "border-brand-green/40 shadow-glow-green" : ""}`}
           >
             <p className="mb-1 text-sm font-light text-muted-foreground">{tier.label}</p>
-            <h3 className="mb-6 text-2xl font-medium tracking-tight">{tier.amount}</h3>
-            <ul className="space-y-3">
-              {tier.benefits.map((benefit) => (
-                <li key={benefit} className="flex gap-3 font-light text-muted-foreground">
-                  <Check className="mt-1 h-4 w-4 shrink-0 text-brand-green" aria-hidden="true" />
-                  {benefit}
-                </li>
-              ))}
-            </ul>
+            <h3 className="mb-4 text-2xl font-medium tracking-tight">{tier.amount}</h3>
+            <p className="font-light leading-relaxed text-muted-foreground">
+              {tier.description}
+            </p>
           </div>
         ))}
       </div>
-      <p className="mt-6 max-w-3xl font-light leading-relaxed text-muted-foreground">
-        Sponsors are listed on the site in order of contribution, and larger
-        contributions get larger logos.
-      </p>
     </section>
 
     <section>
-      <h2 className={sectionLabel}>Beyond funding</h2>
-      <div className="grid gap-6 md:grid-cols-2">
-        <div className={card}>
-          <h3 className="mb-3 text-xl font-medium">Product access</h3>
-          <p className="font-light leading-relaxed text-muted-foreground">
-            Give participants credits, trial access, or API access to your
-            product for the day. Teams build with what is in front of them, so
-            this is the most direct way to see what students make with your
-            tools.
-          </p>
-        </div>
-        <div className={card}>
-          <h3 className="mb-3 text-xl font-medium">Awards</h3>
-          <p className="font-light leading-relaxed text-muted-foreground">
-            Track and award sponsors shape their track or award with us ahead
-            of the event, so the criteria are set before teams start building.
-          </p>
-        </div>
+      <h2 className={sectionLabel}>Recognition of support</h2>
+      <div className={card}>
+        <p className="max-w-3xl font-light leading-relaxed text-muted-foreground">
+          We are grateful to the partners who help make the hackathon possible.
+          As an expression of thanks, we may acknowledge contributions on our
+          website, in event communications, or during the event.
+        </p>
       </div>
     </section>
 
     <section>
-      {/* Commitment date only. The funds due date is a payment term for
-          confirmed sponsors and goes in their confirmation, not on the site. */}
-      <h2 className={sectionLabel}>Deadline</h2>
+      <h2 className={sectionLabel}>Additional ways to contribute</h2>
       <div className={card}>
-        <p className="mb-1 text-sm font-light text-muted-foreground">Commit by</p>
-        <h3 className="text-2xl font-medium tracking-tight">November 20</h3>
-        <p className="mt-3 font-light text-muted-foreground">
-          So your track or award is in the announcement on November 22.
+        <p className="mb-4 max-w-3xl font-light leading-relaxed text-muted-foreground">
+          {otherContributions.join(", ").replace(/, ([^,]*)$/, ", and $1")} can
+          also expand student learning opportunities. We welcome conversations
+          about how your team can help students access tools, receive guidance,
+          and bring their projects to life.
         </p>
+      </div>
+    </section>
+
+    <section>
+      {/* Confirmation date only. The date contributions are due is a payment
+          term for confirmed partners and goes in their confirmation, not on
+          the site. */}
+      <h2 className={sectionLabel}>Key deadline</h2>
+      <div className={card}>
+        <p className="mb-1 text-sm font-light text-muted-foreground">Confirm your contribution by</p>
+        <h3 className="text-2xl font-medium tracking-tight">November 20, 2026</h3>
       </div>
     </section>
 
     <section className={`${card} md:p-10`}>
       <h2 className="mb-3 text-xl font-medium tracking-tight">Talk to us</h2>
       <p className="mb-6 max-w-3xl font-light leading-relaxed text-muted-foreground">
-        Tell us which tier you are considering, or what else you could offer.
-        We reply from{" "}
+        Tell us which level you are considering, or what else your team could
+        offer. We reply from{" "}
         <a href={`mailto:${EMAIL}`} className={inlineLink}>
           {EMAIL}
         </a>

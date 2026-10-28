@@ -17,7 +17,7 @@ const RevealCountdown = () => {
     <section className={`${card} md:p-10`}>
       <p className={sectionLabel}>November 22</p>
       <h2 className="mb-3 text-2xl font-medium tracking-tight md:text-3xl">
-        Tracks and sponsors revealed
+        Tracks and partners revealed
       </h2>
       <p className="mb-6 max-w-3xl font-light leading-relaxed text-muted-foreground">
         Participant applications open the same day. Announcements land in the{" "}
@@ -27,7 +27,7 @@ const RevealCountdown = () => {
         first.
       </p>
       {counting && (
-        <Countdown to={REVEAL_AT} now={now} label="Tracks and sponsors revealed in" />
+        <Countdown to={REVEAL_AT} now={now} label="Tracks and partners revealed in" />
       )}
     </section>
   );

@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { EVENT, sponsors, sponsorTiers } from "@/data/hackathon";
 
-/* Sponsors appear in order of contribution, and a bigger contribution gets a
-   bigger logo. That is a commitment made to sponsors, so the order and sizes
-   come from the tier, never from where an entry sits in the data file. */
+/* Partners appear in order of contribution level, as a way of saying thanks,
+   not as a benefit owed (see sponsorTiers). Order and logo size come from the
+   tier, never from where an entry sits in the data file. */
 const logoHeight = ["h-20", "h-14", "h-10", "h-8"];
 
 const SponsorWall = () => {
@@ -16,13 +16,13 @@ const SponsorWall = () => {
             exactly what DubBot's repeated-word check scans. */}
         <p className="mb-2 text-lg font-medium">Announced November 22</p>
         <p className="mb-6 font-light text-muted-foreground">
-          Logos appear here in order of contribution, sized by tier.
+          Partners who help make the event possible may be recognized here.
         </p>
         <Link
           to={`${EVENT.path}/sponsors/`}
           className="group inline-flex items-center gap-2 font-medium text-brand-green transition-colors hover:text-foreground"
         >
-          Put your logo here
+          Support the hackathon
           <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
         </Link>
       </div>

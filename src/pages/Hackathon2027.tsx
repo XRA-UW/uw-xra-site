@@ -26,10 +26,10 @@ const facts = [
 
 const audiences = [
   {
-    title: "Sponsors",
-    body: "Put your platform in front of UW students for a full day of building. Tiers start with a mention on the site and go up to a main track built around your product.",
+    title: "Partners",
+    body: "Help about 150 UW students spend a full day building in XR. Contributions support tracks, student awards, project resources, and the event itself.",
     to: `${EVENT.path}/sponsors/`,
-    cta: "Sponsorship tiers",
+    cta: "Partnership levels",
   },
   {
     title: "Mentors",
@@ -39,7 +39,7 @@ const audiences = [
   },
   {
     title: "Participants",
-    body: "Applications open November 22, with tracks and sponsors announced the same day. Join the Discord to hear first and to find a team.",
+    body: "Applications open November 22, with tracks and partners announced the same day. Join the Discord to hear first and to find a team.",
     to: `${EVENT.path}/schedule/`,
     cta: "See the day",
   },
@@ -71,7 +71,7 @@ const Hackathon2027 = () => (
         </ul>
         <div className="flex flex-col gap-4 sm:flex-row">
           <Link to={`${EVENT.path}/sponsors/`} className={primaryButton}>
-            Sponsor the hackathon
+            Support the hackathon
             <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
           </Link>
           <a href={DISCORD} target="_blank" rel="noopener noreferrer" className={secondaryButton}>
@@ -94,7 +94,7 @@ const Hackathon2027 = () => (
             <div key={track.name} className={card}>
               {track.sponsor && (
                 <p className="mb-1 text-sm font-light text-muted-foreground">
-                  Presented by {track.sponsor}
+                  Supported by {track.sponsor}
                 </p>
               )}
               <h3 className="mb-3 text-xl font-medium">{track.name}</h3>
@@ -140,7 +140,7 @@ const Hackathon2027 = () => (
     </section>
 
     <section>
-      <h2 className={sectionLabel}>Sponsors</h2>
+      <h2 className={sectionLabel}>Partners</h2>
       <SponsorWall />
     </section>
 

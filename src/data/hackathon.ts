@@ -10,9 +10,8 @@ export const EVENT = {
   year: 2027,
   /** Route of this edition. Every edition lives under /hackathon/<year>. */
   path: "/hackathon/2027",
-  /* OPEN: no official name yet. "Hack the AM" in the planning notes is only a
-     placeholder too, so do not put it on these pages. */
-  name: "XRA Hackathon 2027",
+  /* Decided October 2026. "Hack the AM" was the 2026 name; do not reuse it. */
+  name: "Bark to Reality",
   /* Moved from January 23 to January 30 in October 2026. Still the target
      rather than locked in; confirm before anything is printed. */
   date: "Saturday, January 30, 2027",
@@ -31,7 +30,7 @@ export const MENTOR_FORM_URL: string | null = null;
 
 export const sponsorContactHref =
   SPONSOR_FORM_URL ??
-  `mailto:${EMAIL}?subject=${encodeURIComponent(`Sponsoring ${EVENT.name}`)}`;
+  `mailto:${EMAIL}?subject=${encodeURIComponent(`Supporting ${EVENT.name}`)}`;
 export const mentorContactHref =
   MENTOR_FORM_URL ??
   `mailto:${EMAIL}?subject=${encodeURIComponent(`Mentoring at ${EVENT.name}`)}`;
@@ -43,50 +42,61 @@ export const REVEAL_AT = new Date(REVEAL_AT_MS);
    sponsor funds due date, December 1: it is a payment term for confirmed
    sponsors and goes in their confirmation email or agreement. */
 export const keyDates: [string, string][] = [
-  ["November 20", "Sponsor commitment deadline"],
-  ["November 22", "Participant applications open, with tracks and sponsors announced"],
+  ["November 20", "Partner contribution confirmation deadline"],
+  ["November 22", "Participant applications open, with tracks and partners announced"],
   ["January 30", "Hackathon day"],
 ];
 
 export interface SponsorTier {
-  /** Descriptive label, derived from what the tier unlocks. */
+  /** What the gift supports. Also heads each group on the logo wall. */
   label: string;
   amount: string;
-  benefits: string[];
+  /** What the gift helps make possible. */
+  description: string;
 }
 
-/* Highest first. Logos on the site follow the same order and scale with tier. */
+/* Contributions are donations, not purchases: a partner is not buying a track,
+   an award, a table, or a logo. Describe what each gift helps students do, and
+   keep any thanks (website, communications, the event itself) worded as
+   something we may do, never as a benefit owed. Highest first; the logo wall
+   follows the same order. */
 export const sponsorTiers: SponsorTier[] = [
   {
-    label: "Track sponsor",
-    amount: "$5,000 or a device loan",
-    benefits: [
-      "A main track built around your platform",
-      "Speak at the opening and closing ceremonies",
-      "A table at the event",
-      "Your logo on the website, largest tier",
-    ],
+    label: "Main Track Support",
+    amount: "$5,000",
+    description:
+      "Supports a main track, helping students explore an XR challenge, develop prototypes, and share what they build.",
   },
   {
-    label: "Award sponsor",
+    label: "Student Achievement Support",
     amount: "$2,500",
-    benefits: [
-      "A special award in your name",
-      "Speak at the opening and closing ceremonies",
-      "A table at the event",
-      "Your logo on the website",
-    ],
+    description:
+      "Supports a student achievement award that encourages creative problem solving and recognizes student work in XR.",
   },
   {
-    label: "Table sponsor",
+    label: "Project Development Support",
     amount: "$1,000",
-    benefits: ["A table at the event", "Your logo on the website"],
+    description:
+      "Helps provide resources for project development so students can test ideas, refine prototypes, and build practical XR skills.",
   },
   {
-    label: "Supporter",
-    amount: "Mentors, or support under $1,000",
-    benefits: ["Your name on the website"],
+    label: "Student Participation Support",
+    amount: "Under $1,000",
+    description:
+      "Helps meet shared event needs and create a welcoming environment where students can collaborate and learn.",
   },
+];
+
+/* Sentence case, not title case: the sponsors page joins these into running
+   prose ("Device loans, XR mentorship, development workshops, ..."), so only
+   the first item starts the sentence. Re-case them if they are ever shown as a
+   standalone list. */
+export const otherContributions = [
+  "Device loans",
+  "XR mentorship",
+  "development workshops",
+  "prizes",
+  "software credits or trials",
 ];
 
 export interface Sponsor {
