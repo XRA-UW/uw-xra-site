@@ -15,10 +15,11 @@ export interface Person {
 
 export const officers: Person[] = [
   { name: "Hitender Oswal", position: "President", photo: hitenderOswal },
-  { name: "Takaharu Tanaka", position: "Officer", photo: takaharuTanaka },
+  { name: "Takaharu Tanaka", position: "Vice President", photo: takaharuTanaka },
   { name: "Evelynne Jung", position: "Graphics and Marketing Lead", photo: evelynneJung },
   { name: "Hari Neelamegam", position: "Associate Officer", photo: hariNeelamegam },
   { name: "Henry Nguyen", position: "Associate Officer", photo: henryNguyen },
+  { name: "Aakash Ghosh", position: "Associate Officer" },
   { name: "Minh Nguyen", position: "Event Lead", photo: minhNguyen },
 ];
 
