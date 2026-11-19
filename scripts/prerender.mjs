@@ -38,9 +38,11 @@ const {
   ROUTE_META,
   NOT_FOUND_META,
   canonicalUrl,
+  ogImageUrl,
   SITE_URL,
   IS_CANONICAL_HOST,
   CANONICAL_ROOT,
+  LEGACY_REDIRECTS,
 } = await import(pathToFileURL(ssrEntry).href);
 
 const template = fs.readFileSync(path.join(dist, "index.html"), "utf8");
@@ -62,7 +64,8 @@ function sub(html, pattern, replacement, label) {
   return html.replace(pattern, () => replacement);
 }
 
-function buildPage({ title, description, url, body, noindex = false }) {
+function buildPage({ title, description, url, image, body, noindex = false }) {
+  const imageUrl = ogImageUrl(image);
   let html = template;
   html = sub(html, /<title>[\s\S]*?<\/title>/, `<title>${esc(title)}</title>`, "<title>");
   html = sub(
@@ -88,6 +91,18 @@ function buildPage({ title, description, url, body, noindex = false }) {
     /<meta property="og:url" content="[^"]*"\s*\/?>/,
     `<meta property="og:url" content="${esc(url)}" />`,
     'meta[property="og:url"]',
+  );
+  html = sub(
+    html,
+    /<meta property="og:image" content="[^"]*"\s*\/?>/,
+    `<meta property="og:image" content="${esc(imageUrl)}" />`,
+    'meta[property="og:image"]',
+  );
+  html = sub(
+    html,
+    /<meta name="twitter:image" content="[^"]*"\s*\/?>/,
+    `<meta name="twitter:image" content="${esc(imageUrl)}" />`,
+    'meta[name="twitter:image"]',
   );
   html = sub(
     html,
@@ -135,8 +150,14 @@ function writePage(routePath, html) {
    version of "this moved", and combined with the canonical it is the strongest
    consolidation signal available without server-side 301s, which GitHub Pages
    cannot do for a project site. */
-function redirectStub({ target, legacyHash = false }) {
+function redirectStub({ target, legacyHash = false, pageMoved = false }) {
   const t = esc(target);
+  /* A retired route moved within the site; everything else is the whole
+     site having moved off GitHub Pages. */
+  const heading = pageMoved ? "This page has moved" : "XRA has moved";
+  const lead = pageMoved
+    ? "It now lives at"
+    : "This site now lives at";
   /* Old HashRouter links (#/hackathon) still exist in the wild. Without this
      the fragment is dropped and every one of them lands on the new home page
      instead of the page it named. Only the root stub sees them, because the
@@ -155,7 +176,7 @@ function redirectStub({ target, legacyHash = false }) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>XRA has moved</title>
+    <title>${heading}</title>
     <link rel="canonical" href="${t}" />
     <meta http-equiv="refresh" content="0; url=${t}" />
     <meta name="description" content="The Extended Reality Association at the University of Washington has moved to students.washington.edu/xra." />
@@ -174,8 +195,8 @@ function redirectStub({ target, legacyHash = false }) {
   </head>
   <body>
     <main>
-      <h1>XRA has moved</h1>
-      <p>This site now lives at <a href="${t}">${t}</a>.</p>
+      <h1>${heading}</h1>
+      <p>${lead} <a href="${t}">${t}</a>.</p>
     </main>
     <script>
       var target = ${JSON.stringify(target)};${hashFix}
@@ -186,8 +207,18 @@ function redirectStub({ target, legacyHash = false }) {
 `;
 }
 
+/* Retired routes (LEGACY_REDIRECTS in src/seo.ts) get a stub on every build.
+   On the UW host .htaccess 301s them first; the stub is the fallback, and it
+   overwrites the old prerendered page that deploy-uw.sh would otherwise leave
+   on the server. */
+function writeLegacyStubs() {
+  return LEGACY_REDIRECTS.map(({ from, to }) =>
+    writePage(from, redirectStub({ target: canonicalUrl(to), pageMoved: true })),
+  );
+}
+
 if (!IS_CANONICAL_HOST) {
-  const made = [];
+  const made = writeLegacyStubs();
   for (const route of ROUTE_META) {
     made.push(
       writePage(
@@ -212,13 +243,14 @@ if (!IS_CANONICAL_HOST) {
   process.exit(0);
 }
 
-const written = [];
+const written = writeLegacyStubs();
 
 for (const route of ROUTE_META) {
   const html = buildPage({
     title: route.title,
     description: route.description,
     url: canonicalUrl(route.path),
+    image: route.image,
     body: render(route.path),
   });
   written.push(writePage(route.path, html));

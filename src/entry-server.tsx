@@ -27,4 +27,6 @@ export {
   IS_CANONICAL_HOST,
   CANONICAL_ROOT,
   canonicalUrl,
+  LEGACY_REDIRECTS,
+  ogImageUrl,
 } from "./seo";

@@ -8,11 +8,11 @@ import HackathonLayout, {
 } from "@/components/hackathon/HackathonLayout";
 import SponsorWall from "@/components/hackathon/SponsorWall";
 import RevealCountdown from "@/components/hackathon/RevealCountdown";
-import { DISCORD, EVENT, keyDates, tracks } from "@/data/hackathon";
+import { DISCORD, EVENT, REVEAL_DATE, keyDates, tracks } from "@/data/hackathon";
 
 /* Overview of the 2027 edition. Written first for sponsors and the school,
-   who see it before participants do: participant details land on November
-   22. Event facts come from src/data/hackathon.ts; keep anything still
+   who see it before participants do: participant details land at the
+   reveal (REVEAL_DATE). Event facts come from src/data/hackathon.ts; keep anything still
    undecided out of the copy. /hackathon itself is the program page, and each
    edition, like /hackathon/2026, keeps its own year. */
 
@@ -28,18 +28,18 @@ const audiences = [
   {
     title: "Partners",
     body: "Help about 150 UW students spend a full day building in XR. Contributions support tracks, student awards, project resources, and the event itself.",
-    to: `${EVENT.path}/sponsors/`,
+    to: `${EVENT.path}/partners/`,
     cta: "Partnership levels",
   },
   {
     title: "Mentors",
-    body: "Spend a four-hour shift helping teams shape ideas, debug builds, and get a demo working. Mentors need XR development experience.",
+    body: "Spend a shift helping teams shape ideas, debug builds, and get a demo working. Mentors need XR development experience, and a few may be invited to judge.",
     to: `${EVENT.path}/mentors/`,
     cta: "What mentors do",
   },
   {
     title: "Participants",
-    body: "Applications open November 22, with tracks and partners announced the same day. Join the Discord to hear first and to find a team.",
+    body: `Applications open ${REVEAL_DATE}, with tracks and partners announced the same day. Join the Discord to hear first and to find a team.`,
     to: `${EVENT.path}/schedule/`,
     cta: "See the day",
   },
@@ -70,7 +70,7 @@ const Hackathon2027 = () => (
           ))}
         </ul>
         <div className="flex flex-col gap-4 sm:flex-row">
-          <Link to={`${EVENT.path}/sponsors/`} className={primaryButton}>
+          <Link to={`${EVENT.path}/partners/`} className={primaryButton}>
             Support the hackathon
             <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
           </Link>

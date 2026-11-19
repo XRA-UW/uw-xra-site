@@ -1,5 +1,5 @@
 import HackathonLayout, { card, inlineLink, sectionLabel } from "@/components/hackathon/HackathonLayout";
-import { DISCORD, EVENT, schedule } from "@/data/hackathon";
+import { DISCORD, EVENT, REVEAL_DATE, schedule } from "@/data/hackathon";
 
 /* The day-of schedule from the planning notes. It is a draft until
    participant applications open, and the page says so. */
@@ -29,7 +29,7 @@ const HackathonSchedule = () => (
         ))}
       </ul>
       <p className="mt-4 text-sm font-light text-muted-foreground">
-        Draft schedule. Times may shift before applications open on November 22.
+        Draft schedule. Times may shift before applications open on {REVEAL_DATE}.
       </p>
     </section>
 

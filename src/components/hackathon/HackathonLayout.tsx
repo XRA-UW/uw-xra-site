@@ -13,9 +13,9 @@ import { EVENT } from "@/data/hackathon";
 
 const tabs = [
   { name: "Overview", path: EVENT.path },
-  /* Labelled "Partners" but the URL stays /sponsors: it may already be in
-     outreach emails, and changing it would break those links. */
-  { name: "Partners", path: `${EVENT.path}/sponsors` },
+  /* Was /sponsors until November 2026. That URL is in outreach emails, so it
+     still redirects here (LEGACY_REDIRECTS in src/seo.ts). */
+  { name: "Partners", path: `${EVENT.path}/partners` },
   { name: "Mentors", path: `${EVENT.path}/mentors` },
   { name: "Schedule", path: `${EVENT.path}/schedule` },
 ];

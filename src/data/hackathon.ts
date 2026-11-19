@@ -4,7 +4,9 @@
    Sourced from the fall 2026 planning meeting notes. Anything marked OPEN is
    still undecided; keep it off the pages until it is settled. */
 
-import { REVEAL_AT_MS } from "./reveal";
+import { REVEAL_AT_MS, REVEAL_DATE } from "./reveal";
+
+export { REVEAL_DATE };
 
 export const EVENT = {
   year: 2027,
@@ -26,7 +28,7 @@ export const EMAIL = "xra@uw.edu";
 /* Replace with the real form URLs once they exist. Until then the buttons fall
    back to a prefilled email, so the pages work today. */
 export const SPONSOR_FORM_URL: string | null = null;
-export const MENTOR_FORM_URL: string | null = null;
+export const MENTOR_FORM_URL: string | null = "https://forms.gle/YKpHWDKBdzCUCfDc6";
 
 export const sponsorContactHref =
   SPONSOR_FORM_URL ??
@@ -40,10 +42,11 @@ export const REVEAL_AT = new Date(REVEAL_AT_MS);
 /* Public dates only. The internal timeline (merch, catering, card access,
    signage) belongs in the planning doc, not on the website. So does the
    sponsor funds due date, December 1: it is a payment term for confirmed
-   sponsors and goes in their confirmation email or agreement. */
+   sponsors and goes in their confirmation email or agreement. The November 20
+   partner confirmation deadline was dropped in November 2026; partnerships
+   stay open without a published cutoff. */
 export const keyDates: [string, string][] = [
-  ["November 20", "Partner contribution confirmation deadline"],
-  ["November 22", "Participant applications open, with tracks and partners announced"],
+  [REVEAL_DATE, "Participant applications open, with tracks and partners announced (tentative)"],
   ["January 30", "Hackathon day"],
 ];
 
@@ -107,8 +110,8 @@ export interface Sponsor {
   href?: string;
 }
 
-/* ── EMBARGOED until the November 22 reveal ───────────────────────────────
-   Rule: anything announced on November 22 (confirmed sponsors, tracks, track
+/* ── EMBARGOED until the reveal (REVEAL_DATE in ./reveal.ts) ──────────────
+   Rule: anything announced at the reveal (confirmed sponsors, tracks, track
    prizes) goes in an `embargoed*` array below and nowhere else. Never put it
    straight into page copy, a description in src/seo.ts, or an unguarded
    export.
@@ -116,7 +119,7 @@ export interface Sponsor {
    The site side is enforced: each public export below is gated on
    __REVEALED__, which a build made before the reveal compiles to false, so
    the arrays are dropped from the build entirely, not merely hidden. Preview
-   locally with `REVEAL=1 npm run dev`. On November 22, deploy after the
+   locally with `REVEAL=1 npm run dev`. On the reveal date, deploy after the
    reveal time and the content appears.
 
    The repo side is not: XRA-UW/uw-xra-site is public, so anything pushed to
@@ -151,7 +154,14 @@ export const schedule: [string, string][] = [
   ["8:30 p.m.", "Closing ceremony"],
 ];
 
-export const mentorShifts = ["9 a.m. to 1 p.m.", "1 to 5 p.m.", "5 to 9 p.m."];
+/* Named by part of day, with times as the secondary line. Not "Noon": under
+   the UW editorial guide that means 12 p.m. exactly, not a 1 to 5 p.m. block.
+   Evening is shorter because mentoring stops when judging starts at 7 p.m. */
+export const mentorShifts = [
+  { name: "Morning", time: "9 a.m. to 1 p.m." },
+  { name: "Afternoon", time: "1 to 5 p.m." },
+  { name: "Evening", time: "5 to 7 p.m." },
+];
 
 export const mentorDoes = [
   "Give feedback on ideas and demos",
@@ -161,12 +171,12 @@ export const mentorDoes = [
 ];
 
 export const mentorDoesNot = [
-  "Judge projects",
+  "Judge a team they mentored",
   "Work directly on a team's project",
   "Take part as a participant on the same day",
 ];
 
 export const mentorRequirements = [
   "Experience with XR development. The application asks about it.",
-  "At least one four-hour shift. Pick as many as you like.",
+  "At least one shift. Pick as many as you like.",
 ];

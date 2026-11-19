@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Navigate, Routes, Route, useLocation } from "react-router-dom";
 import { canonicalUrl, metaForPath } from "@/seo";
 import Index from "./pages/Index";
 import People from "./pages/People";
@@ -64,7 +64,13 @@ export const AppRoutes = () => (
       <Route path="/hackathon" element={<Hackathon />} />
       <Route path="/hackathon/2026" element={<Hackathon2026 />} />
       <Route path="/hackathon/2027" element={<Hackathon2027 />} />
-      <Route path="/hackathon/2027/sponsors" element={<HackathonSponsors />} />
+      <Route path="/hackathon/2027/partners" element={<HackathonSponsors />} />
+      {/* Old URL, still in outreach emails. The server 301s it on the UW host
+          (deploy/htaccess); this covers client-side navigation and dev. */}
+      <Route
+        path="/hackathon/2027/sponsors"
+        element={<Navigate to="/hackathon/2027/partners/" replace />}
+      />
       <Route path="/hackathon/2027/mentors" element={<HackathonMentors />} />
       <Route path="/hackathon/2027/schedule" element={<HackathonSchedule />} />
       {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE.

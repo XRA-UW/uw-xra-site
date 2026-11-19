@@ -6,7 +6,7 @@ import HackathonLayout, {
   secondaryButton,
   sectionLabel,
 } from "@/components/hackathon/HackathonLayout";
-import { DISCORD, EVENT } from "@/data/hackathon";
+import { DISCORD, EVENT, REVEAL_DATE } from "@/data/hackathon";
 
 /* The program page: why XRA runs hackathons, above any single year. Each
    edition lives under /hackathon/<year>, so this page outlasts any one name,
@@ -37,7 +37,7 @@ const editions = [
     year: String(EVENT.year),
     status: "Upcoming",
     name: EVENT.name,
-    detail: `${EVENT.date}. Partnerships and mentoring are open now; participant applications open November 22.`,
+    detail: `${EVENT.date}. Partnerships and mentoring are open now; participant applications open ${REVEAL_DATE}.`,
     to: `${EVENT.path}/`,
     cta: `See ${EVENT.year}`,
     current: true,

@@ -13,8 +13,8 @@ import {
   sponsorTiers,
 } from "@/data/hackathon";
 
-/* The page a partner is pointed at in or after a meeting. Levels and
-   deadlines come from src/data/hackathon.ts. Contributions are donations:
+/* The page a partner is pointed at in or after a meeting. Levels come
+   from src/data/hackathon.ts. Contributions are donations:
    word recognition as something we may do, never as a benefit owed. */
 
 const HackathonSponsors = () => (
@@ -75,17 +75,6 @@ const HackathonSponsors = () => (
           about how your team can help students access tools, receive guidance,
           and bring their projects to life.
         </p>
-      </div>
-    </section>
-
-    <section>
-      {/* Confirmation date only. The date contributions are due is a payment
-          term for confirmed partners and goes in their confirmation, not on
-          the site. */}
-      <h2 className={sectionLabel}>Key deadline</h2>
-      <div className={card}>
-        <p className="mb-1 text-sm font-light text-muted-foreground">Confirm your contribution by</p>
-        <h3 className="text-2xl font-medium tracking-tight">November 20, 2026</h3>
       </div>
     </section>
 

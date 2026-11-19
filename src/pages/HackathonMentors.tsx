@@ -1,4 +1,5 @@
 import { ArrowRight, Check, X } from "lucide-react";
+import { QRCodeSVG } from "qrcode.react";
 import HackathonLayout, {
   card,
   inlineLink,
@@ -8,6 +9,7 @@ import HackathonLayout, {
 import {
   DISCORD,
   EVENT,
+  MENTOR_FORM_URL,
   mentorContactHref,
   mentorDoes,
   mentorDoesNot,
@@ -21,13 +23,14 @@ import {
 
 const HackathonMentors = () => (
   <HackathonLayout
-    eyebrow="Mentors"
+    eyebrow="Mentors and judges"
     title={`Mentor at ${EVENT.name}`}
     lead={
       <p>
         Mentors keep teams moving. You help them sharpen an idea, get past a
         build error, and turn a rough prototype into a demo, without building
-        it for them.
+        it for them. A few judging spots may also open for people with strong
+        XR experience.
       </p>
     }
     actions={
@@ -38,7 +41,7 @@ const HackathonMentors = () => (
     }
   >
     <section>
-      <h2 className={sectionLabel}>The role</h2>
+      <h2 className={sectionLabel}>Mentoring</h2>
       <div className="grid gap-6 md:grid-cols-2">
         <div className={card}>
           <h3 className="mb-5 text-xl font-medium">What mentors do</h3>
@@ -66,7 +69,7 @@ const HackathonMentors = () => (
     </section>
 
     <section>
-      <h2 className={sectionLabel}>What we ask</h2>
+      <h2 className={sectionLabel}>What we ask of mentors</h2>
       <div className={card}>
         <ul className="space-y-3">
           {mentorRequirements.map((item) => (
@@ -83,13 +86,16 @@ const HackathonMentors = () => (
       <h2 className={sectionLabel}>Shifts on {EVENT.date}</h2>
       <div className="grid gap-6 sm:grid-cols-3">
         {mentorShifts.map((shift) => (
-          <div key={shift} className={`${card} text-center`}>
-            <p className="text-xl font-medium tabular-nums">{shift}</p>
+          <div key={shift.name} className={`${card} text-center`}>
+            <p className="text-xl font-medium">{shift.name}</p>
+            <p className="mt-1 font-light tabular-nums text-muted-foreground">{shift.time}</p>
           </div>
         ))}
       </div>
       <p className="mt-6 max-w-3xl font-light leading-relaxed text-muted-foreground">
-        Food is provided for mentors on shift. Between visits, questions come
+        Mentoring ends when judging starts at 7 p.m. You are welcome to stay
+        through the closing ceremony at 8:30 p.m. to see the demos and meet
+        the students. Food is provided for mentors on shift. Between visits, questions come
         in through the mentor channel of the{" "}
         <a href={DISCORD} target="_blank" rel="noopener noreferrer" className={inlineLink}>
           XRA Discord
@@ -98,16 +104,53 @@ const HackathonMentors = () => (
       </p>
     </section>
 
+    <section>
+      <h2 className={sectionLabel}>Judging</h2>
+      <div className={card}>
+        <p className="max-w-3xl font-light leading-relaxed text-muted-foreground">
+          Judging starts at 7 p.m., when hacking ends. We expect most judges to
+          come from our partners, so spots are limited. We may also invite a
+          few people with strong XR industry or research experience. If that
+          sounds like you, mention it on the application and we will reach out
+          if a spot opens. Anyone who both mentors and judges will not judge a
+          team they mentored.
+        </p>
+      </div>
+    </section>
+
     <section className={`${card} md:p-10`}>
       <h2 className="mb-3 text-xl font-medium tracking-tight">Apply</h2>
       <p className="mb-6 max-w-3xl font-light leading-relaxed text-muted-foreground">
-        Tell us about your XR development experience and which shifts you can
-        take.
+        Tell us about your XR development experience, which shifts you can
+        take, and whether you are interested in judging.
       </p>
-      <a href={mentorContactHref} className={primaryButton}>
-        Apply to mentor
-        <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
-      </a>
+      <div className="flex flex-col gap-8 sm:flex-row sm:items-center">
+        <a href={mentorContactHref} className={primaryButton}>
+          Apply to mentor
+          <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
+        </a>
+        {/* Rendered from MENTOR_FORM_URL rather than a saved image, so the code
+            can never point somewhere the button does not. Kept black on a
+            white tile in both themes: inverted or low-contrast codes fail on
+            many phone scanners. Hidden while the button is still a mailto. */}
+        {MENTOR_FORM_URL && (
+          <figure className="w-fit">
+            <div className="rounded-xl bg-white p-3">
+              <QRCodeSVG
+                value={MENTOR_FORM_URL}
+                size={144}
+                level="M"
+                fgColor="hsl(0, 0%, 0%)"
+                bgColor="hsl(0, 0%, 100%)"
+                title="QR code for the mentor application form"
+              />
+            </div>
+            <figcaption className="mt-2 text-sm font-light text-muted-foreground">
+              Scan to apply
+            </figcaption>
+          </figure>
+        )}
+      </div>
     </section>
   </HackathonLayout>
 );

@@ -42,6 +42,20 @@ export interface RouteMeta {
   path: string;
   title: string;
   description: string;
+  /** Link-preview image under public/, if this page has its own. Defaults to
+   *  DEFAULT_OG_IMAGE. Must be 1200 x 630. */
+  image?: string;
+}
+
+/* The ?v= query is a cache-buster: Discord, Slack and others cache preview
+   images by URL, so replacing the file alone can leave the old art showing for
+   weeks. Bump it whenever an image changes. */
+export const DEFAULT_OG_IMAGE = "og-image.png?v=2";
+
+/** Absolute preview-image URL. Always on the canonical host: crawlers fetch it
+ *  from there, and the GitHub Pages build only serves redirect stubs. */
+export function ogImageUrl(image: string = DEFAULT_OG_IMAGE): string {
+  return `${CANONICAL_ROOT}/${image.replace(/^\//, "")}`;
 }
 
 export const ROUTE_META: RouteMeta[] = [
@@ -70,16 +84,16 @@ export const ROUTE_META: RouteMeta[] = [
       "Bark to Reality, XRA's one-day XR hackathon at the University of Washington, Saturday, January 30, 2027. Teams of 1 to 4, Apple Vision Pro and Meta Quest, headsets to check out.",
   },
   {
-    path: "/hackathon/2027/sponsors",
+    path: "/hackathon/2027/partners",
     title: "Support Bark to Reality 2027 | XRA at the University of Washington",
     description:
-      "Partnership levels for Bark to Reality, XRA's January 2027 XR hackathon at the University of Washington, planned for about 150 students building for Apple Vision Pro and Meta Quest. Confirm a contribution by November 20.",
+      "Partnership levels for Bark to Reality, XRA's January 2027 XR hackathon at the University of Washington, planned for about 150 students building for Apple Vision Pro and Meta Quest.",
   },
   {
     path: "/hackathon/2027/mentors",
     title: "Mentor at Bark to Reality 2027 | XRA at the University of Washington",
     description:
-      "Mentor at Bark to Reality, XRA's January 2027 XR hackathon at the University of Washington: help student teams debug and refine XR projects in a four-hour shift. XR development experience required.",
+      "Mentor at Bark to Reality, XRA's January 2027 XR hackathon at the University of Washington: help student teams debug and refine XR projects during a shift. XR development experience required; a few judging spots may open.",
   },
   {
     path: "/hackathon/2027/schedule",
@@ -99,6 +113,16 @@ export const ROUTE_META: RouteMeta[] = [
     description:
       "The officers and members running the Extended Reality Association at the University of Washington.",
   },
+];
+
+/** Retired URLs that still circulate (emails, printed QR codes), mapped to
+ *  their replacement route. The prerenderer writes a redirect stub at each
+ *  `from` on every build, so the GitHub Pages copy forwards them too and a
+ *  stale page left on the UW server (deploy-uw.sh never deletes) is
+ *  overwritten. The UW host also 301s them in deploy/htaccess; keep the two
+ *  in step. Not in ROUTE_META, so they stay out of the sitemap. */
+export const LEGACY_REDIRECTS: { from: string; to: string }[] = [
+  { from: "/hackathon/2027/sponsors", to: "/hackathon/2027/partners" },
 ];
 
 /** Used for 404.html. Deliberately not in ROUTE_META: it is not a real URL and

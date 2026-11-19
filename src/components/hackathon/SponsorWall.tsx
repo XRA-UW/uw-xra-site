@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import { EVENT, sponsors, sponsorTiers } from "@/data/hackathon";
+import { EVENT, REVEAL_DATE, sponsors, sponsorTiers } from "@/data/hackathon";
 
 /* Partners appear in order of contribution level, as a way of saying thanks,
    not as a benefit owed (see sponsorTiers). Order and logo size come from the
@@ -14,12 +14,12 @@ const SponsorWall = () => {
         {/* The page already heads this section "Sponsors", so repeating the word
             here reads as "Sponsors Sponsors" once text is flattened, which is
             exactly what DubBot's repeated-word check scans. */}
-        <p className="mb-2 text-lg font-medium">Announced November 22</p>
+        <p className="mb-2 text-lg font-medium">Announced {REVEAL_DATE}</p>
         <p className="mb-6 font-light text-muted-foreground">
           Partners who help make the event possible may be recognized here.
         </p>
         <Link
-          to={`${EVENT.path}/sponsors/`}
+          to={`${EVENT.path}/partners/`}
           className="group inline-flex items-center gap-2 font-medium text-brand-green transition-colors hover:text-foreground"
         >
           Support the hackathon

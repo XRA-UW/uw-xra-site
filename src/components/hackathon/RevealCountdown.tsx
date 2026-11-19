@@ -1,9 +1,9 @@
 import Countdown from "@/components/Countdown";
 import { useNow } from "@/hooks/use-now";
-import { DISCORD, REVEAL_AT } from "@/data/hackathon";
+import { DISCORD, REVEAL_AT, REVEAL_DATE } from "@/data/hackathon";
 import { card, inlineLink, sectionLabel } from "@/components/hackathon/HackathonLayout";
 
-/* Counts down to November 22, when tracks and sponsors are announced and
+/* Counts down to the reveal (REVEAL_DATE), when tracks and sponsors are announced and
    applications open. The site only changes when someone deploys, so at zero
    this does not claim the details are out: it settles on the date and points
    at the Discord, where announcements land first. */
@@ -15,7 +15,7 @@ const RevealCountdown = () => {
 
   return (
     <section className={`${card} md:p-10`}>
-      <p className={sectionLabel}>November 22</p>
+      <p className={sectionLabel}>Planned for {REVEAL_DATE}</p>
       <h2 className="mb-3 text-2xl font-medium tracking-tight md:text-3xl">
         Tracks and partners revealed
       </h2>

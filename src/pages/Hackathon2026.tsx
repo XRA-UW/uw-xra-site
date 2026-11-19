@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { EVENT } from "@/data/hackathon";
+import { EVENT, REVEAL_DATE } from "@/data/hackathon";
 import winnersEnact from "@/assets/winners-enact.jpg";
 import winnersOnbeat from "@/assets/winners-onbeat.jpg";
 
@@ -322,7 +322,7 @@ const Hackathon2026 = () => {
                 <p className="mb-6 max-w-3xl font-light leading-relaxed text-muted-foreground">
                   We are running an XR hackathon again, on {EVENT.date}.
                   Partnership levels, mentoring, and the schedule are up
-                  now; tracks and participant details follow on November 22.
+                  now; tracks and participant details follow on {REVEAL_DATE}.
                 </p>
                 <div>
                   <Link
