@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { XMark, XraWordmark } from "@/components/Logo";
+import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import buildspaceQr from "@/assets/buildspace-qr.svg";
 import cseedLogo from "@/assets/cseed-logo-white.png";
@@ -11,6 +12,12 @@ import {
   CSEED,
   isBuildspaceOpen,
 } from "@/data/buildspace";
+import {
+  EVENT,
+  PARTNER_SITE,
+  REVEAL_DATE,
+  isEventUpcoming,
+} from "@/data/hackathon";
 
 /* The Allen School's public student-organizations page, deep-linked to our own
    entry. Deliberately not the 26-27 Google Sites page: that one is the
@@ -57,6 +64,7 @@ const pillars = [
 
 const Index = () => {
   const buildspaceOpen = isBuildspaceOpen();
+  const hackathonUpcoming = isEventUpcoming();
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-background">
@@ -122,6 +130,47 @@ const Index = () => {
           </div>
         </section>
 
+
+        {/* Hackathon summary. The home page only teases the event: details
+            live on /hackathon/2027/, and the partner pitch is the design
+            team's own site (PARTNER_SITE). Facts come from data/hackathon.ts
+            so the three cannot drift. */}
+        {hackathonUpcoming && (
+          <section id="hackathon" className="container px-4 py-16">
+            <div className="mx-auto max-w-5xl rounded-2xl border border-brand-green/30 bg-card p-8 shadow-[0_0_60px_hsl(var(--brand-green)/0.08)] md:p-10">
+              <p className="mb-3 text-sm font-medium uppercase tracking-[0.25em] text-brand-green">
+                Hackathon · {EVENT.date}
+              </p>
+              <h2 className="mb-4 text-3xl font-medium tracking-tight md:text-5xl">
+                {EVENT.name}
+              </h2>
+              <p className="mb-8 max-w-2xl text-lg font-light leading-relaxed text-muted-foreground">
+                Our one-day XR hackathon on the {EVENT.location}. Teams of one
+                to four build headset apps for Apple Vision Pro and Meta Quest,
+                with workshops and mentors all day. Applications open{" "}
+                {REVEAL_DATE}.
+              </p>
+              <div className="flex flex-col gap-4 sm:flex-row">
+                <Link
+                  to={`${EVENT.path}/`}
+                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-3 text-lg font-medium text-primary-foreground shadow-[0_8px_24px_hsl(var(--brand-blue)/0.25)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-[0_12px_44px_hsl(var(--brand-blue)/0.5)] active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                >
+                  Event details
+                  <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
+                </Link>
+                <a
+                  href={PARTNER_SITE}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center justify-center gap-2 rounded-full border border-foreground/25 px-8 py-3 text-lg font-medium text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-green hover:bg-brand-green/10 hover:text-brand-green hover:shadow-[0_12px_44px_hsl(var(--brand-green)/0.25)] active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                >
+                  Become a partner
+                  <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
+                </a>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* cseed Buildspace collab: XR track run with XRA */}
         {buildspaceOpen && (

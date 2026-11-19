@@ -26,9 +26,12 @@ RedirectMatch 301 ^/xra/hacktheam/?$ /xra/hackathon/2026/
 # path that predates /xra/hacktheam/.
 RedirectMatch 301 ^/xra/hack/(index\.html)?$ /xra/hackathon/2026/
 
-# The 2027 partners page was /sponsors/ until November 2026, and that URL is in
-# outreach emails. Keep in step with LEGACY_REDIRECTS in src/seo.ts.
-RedirectMatch 301 ^/xra/hackathon/2027/sponsors(/|/index\.html)?$ /xra/hackathon/2027/partners/
+# The 2027 partner pitch moved to the design team's own site in November 2026.
+# /sponsors/ is in outreach emails; /partners/ was live briefly. 302, not 301:
+# the target is a vercel.app address that may move to a custom domain, and
+# browsers cache a 301 indefinitely. Keep in step with LEGACY_REDIRECTS in
+# src/seo.ts.
+RedirectMatch 302 ^/xra/hackathon/2027/(sponsors|partners)(/|/index\.html)?$ https://barktoreality.vercel.app/
 
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml

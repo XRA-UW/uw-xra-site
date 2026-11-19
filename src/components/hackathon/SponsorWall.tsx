@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import { EVENT, REVEAL_DATE, sponsors, sponsorTiers } from "@/data/hackathon";
+import { PARTNER_SITE, REVEAL_DATE, sponsors, sponsorTiers } from "@/data/hackathon";
 
 /* Partners appear in order of contribution level, as a way of saying thanks,
    not as a benefit owed (see sponsorTiers). Order and logo size come from the
@@ -18,13 +17,15 @@ const SponsorWall = () => {
         <p className="mb-6 font-light text-muted-foreground">
           Partners who help make the event possible may be recognized here.
         </p>
-        <Link
-          to={`${EVENT.path}/partners/`}
+        <a
+          href={PARTNER_SITE}
+          target="_blank"
+          rel="noopener noreferrer"
           className="group inline-flex items-center gap-2 font-medium text-brand-green transition-colors hover:text-foreground"
         >
           Support the hackathon
           <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-        </Link>
+        </a>
       </div>
     );
   }

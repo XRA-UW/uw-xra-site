@@ -22,17 +22,26 @@ export const EVENT = {
   teamSize: "Teams of 1 to 4",
 };
 
+/* End of the closing ceremony. The home page summary hides itself after this,
+   so the front page never advertises a finished event. Keep in step with
+   EVENT.date and EVENT.hours. */
+export const EVENT_ENDS = new Date("2027-01-30T20:30:00-08:00");
+export const isEventUpcoming = () => new Date() < EVENT_ENDS;
+
 export const DISCORD = "https://discord.gg/4hvsCDhb5p";
 export const EMAIL = "xra@uw.edu";
 
-/* Replace with the real form URLs once they exist. Until then the buttons fall
-   back to a prefilled email, so the pages work today. */
-export const SPONSOR_FORM_URL: string | null = null;
+/* The partner pitch is the design team's own site, not a page here. Every
+   "support the hackathon" link points at it, and the retired /sponsors and
+   /partners URLs forward to it (LEGACY_REDIRECTS in src/seo.ts). Change it
+   here, in LEGACY_REDIRECTS and in deploy/htaccess if it moves to a custom
+   domain. */
+export const PARTNER_SITE = "https://barktoreality.vercel.app/";
+
+/* Replace with the real form URL once it exists. Until then the button falls
+   back to a prefilled email, so the page works today. */
 export const MENTOR_FORM_URL: string | null = "https://forms.gle/YKpHWDKBdzCUCfDc6";
 
-export const sponsorContactHref =
-  SPONSOR_FORM_URL ??
-  `mailto:${EMAIL}?subject=${encodeURIComponent(`Supporting ${EVENT.name}`)}`;
 export const mentorContactHref =
   MENTOR_FORM_URL ??
   `mailto:${EMAIL}?subject=${encodeURIComponent(`Mentoring at ${EVENT.name}`)}`;
@@ -88,18 +97,6 @@ export const sponsorTiers: SponsorTier[] = [
     description:
       "Helps meet shared event needs and create a welcoming environment where students can collaborate and learn.",
   },
-];
-
-/* Sentence case, not title case: the sponsors page joins these into running
-   prose ("Device loans, XR mentorship, development workshops, ..."), so only
-   the first item starts the sentence. Re-case them if they are ever shown as a
-   standalone list. */
-export const otherContributions = [
-  "Device loans",
-  "XR mentorship",
-  "development workshops",
-  "prizes",
-  "software credits or trials",
 ];
 
 export interface Sponsor {

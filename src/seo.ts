@@ -84,12 +84,6 @@ export const ROUTE_META: RouteMeta[] = [
       "Bark to Reality, XRA's one-day XR hackathon at the University of Washington, Saturday, January 30, 2027. Teams of 1 to 4, Apple Vision Pro and Meta Quest, headsets to check out.",
   },
   {
-    path: "/hackathon/2027/partners",
-    title: "Support Bark to Reality 2027 | XRA at the University of Washington",
-    description:
-      "Partnership levels for Bark to Reality, XRA's January 2027 XR hackathon at the University of Washington, planned for about 150 students building for Apple Vision Pro and Meta Quest.",
-  },
-  {
     path: "/hackathon/2027/mentors",
     title: "Mentor at Bark to Reality 2027 | XRA at the University of Washington",
     description:
@@ -116,13 +110,18 @@ export const ROUTE_META: RouteMeta[] = [
 ];
 
 /** Retired URLs that still circulate (emails, printed QR codes), mapped to
- *  their replacement route. The prerenderer writes a redirect stub at each
+ *  their replacement: a route path, or an absolute URL on another site. The
+ *  prerenderer writes a redirect stub at each
  *  `from` on every build, so the GitHub Pages copy forwards them too and a
  *  stale page left on the UW server (deploy-uw.sh never deletes) is
  *  overwritten. The UW host also 301s them in deploy/htaccess; keep the two
  *  in step. Not in ROUTE_META, so they stay out of the sitemap. */
 export const LEGACY_REDIRECTS: { from: string; to: string }[] = [
-  { from: "/hackathon/2027/sponsors", to: "/hackathon/2027/partners" },
+  /* The partner pitch moved to the design team's site in November 2026
+     (PARTNER_SITE in src/data/hackathon.ts). /sponsors was its first URL and
+     is in outreach emails; /partners was live for a day. */
+  { from: "/hackathon/2027/sponsors", to: "https://barktoreality.vercel.app/" },
+  { from: "/hackathon/2027/partners", to: "https://barktoreality.vercel.app/" },
 ];
 
 /** Used for 404.html. Deliberately not in ROUTE_META: it is not a real URL and
@@ -152,6 +151,7 @@ export function metaForPath(pathname: string): Omit<RouteMeta, "path"> {
  *  JavaScript, followed that canonical, and each render added another slash:
  *  Search Console logged /people///, /hackathon//, and so on. */
 export function canonicalUrl(path: string): string {
+  if (/^https?:\/\//.test(path)) return path;
   const clean = path.replace(/\/+$/, "");
   return `${CANONICAL_ROOT}${clean}/`;
 }

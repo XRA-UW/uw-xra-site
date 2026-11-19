@@ -1,9 +1,9 @@
 import type { ReactNode } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { EVENT } from "@/data/hackathon";
+import { EVENT, PARTNER_SITE } from "@/data/hackathon";
 
 /* Shared shell for the hackathon pages: the same backdrop as every other
    page. Pages of the current edition also get a link back to the program
@@ -13,12 +13,14 @@ import { EVENT } from "@/data/hackathon";
 
 const tabs = [
   { name: "Overview", path: EVENT.path },
-  /* Was /sponsors until November 2026. That URL is in outreach emails, so it
-     still redirects here (LEGACY_REDIRECTS in src/seo.ts). */
-  { name: "Partners", path: `${EVENT.path}/partners` },
   { name: "Mentors", path: `${EVENT.path}/mentors` },
   { name: "Schedule", path: `${EVENT.path}/schedule` },
 ];
+
+/* The partner pitch is the design team's own site (PARTNER_SITE), so it sits
+   after the tabs as an outbound link rather than pretending to be a tab. */
+const tabClass =
+  "block rounded-full px-3 py-1.5 text-xs font-medium sm:px-4 sm:text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green";
 
 export const sectionLabel =
   "mb-5 text-sm font-medium uppercase tracking-[0.25em] text-brand-green";
@@ -78,7 +80,7 @@ const HackathonLayout = ({ eyebrow, title, lead, actions, edition = true, childr
                       <Link
                         to={`${tab.path}/`}
                         aria-current={active ? "page" : undefined}
-                        className={`block rounded-full px-3 py-1.5 text-xs font-medium sm:px-4 sm:text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green ${
+                        className={`${tabClass} ${
                           active
                             ? "bg-brand-green text-background"
                             : "text-foreground/70 hover:bg-white/5 hover:text-foreground"
@@ -89,6 +91,18 @@ const HackathonLayout = ({ eyebrow, title, lead, actions, edition = true, childr
                     </li>
                   );
                 })}
+                <li>
+                  <a
+                    href={PARTNER_SITE}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`${tabClass} inline-flex items-center gap-1 text-foreground/70 hover:bg-white/5 hover:text-foreground`}
+                  >
+                    Partners
+                    <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                    <span className="sr-only">(opens in a new tab)</span>
+                  </a>
+                </li>
               </ul>
             </nav>
             </>

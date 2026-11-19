@@ -8,7 +8,7 @@ import HackathonLayout, {
 } from "@/components/hackathon/HackathonLayout";
 import SponsorWall from "@/components/hackathon/SponsorWall";
 import RevealCountdown from "@/components/hackathon/RevealCountdown";
-import { DISCORD, EVENT, REVEAL_DATE, keyDates, tracks } from "@/data/hackathon";
+import { DISCORD, EVENT, PARTNER_SITE, REVEAL_DATE, keyDates, tracks } from "@/data/hackathon";
 
 /* Overview of the 2027 edition. Written first for sponsors and the school,
    who see it before participants do: participant details land at the
@@ -28,7 +28,7 @@ const audiences = [
   {
     title: "Partners",
     body: "Help about 150 UW students spend a full day building in XR. Contributions support tracks, student awards, project resources, and the event itself.",
-    to: `${EVENT.path}/partners/`,
+    href: PARTNER_SITE,
     cta: "Partnership levels",
   },
   {
@@ -70,10 +70,10 @@ const Hackathon2027 = () => (
           ))}
         </ul>
         <div className="flex flex-col gap-4 sm:flex-row">
-          <Link to={`${EVENT.path}/partners/`} className={primaryButton}>
+          <a href={PARTNER_SITE} target="_blank" rel="noopener noreferrer" className={primaryButton}>
             Support the hackathon
             <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
-          </Link>
+          </a>
           <a href={DISCORD} target="_blank" rel="noopener noreferrer" className={secondaryButton}>
             Get announcements
             <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
@@ -112,13 +112,25 @@ const Hackathon2027 = () => (
           <div key={a.title} className={`${card} flex flex-col`}>
             <h3 className="mb-3 text-xl font-medium">{a.title}</h3>
             <p className="mb-6 flex-1 font-light leading-relaxed text-muted-foreground">{a.body}</p>
-            <Link
-              to={a.to}
-              className="group inline-flex items-center gap-2 font-medium text-brand-green transition-colors hover:text-foreground"
-            >
-              {a.cta}
-              <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-            </Link>
+            {"href" in a ? (
+              <a
+                href={a.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 font-medium text-brand-green transition-colors hover:text-foreground"
+              >
+                {a.cta}
+                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+              </a>
+            ) : (
+              <Link
+                to={a.to}
+                className="group inline-flex items-center gap-2 font-medium text-brand-green transition-colors hover:text-foreground"
+              >
+                {a.cta}
+                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+              </Link>
+            )}
           </div>
         ))}
       </div>
